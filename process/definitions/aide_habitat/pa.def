@@ -1,0 +1,259 @@
+formulaire metadata_name_aide_habitat_pa 
+
+    url metadata_url_name_aide_habitat_pa 
+    description metadata_description_aide_habitat_pa 
+    identifiant metadata_internal_identifier_aide_habitat_pa
+
+    listing type_proprietaire_list
+    listing revenu_fiscal_reference_beneficiaire
+
+    filter type_proprietaire_list
+    filter revenu_fiscal_reference_beneficiaire
+
+page page_preambule
+
+    liste* qui_saisit_list
+
+    texte qui_saisit_conseil
+
+page page_eligibilite
+
+ #   conditions de sortie
+ #       un des champs travaux_a_engager_ascenceur_pa, travaux_a_engager_amenagement_pa,
+ #       travaux_a_engager_passage_pa ou travaux_a_engager_extension_pa est rempli
+ #       sinon afficher le message MSG_ELIGI_TRAVAUXPA
+    
+    titre beneficiaire
+
+    liste* type_proprietaire_list
+
+    texte type_proprietaire_aide
+
+    liste* eligibilite_beneficiaire_apa
+
+    liste* eligibilite_beneficiaire_retraite
+
+    liste beneficiaire:civilite
+    
+    nom_prenom* beneficiaire:nom beneficiaire:prenom
+    
+    courriel_avec_remarque* courriel MSG_ELIGI_COURRIEL
+
+    champ_texte_long* adresse
+
+    titre logement
+
+    annee_avant_depuis* annee_de_construction 15
+
+    liste* subvention_obtenue
+
+    champ_texte precedent_dossier
+
+    titre travaux_a_engager_titre
+
+    texte travaux_a_engager_texte
+
+    liste_choix_multiple travaux_a_engager_ascenceur_pa
+
+    liste_choix_multiple travaux_a_engager_amenagement_pa
+
+    liste_choix_multiple travaux_a_engager_passage_pa
+
+    liste_choix_multiple travaux_a_engager_extension_pa
+
+    champ_texte_long travaux_complement_informations
+
+    titre ressources_occupant
+
+    montant* revenu_fiscal_reference_beneficiaire
+
+    montant_avec_remarque revenu_fiscal_reference_conjoint revenu_fiscal_reference_conjoint_remarque
+
+    montant revenu_fiscal_autre
+
+    nombre* nombre_occupants
+
+page page_complement_info
+
+    # conditions_de_sortie
+    #    c.un_des_champs(
+    #    tel_fixe, 
+    #    tel_portable
+    #    .est_rempli(.sinon_message MSG_COMPIN_TELEPHONE
+    
+    titre autre_occupant
+
+    liste civilite
+
+    champ_texte autre_occupant:nom
+
+    champ_texte autre_occupant:prenom
+
+    titre procuration_titre
+
+    liste* procuration_perception_subventions
+
+    titre tel_beneficiaire
+
+    texte MSG_COMPIN_TELEPHONE
+    
+    telephone tel_fixe
+
+    telephone tel_portable
+
+page page_plan_financement
+
+    # conditions_de_sortie=[
+    # c.le_champ depenses_autres_precisions.est_obligatoire_si(c.le_champ depenses_autres.est_rempli(.sinon_message MSG_PLFIN_AUTRECOUTS
+
+    titre depenses_titre
+
+    montant* depenses_cout_envisages
+
+    montant depenses_ergotherapeute
+
+    montant depenses_amo
+
+    montant depenses_autres
+
+    champ_texte_long depenses_autres_precisions
+
+    montant depenses_total_ht
+
+    montant depenses_total_ttc
+
+    titre subventions_titre
+
+    montant* subventions_departement
+
+    montant subventions_anah_aide
+
+    montant subventions_anah_amo
+
+    montant subventions_prime_habiter_mieux
+
+    montant subventions_mdph
+
+    montant subventions_region
+
+    montant subventions_commune
+
+    montant subventions_caf
+
+    montant subventions_caisse_retraite
+
+    montant subventions_autres
+
+    champ_texte_long subventions_autres_precisions
+
+    titre apport_titre
+
+    montant apport
+
+page page_procuration
+
+    titre procuration:procuration_titre
+
+    texte procuration:procuration_titre_texte
+
+    liste procuration:civilite
+
+    nom_prenom* procuration:nom procuration:prenom
+
+    champ_texte_long* procuration:adresse
+
+    champ_texte procuration_representant
+
+    champ_texte_long* procuration_representant_adresse
+
+    champ_texte_long* procuration_adresse_immeuble
+
+    titre procuration_donne_mandat_titre
+
+    texte procuration_donne_mandat_personne_texte
+
+    sous_titre procuration_donne_mandat_personne_sous_titre
+
+    nom_prenom_civilite mandant:nom mandant:prenom mandat:civilite
+
+    champ_texte_avec_remarque procuration_qualite procuration_qualite_remarque
+
+    sous_titre procuration_donne_mandat_organisme_sous_titre
+
+    texte procuration_donne_mandat_organisme_texte
+
+    champ_texte procuration_nom_organisme
+
+    champ_texte procuration_referent_organisme
+
+    champ_texte_long* organisme:adresse
+
+    champ_texte procuration_sms_telephone
+
+    texte procuration_sms_description
+
+    texte procuration_courrier_description
+
+page page_engagement_operateur
+
+    texte engagement_operateur_texte
+
+    liste_choix_multiple* engagement_operateur
+
+    texte engagement_operateur_modele_accord
+
+
+# page page_engagement_beneficiaire
+#
+#    texte engagement_beneficiaire_texte
+#
+#    liste_choix_multiple* engagement_beneficiaire_certification
+
+
+page page_pieces_justificatives
+
+    fichier* documents_rib
+
+    texte documents_rib_texte
+
+    fichier* documents_mdph
+
+    fichier* documents_diagnostic_thermique
+
+    fichier* documents_convention_anah
+
+    fichier* documents_diagnostic_ergotherapeute
+
+    texte documents_avis_imposition_texte
+
+    fichier* documents_avis_imposition_beneficiaire
+
+    fichier* documents_avis_imposition_conjoint
+
+    fichier* documents_avis_imposition_autre
+
+    texte documents_devis_detailles_texte
+
+    fichier* documents_devis_detailles
+
+    texte documents_devis_etudes_techniques_texte
+
+    fichier* documents_devis_etudes_techniques
+
+    texte documents_autorisations_secteur_sauvegarde_texte
+
+    fichier* documents_autorisations_secteur_sauvegarde
+
+    texte documents_autres_texte
+
+    fichier documents_autres_1
+
+    fichier documents_autres_2
+
+    fichier documents_autres_3
+
+    fichier documents_autres_4
+
+    fichier documents_autres_5
+
+    champ_texte documents_autres_observations

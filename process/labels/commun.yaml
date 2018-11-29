@@ -1,0 +1,20 @@
+civilite:
+  Civilité:
+    - M.
+    - Mme
+
+nom: Nom
+
+prenom: Prénom
+
+courriel: Courriel
+
+adresse: Adresse postale
+
+tel_beneficiaire: Téléphone du bénéficiaire
+
+tel_fixe : Téléphone fixe
+
+tel_portable: Téléphone portable
+
+beneficiaire: Bénéficiaire

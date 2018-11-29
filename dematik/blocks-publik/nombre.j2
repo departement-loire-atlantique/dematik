@@ -1,0 +1,3 @@
+{# field_data -#}
+{%- from "macros-publik/champ_texte.j2" import champ_texte with context -%}
+{{ champ_texte(field_data, required, validation='^[0-9]*$') }}

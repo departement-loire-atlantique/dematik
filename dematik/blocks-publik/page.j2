@@ -1,0 +1,19 @@
+{# field_data post_conditions -#}
+<field>
+    <label>{{ get_text(field_data) }}</label>
+    <type>page</type>
+    <id>{{ get_id(field_data) }}</id>
+    {% if post_conditions -%}
+    <post_conditions>
+    {% for post_condition in post_conditions -%}
+      <post_condition>
+        <condition>
+          <type>python</type>
+          <value>{{ post_condition.getPythonExpression() -}}</value>
+        </condition>
+        <error_message>{{ post_condition.getMessage() -}}</error_message>
+      </post_condition>
+    {% endfor -%}
+    </post_conditions>
+    {% endif -%}
+</field>

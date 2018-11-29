@@ -1,0 +1,6 @@
+{# nom prenom civilite -#}
+{%- from "macros-publik/champ_texte.j2" import champ_texte with context -%}
+{%- from "macros-publik/liste.j2" import liste with context -%}
+{{ liste(civilite, required) }}
+{{ champ_texte(nom, required) }}
+{{ champ_texte(prenom, required) }}

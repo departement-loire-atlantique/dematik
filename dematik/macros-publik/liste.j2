@@ -1,0 +1,25 @@
+{% macro liste(field_data, required, multi=False) %}
+<field>
+    <label>{{ get_text(field_data) }}</label>
+    {%- if multi %}
+    <type>items</type>
+    {% else %}
+    <type>item</type>
+    {% endif -%}
+    <required>{{ required }}</required>
+    <varname>{{ get_varname(field_data) }}</varname>
+    <id>{{ get_id(field_data) }}</id>
+    <in_listing>{{ is_in_listing(field_data) }}</in_listing>
+    <in_filters>{{ is_in_filters(field_data) }}</in_filters>
+    <items>
+    {% for term in get_items(field_data) -%}
+        <item>{{ term }}</item>
+    {% endfor -%}
+    </items>
+    {%- if not multi %}
+    <show_as_radio>True</show_as_radio>
+    {% endif -%}
+    <anonymise>False</anonymise>
+    <display_disabled_items>False</display_disabled_items>
+</field>
+{%- endmacro %}

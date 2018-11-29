@@ -1,0 +1,24 @@
+simple_accent: écoute
+
+esperluette: ceci & cela
+
+htmltag: tag <tr> tag
+
+quotes: l'habitat l’habitat
+
+title_and_items:
+  Civilité:
+    - M
+    - Mme
+
+multilines: >
+  multi aperçu
+  line text
+
+retour_ligne: >
+  multi **gras**
+  line text *italique*
+
+  saut de ligne
+
+ecriture_inclusive: participant·e·s

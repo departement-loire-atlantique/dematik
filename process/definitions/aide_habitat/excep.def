@@ -1,0 +1,122 @@
+formulaire metadata_name_aide_habitat_excep 
+
+    url metadata_url_name_aide_habitat_excep 
+    description metadata_description_aide_habitat_excep 
+    identifiant metadata_internal_identifier_aide_habitat_excep
+
+page page_preambule
+
+    liste* preambule_excep_question_contact
+
+    texte preambule_excep_conseil
+
+page page_eligibilite
+
+#conditions_de_sortie=
+ #   [c.un_des_champs(
+  #  _.travaux_a_engager_ascenceur_pa, 
+   # _.travaux_a_engager_amenagement_pa,
+   # _.travaux_a_engager_passage_pa,
+    #_.travaux_a_engager_extension_pa).n_est_pas_rempli().alors_message MSG_ELIGI_TRAVAUXPA)] 
+
+    titre beneficiaire
+
+    liste* type_proprietaire_list
+
+    texte type_proprietaire_aide
+
+    liste* eligibilite_beneficiaire_apa
+
+    liste* eligibilite_beneficiaire_retraite
+
+    liste* eligibilite_beneficiaire_aide_exceptionnelle
+
+    nom_prenom_civilite* nom prenom civilite
+    
+    courriel* courriel
+    
+    champ_texte_long* adresse
+
+    titre logement
+
+    annee_avant_depuis* annee_de_construction 15
+
+    liste* subvention_obtenue
+
+    champ_texte precedent_dossier
+
+    titre travaux_a_engager_titre
+
+    texte travaux_a_engager_texte
+
+    champ_texte_long travaux_complement_informations
+
+    titre ressources_occupant
+
+    montant* revenu_fiscal_reference_beneficiaire
+
+    montant_avec_remarque revenu_fiscal_reference_conjoint revenu_fiscal_reference_conjoint_remarque
+
+    montant revenu_fiscal_autre
+
+    nombre* nombre_occupants
+
+page page_rapport_situation
+
+    titre rapport_situation
+
+    texte travaux_preconises
+
+    champ_texte* nature_travaux_1
+
+    champ_texte* couts_ht_1
+
+    liste_choix_multiple amenagement_prioritaire_1
+
+    champ_texte nature_travaux_2
+
+    champ_texte couts_ht_2
+
+    liste_choix_multiple amenagement_prioritaire_2
+
+    champ_texte nature_travaux_3
+
+    champ_texte couts_ht_3
+
+    liste_choix_multiple amenagement_prioritaire_3
+
+    champ_texte nature_travaux_4
+
+    champ_texte couts_ht_4
+
+    liste_choix_multiple amenagement_prioritaire_4
+
+    champ_texte nature_travaux_5
+
+    champ_texte couts_ht_5
+
+    liste_choix_multiple amenagement_prioritaire_5
+
+    champ_texte_long* observations
+
+    champ_texte_long* situation_menage
+
+    champ_texte_long* recherche_solutions
+
+    champ_texte_long amenagement:observations
+
+    champ_texte_long amenagement:situation_menage
+
+    texte situation_menage_aide
+
+    champ_texte_long amenagement:recherche_solutions
+
+    texte recherche_solutions_aide
+
+page page_engagement_operateur
+
+    texte engagement_operateur_texte_aide_exceptionnelle
+
+    liste_choix_multiple* engagement_operateur
+
+    texte engagement_operateur_modele_accord
