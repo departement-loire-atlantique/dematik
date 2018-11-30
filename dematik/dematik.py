@@ -165,7 +165,7 @@ class Dematik:
                         context = path + ' line ' + str(i+1)
                         if not (self.parseFormMetadata(tokens)
                             or self.parseFieldBlock(tokens)):
-                            print("{} - WARN - Line ignored - Block {} is not implemend, please implement it".format(
+                            print("{} - WARN - Ligne ignoree - Bloc {} n'est pas implemente, veuillez l'implementer".format(
                                     context,
                                     tokens[0]))
         
