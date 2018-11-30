@@ -8,7 +8,7 @@ La solution permet de générer des formulaires en partant:
 - de simples fichiers texte pour la définition des formulaires
 
 Points forts :
-- L'emploi de simples fichiers texte accélère la mise au point de formulaires (copié/coller, ...).
+- L'emploi de simples fichiers texte accélère la mise au point de formulaires (copier/coller, ...).
 - La relecture des libellés ou encore la définition d'un formulaire devient un jeu d'enfant 
 - L'approche par bloc pré-packagé permet une homogénéité des formulaires
 - L'écriture des conditions est simplifiée. Les conditions sont écrites en français et traduitent automatiquement en python.
@@ -21,7 +21,7 @@ Points faibles :
 Pré-requis
 ----------
 
-Dematik nécessite python version 2.7 and pip
+Dematik nécessite python version 2.7 et pip
 
 Installation
 ------------
@@ -126,7 +126,7 @@ page nom_page_2
 
 ```
 
-Le nom d'un libellé peut être utilisé simplement ou précédé d'un espace de nommmage.
+Le nom d'un libellé peut être utilisé simplement ou précédé d'un espace de nommage.
 
 Exemple :
 
