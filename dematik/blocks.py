@@ -45,7 +45,7 @@ class Blocks:
                     raise Exception("%s : Line 1 - Invalid parameters description. {# var1 var2 ... -#} expected " % block_template_path)
                 block_name = splitext(basename(block_template_name))[0]
                 self.block_parameters[block_name] = line_tokens[1:-1]
-                self.block_templates[block_name] = join(path, block_template_name)
+                self.block_templates[block_name] = '/'.join([path, block_template_name])
 
     def __contains__(self, c):
         return c.replace('*','') in self.block_parameters
