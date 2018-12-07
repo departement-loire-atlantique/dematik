@@ -46,7 +46,7 @@ class ConditionParser:
             ('ARE_STOP_WORD',   r'sont'),   # Ignored
             ('INT_VALUE', r'\d+'),
             ('VALUE', r'".*"'),
-            ('FIELDNAME', r'\w+'),
+            ('FIELDNAME', r'\w*:?\w+'),
         ]
 
         tok_regex = '|'.join('(?P<%s>%s)' % pair for pair in token_specification)
@@ -61,6 +61,10 @@ class ConditionParser:
                 unknowns = (last_token.value, value)
                 raise Exception("Un des termes suivants n'est pas encore supporté dans les conditions : %s" % ' ou '.join(unknowns))
            
+            # Namepace support
+            if kind == 'FIELDNAME':
+                value = value.replace(':', '_')
+
             # Ignore stop words
             if not 'STOP_WORD' in kind :
                 last_token = Token(kind, value, False)

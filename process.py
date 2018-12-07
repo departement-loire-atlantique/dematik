@@ -1,11 +1,11 @@
-from dematik.dematik import Dematik
+import dematik
 from os.path import isfile, join
 import glob
 import argparse
 
 def generate(args):
     
-    dk = Dematik('publik', args.debug)
+    dk = dematik.Dematik('publik', args.debug)
 
     # Load field data
     field_data_files = glob.glob('./process/labels/*.yaml')
