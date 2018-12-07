@@ -11,7 +11,7 @@ Points forts :
 - L'emploi de simples fichiers texte accélère la mise au point de formulaires (copier/coller, ...).
 - La relecture des libellés ou encore la définition d'un formulaire devient un jeu d'enfant 
 - L'approche par bloc pré-packagé permet une homogénéité des formulaires
-- L'écriture des conditions est simplifiée. Les conditions sont écrites en français et traduitent automatiquement en python.
+- L'écriture des conditions est simplifiée. Les conditions sont écrites en français et traduites automatiquement en python.
 - Tout est en français (message d'erreur, définition du formulaire, conditions, ...)
 
 Points faibles :
