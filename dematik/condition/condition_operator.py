@@ -1,0 +1,23 @@
+from condition import Condition 
+
+class ConditionOperator(Condition):
+    
+    tokens = [ 
+        ('OR',   r'ou'),
+        ('AND',   r'et'), 
+    ]
+    
+    sentences = [ 
+        ('CONDITION', 'AND', 'CONDITION'), 
+        ('CONDITION', 'OR', 'CONDITION')
+    ]
+
+    def __init__(self, sentence_tokens):
+        self.type = "CONDITION"
+       
+        self.left_condition = sentence_tokens[0].value.build()
+        self.operator = sentence_tokens[1].type.lower()
+        self.right_condition = sentence_tokens[2].value.build()
+
+    def build(self):
+        return '(' + self.left_condition + ') ' + self.operator + ' (' + self.right_condition + ')'
