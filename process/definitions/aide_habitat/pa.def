@@ -75,17 +75,14 @@ page page_eligibilite
 
 page page_complement_info
 
-    # conditions_de_sortie
-    #    c.un_des_champs(
-    #    tel_fixe, 
-    #    tel_portable
-    #    .est_rempli(.sinon_message MSG_COMPIN_TELEPHONE
-    
+    si nombre_occupants est inférieur à 2 alors masquer cette page
+   
     titre autre_occupant
 
     liste civilite
 
     champ_texte autre_occupant:nom
+    si autre_occupant:nom est vide alors afficher le message "Merci de saisir un occupant"
 
     champ_texte autre_occupant:prenom
 
@@ -98,8 +95,8 @@ page page_complement_info
     texte MSG_COMPIN_TELEPHONE
     
     telephone tel_fixe
-
     telephone tel_portable
+    si tel_fixe est vide et tel_portable est vide alors afficher le message MSG_COMPIN_TELEPHONE
 
 page page_plan_financement
 
@@ -176,7 +173,9 @@ page page_procuration
 
     nom_prenom_civilite mandant:nom mandant:prenom mandat:civilite
 
-    champ_texte_avec_remarque procuration_qualite procuration_qualite_remarque
+    champ_texte procuration_qualite
+    remarque "fjdfjdqmfdqs"
+    visible si condition
 
     sous_titre procuration_donne_mandat_organisme_sous_titre
 
@@ -209,8 +208,14 @@ page page_engagement_operateur
 #
 #    liste_choix_multiple* engagement_beneficiaire_certification
 
+    # TODO fjdmfjq
+    fichier* documents_diagnostic_thermique
+
+    fichier* documents_convention_anah
 
 page page_pieces_justificatives
+
+    conditions_de_sortie cdt_eligible_apa
 
     fichier* documents_rib
 
@@ -218,9 +223,7 @@ page page_pieces_justificatives
 
     fichier* documents_mdph
 
-    fichier* documents_diagnostic_thermique
-
-    fichier* documents_convention_anah
+    
 
     fichier* documents_diagnostic_ergotherapeute
 
