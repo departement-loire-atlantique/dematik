@@ -74,16 +74,13 @@ page page_eligibilite
     nombre* nombre_occupants
 
 page page_complement_info
-
-    si nombre_occupants est inférieur à 2 alors masquer cette page
    
     titre autre_occupant
 
     liste civilite
 
     champ_texte autre_occupant:nom
-    si autre_occupant:nom est vide alors afficher le message "Merci de saisir un occupant"
-
+  
     champ_texte autre_occupant:prenom
 
     titre procuration_titre
@@ -91,7 +88,7 @@ page page_complement_info
     liste* procuration_perception_subventions
 
     titre tel_beneficiaire
-
+    
     texte MSG_COMPIN_TELEPHONE
     
     telephone tel_fixe
@@ -100,8 +97,7 @@ page page_complement_info
 
 page page_plan_financement
 
-    # conditions_de_sortie=[
-    # c.le_champ depenses_autres_precisions.est_obligatoire_si(c.le_champ depenses_autres.est_rempli(.sinon_message MSG_PLFIN_AUTRECOUTS
+    si depenses_autres_precisions est vide et depenses_autres est rempli alors afficher le message MSG_PLFIN_AUTRECOUTS
 
     titre depenses_titre
 
@@ -173,9 +169,7 @@ page page_procuration
 
     nom_prenom_civilite mandant:nom mandant:prenom mandat:civilite
 
-    champ_texte procuration_qualite
-    remarque "fjdfjdqmfdqs"
-    visible si condition
+    champ_texte_avec_remarque procuration_qualite procuration_qualite_remarque
 
     sous_titre procuration_donne_mandat_organisme_sous_titre
 
@@ -201,29 +195,17 @@ page page_engagement_operateur
 
     texte engagement_operateur_modele_accord
 
-
-# page page_engagement_beneficiaire
-#
-#    texte engagement_beneficiaire_texte
-#
-#    liste_choix_multiple* engagement_beneficiaire_certification
-
-    # TODO fjdmfjq
     fichier* documents_diagnostic_thermique
 
     fichier* documents_convention_anah
 
 page page_pieces_justificatives
 
-    conditions_de_sortie cdt_eligible_apa
-
     fichier* documents_rib
 
     texte documents_rib_texte
 
     fichier* documents_mdph
-
-    
 
     fichier* documents_diagnostic_ergotherapeute
 
