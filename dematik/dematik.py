@@ -1,7 +1,8 @@
 from jinja2 import Environment, PackageLoader, PrefixLoader, Markup, select_autoescape, StrictUndefined
 from collections import Counter
 from datetime import datetime
-from field_data import FieldData
+from .field_data import FieldData
+import condition 
 from blocks import Blocks
 from markdown import markdown
 from os.path import isfile, dirname
@@ -43,7 +44,10 @@ class Dematik:
 
     # Returns text or raise a ValueError
     def get_text(self, field_data):
-        return getattr(self.fields_data, field_data)["label"]
+        if len(field_data) > 1 and field_data[0] == '"' and field_data[-1] == '"':
+            return field_data[1:-1]
+        else:
+            return getattr(self.fields_data, field_data)["label"]
 
     # Returns html from a markdown compatible text or raise a ValueError
     def get_md_text(self, field_data):
@@ -101,8 +105,13 @@ class Dematik:
         # form metadata
         self.env.globals["formulaire"] = {}
 
-        # form fields
-        self.form_fields = ""
+        # form fields (XML)
+        self.form_fields_as_xml = ""
+
+        # current page (buffer)
+        self.current_page = None
+        self.current_page_conditions = []
+        self.current_page_fields = ""
 
         # Used field code table (to prevent duplicate ID)
         self.used_field_data = []
@@ -134,21 +143,43 @@ class Dematik:
             return True
         return False
 
+    def render_current_form_page(self):
+        if self.current_page:
+            if not self.current_page_conditions:
+                self.current_page_conditions += []
+
+            self.current_page.extend([self.current_page_conditions])
+            self.form_fields_as_xml += self.blocks(self.current_page)
+            self.form_fields_as_xml += self.current_page_fields
+
     # Parse form fields
     def parseFieldBlock(self, tokens):
         if tokens[0] in self.blocks:
             if "page" in tokens[0]:
-                # Create an empty condition list if no condition is defined
-                tokens += [[]]
-                self.form_fields += self.blocks(tokens)
+                # Generate previous page
+                self.render_current_form_page()
+
+                # Create a new page
+                self.current_page = tokens
+                self.current_page_conditions = []
+                self.current_page_fields = ""
+              
             elif "formulaire" in tokens[0]:
                 # Form is rendered at the end of the process, safe this line
                 self.form = tokens
+
             else:
-                # Render the block
-                self.form_fields += self.blocks(tokens)
+                self.current_page_fields += self.blocks(tokens)
+
             return True
 
+        if tokens[0] == 'si':
+            c = condition.ConditionParser()
+            cond = c.parse(' '.join(tokens))
+            self.current_page_conditions += [cond]
+
+            return True
+        
         # Line could not be parsed, first token is unknown
         return False
 
@@ -177,7 +208,8 @@ class Dematik:
        
         # Generate form
         if self.form:
-            return self.blocks(self.form + [Markup(self.form_fields)])
+            self.render_current_form_page()
+            return self.blocks(self.form + [Markup(self.form_fields_as_xml)])
             
         print("ERROR - Il manque le nom du formulaire")
         return None

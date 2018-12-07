@@ -9,9 +9,9 @@
       <post_condition>
         <condition>
           <type>python</type>
-          <value>{{ post_condition.getPythonExpression() -}}</value>
+          <value>not ({{ post_condition.getPythonExpression() -}})</value>
         </condition>
-        <error_message>{{ post_condition.getMessage() -}}</error_message>
+        <error_message>{{ get_text(post_condition.getMessage()) -}}</error_message>
       </post_condition>
     {% endfor -%}
     </post_conditions>
