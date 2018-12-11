@@ -111,6 +111,7 @@ class Dematik:
         # current page (buffer)
         self.current_page = None
         self.current_page_conditions = []
+        self.current_page_post_conditions = []
         self.current_page_fields = ""
 
         # Used field code table (to prevent duplicate ID)
@@ -145,10 +146,20 @@ class Dematik:
 
     def render_current_form_page(self):
         if self.current_page:
-            if not self.current_page_conditions:
-                self.current_page_conditions += []
+            if not self.current_page_post_conditions:
+                self.current_page_post_conditions += []
 
-            self.current_page.extend([self.current_page_conditions])
+            # Merge hide page conditions into a unique condition
+            condition = None
+            if self.current_page_conditions:
+                condition = '(%s)' % self.current_page_conditions[0].build()
+                self.current_page_conditions = self.current_page_conditions[1:]
+                for cond in self.current_page_conditions:
+                    condition = '%s or (%s)' % (condition, cond.build())
+            
+            self.current_page.extend([self.current_page_post_conditions])
+            self.current_page.extend([Markup(condition)])
+
             self.form_fields_as_xml += self.blocks(self.current_page)
             self.form_fields_as_xml += self.current_page_fields
 
@@ -176,7 +187,11 @@ class Dematik:
         if tokens[0] == 'si':
             c = condition.ConditionParser()
             cond = c.parse(' '.join(tokens))
-            self.current_page_conditions += [cond]
+
+            if cond.type == 'CONDITION_LEAVE_PAGE':
+                self.current_page_post_conditions += [cond]
+            elif cond.type == 'CONDITION_HIDE_PAGE':
+                self.current_page_conditions += [cond]
 
             return True
         
@@ -187,7 +202,7 @@ class Dematik:
     def render_form(self, path):
         context = ""
         try:
-            with open(path) as f:
+            with open(path, 'r') as f:
                 for i, line in enumerate(f):
                     tokens = line.strip().split(' ')
 

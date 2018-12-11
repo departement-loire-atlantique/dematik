@@ -10,7 +10,7 @@ class ConditionEmptyTest(ConditionParserTester):
         )
 
         self.check('si x1 est égal à x1 alors afficher le message "message a complété"', 
-            '"message a complété"',
+            '"message a compl&#233;t&#233;"',
             [ (True, {'form_var_x1':1 }) ]
         )
 

@@ -17,12 +17,12 @@ class ConditionEmptyTest(ConditionParserTester):
             ]
         )
 
-        self.check('si x1 est égal à "b" alors afficher le message m1', 'm1',
+        self.check('si x1 est égal à "bé" alors afficher le message m1', 'm1',
             [
                 (False, {'form_var_x1':None }),
                 (False, {'form_var_x1':5    }),
                 (False, {'form_var_x1':"a"  }), 
-                (True, {'form_var_x1':"b"  }), 
+                (True, {'form_var_x1':"b&#233;"  }), 
             ]
         )
 

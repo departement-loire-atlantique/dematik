@@ -1,8 +1,14 @@
-{# field_data post_conditions -#}
+{# field_data post_conditions condition -#}
 <field>
     <label>{{ get_text(field_data) }}</label>
     <type>page</type>
     <id>{{ get_id(field_data) }}</id>
+    {% if condition -%}
+    <condition>
+        <type>python</type>
+        <value>not ({{ condition -}})</value>
+    </condition>
+    {% endif -%}
     {% if post_conditions -%}
     <post_conditions>
     {% for post_condition in post_conditions -%}

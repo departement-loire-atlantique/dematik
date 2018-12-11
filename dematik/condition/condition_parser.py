@@ -3,6 +3,7 @@ import re
 import importlib
 from os import listdir
 from os.path import isfile, join, realpath, dirname
+from dematik.field_data import FieldData
 
 # Import and declare all conditions
 from condition import Condition
@@ -10,6 +11,7 @@ from condition_antonym import ConditionAntonym
 from condition_checkcount import ConditionCheckCount
 from condition_compare import ConditionCompare
 from condition_filled import ConditionFilled
+from condition_hide import ConditionHide
 from condition_message import ConditionMessage
 from condition_operator import ConditionOperator
 from condition_string import ConditionString
@@ -21,6 +23,7 @@ condition_classes = [
     ConditionCheckCount,
     ConditionCompare,
     ConditionFilled,
+    ConditionHide,
     ConditionMessage,
     ConditionOperator,
     ConditionString,
@@ -34,6 +37,7 @@ class ConditionParser:
     def tokenize(self, condition_as_text):
 
         token_specification = []
+        fd = FieldData()
         
         # Add specific tokens
         for condition_class in condition_classes:
@@ -55,6 +59,10 @@ class ConditionParser:
         for mo in re.finditer(tok_regex, condition_as_text):
             kind = mo.lastgroup
             value = mo.group()
+
+            # UTF-8 for VALUE
+            if kind == 'VALUE':
+                value = '"%s"' % fd.htmlescape(value[1:-1].decode('utf-8'))
 
             # Adjacent tokens can't be all FIELDNAME
             if kind == 'FIELDNAME' and last_token.type == 'FIELDNAME':

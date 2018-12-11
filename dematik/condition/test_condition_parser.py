@@ -9,7 +9,8 @@ class ConditionParserTester(unittest.TestCase):
 
     def check(self, expression, message, test_datas):
         python_condition = self.c.parse(expression)
-        self.assertEqual(python_condition.getMessage(), message)
+        if message:
+            self.assertEqual(python_condition.getMessage(), message)
         for i, test_data in enumerate(test_datas):
             result, test_vars = test_data
             expr = python_condition.build()

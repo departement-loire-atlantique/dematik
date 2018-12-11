@@ -6,13 +6,19 @@ class Condition:
     tokens = []
 
     sentences = [
-            ('CONDITION', 'MESSAGE')
+            ('CONDITION', 'MESSAGE'),
+            ('CONDITION', 'HIDE_PAGE'),
     ]
 
     def __init__(self, tokens):
-        self.type = "CONDITION"
+        
         self.condition=tokens[0].value
-        self.message=tokens[1].value.message
+
+        if tokens[1].type == 'MESSAGE':
+            self.type = "CONDITION_LEAVE_PAGE"
+            self.message=tokens[1].value.message
+        else:
+            self.type = "CONDITION_HIDE_PAGE"
 
     def getType(self):
         return self.type
