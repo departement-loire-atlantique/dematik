@@ -1,10 +1,11 @@
-from field_data import FieldData
+from .field_data import FieldData
+import os
 import unittest
 
 class FieldDataTest(unittest.TestCase):
     def setUp(self):
         self.fd = FieldData()   
-        self.fd.load("test/labels.yaml")
+        self.fd.load(os.path.join(os.path.dirname(os.path.realpath(__file__)), "test", "labels.yaml"))
 
     def assert_label(self, field_data, label):
         self.assertEqual(field_data, {"label" : label})
