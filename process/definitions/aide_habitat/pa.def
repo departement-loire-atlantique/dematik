@@ -18,10 +18,7 @@ page page_preambule
 
 page page_eligibilite
 
- #   conditions de sortie
- #       un des champs travaux_a_engager_ascenceur_pa, travaux_a_engager_amenagement_pa,
- #       travaux_a_engager_passage_pa ou travaux_a_engager_extension_pa est rempli
- #       sinon afficher le message MSG_ELIGI_TRAVAUXPA
+    si travaux_a_engager_ascenceur_pa est vide et travaux_a_engager_amenagement_pa est vide et travaux_a_engager_passage_pa est vide et travaux_a_engager_extension_pa est vide alors afficher le message MSG_ELIGI_TRAVAUXPA
     
     titre beneficiaire
 
@@ -144,6 +141,8 @@ page page_plan_financement
     montant apport
 
 page page_procuration
+
+    si qui_saisit_list est égal à "Le bénéficiaire ou un de ses proches" alors masquer cette page
 
     titre procuration:procuration_titre
 
