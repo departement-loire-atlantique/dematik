@@ -52,7 +52,7 @@ python process.py --pattern aide_habitat/pa.def --donotshowunused --debug
 
 Validation du programme (éxécution des tests unitaires)
 ```bash
-python -m unittest discover dematik
+python -m unittest discover
 ```
 
 Documentation
