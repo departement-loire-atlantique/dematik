@@ -1,0 +1,6 @@
+{# adresse codepostal commune -#}
+{%- from "macros-publik/champ_texte.j2" import champ_texte with context -%}
+{%- from "macros-publik/champ_texte_long.j2" import champ_texte_long with context -%}
+{{ champ_texte_long(adresse, required, rows='2') }}
+{{ champ_texte(codepostal, required, extra_css_class="grid-1-2") }}
+{{ champ_texte(commune, required, extra_css_class="grid-1-2") }}
