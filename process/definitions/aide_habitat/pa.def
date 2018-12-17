@@ -34,9 +34,9 @@ page page_eligibilite
     
     nom_prenom* beneficiaire:nom beneficiaire:prenom
     
-    courriel_avec_remarque* courriel MSG_ELIGI_COURRIEL
+    courriel courriel
 
-    champ_texte_long* adresse
+    adresse* beneficiaire:adresse beneficiaire:codepostal beneficiaire:commune
 
     titre logement
 
@@ -72,6 +72,9 @@ page page_eligibilite
 
 page page_complement_info
    
+    si qui_saisit_list n'est pas égal à "Un opérateur" alors masquer le champ complement_titre_referent_operateur
+    si qui_saisit_list n'est pas égal à "Un opérateur" alors masquer le champ complement_referent_operateur
+
     titre autre_occupant
 
     liste civilite
@@ -85,16 +88,31 @@ page page_complement_info
     liste* procuration_perception_subventions
 
     titre tel_beneficiaire
+
+    titre complement_titre_referent_operateur
+
+    champ_texte* complement_referent_operateur
     
     texte MSG_COMPIN_TELEPHONE
     
     telephone tel_fixe
     telephone tel_portable
+
+    texte MSG_COMPIN_SMS
+
+    titre complement_
+
+    # Messages d'erreurs
+
     si tel_fixe est vide et tel_portable est vide alors afficher le message MSG_COMPIN_TELEPHONE
+
+    si procuration_perception_subventions est égal à "Le bénéficiaire fait une procuration en ligne validée par SMS" et tel_portable n'est pas rempli alors afficher le message MSG_COMPIN_SMS
 
 page page_plan_financement
 
     si depenses_autres_precisions est vide et depenses_autres est rempli alors afficher le message MSG_PLFIN_AUTRECOUTS
+
+    si subventions_autres_precisions est vide et subventions_autres est rempli alors afficher le message MSG_PLFIN_AUTREFINANCE
 
     titre depenses_titre
 
@@ -144,31 +162,38 @@ page page_procuration
 
     si qui_saisit_list est égal à "Le bénéficiaire ou un de ses proches" alors masquer cette page
 
+    si procuration_perception_subventions n'est pas égal à "Le bénéficiaire fait une procuration en ligne validée par SMS" alors masquer le champ procuration_sms_telephone
+    si procuration_perception_subventions n'est pas égal à "Le bénéficiaire fait une procuration en ligne validée par SMS" alors masquer le champ procuration_sms_description
+    si procuration_perception_subventions n'est pas égal à "Le bénéficiaire fait une procuration papier validée par l'envoi d'un courrier d'un original signé" alors masquer le champ procuration_courrier_description
+
     titre procuration:procuration_titre
 
     texte procuration:procuration_titre_texte
 
-    liste procuration:civilite
+    sous_titre procuration_soustitre_beneficiaire
 
-    nom_prenom* procuration:nom procuration:prenom
+    # TODO préremplir civilite, nom, prenom et adresse du bénéficiaire
+    liste* procurationbeneficiaire:civilite
 
-    champ_texte_long* procuration:adresse
+    nom_prenom* procurationbeneficiaire:nom procurationbeneficiaire:prenom
 
-    champ_texte procuration_representant
+    #nom_prenom_prerempli* procurationbeneficiaire:nom procurationbeneficiaire:prenom
 
-    champ_texte_long* procuration_representant_adresse
+    #nom_prenom_prerempli procurationbeneficiaire:nom procurationbeneficiaire:prenom beneficiaire:nom beneficiaire:prenom
 
-    champ_texte_long* procuration_adresse_immeuble
+    adresse* procurationbeneficiaire:adresse procurationbeneficiaire:codepostal procurationbeneficiaire:commune
+
+    sous_titre procuration_soustitre_represente
+
+    liste procurationrepresentant:civilite
+
+    nom_prenom procurationrepresentant:nom procurationrepresentant:prenom
+
+    champ_texte_avec_remarque procurationrepresentant_qualite procurationrepresentant_qualite_remarque
+
+    adresse procurationrepresentant:adresse procurationrepresentant:codepostal procurationrepresentant:commune
 
     titre procuration_donne_mandat_titre
-
-    texte procuration_donne_mandat_personne_texte
-
-    sous_titre procuration_donne_mandat_personne_sous_titre
-
-    nom_prenom_civilite mandant:nom mandant:prenom mandat:civilite
-
-    champ_texte_avec_remarque procuration_qualite procuration_qualite_remarque
 
     sous_titre procuration_donne_mandat_organisme_sous_titre
 
@@ -178,7 +203,17 @@ page page_procuration
 
     champ_texte procuration_referent_organisme
 
-    champ_texte_long* organisme:adresse
+    adresse organisme:adresse organisme:codepostal organisme:commune
+
+    sous_titre procuration_donne_mandat_personne_sous_titre
+
+    texte procuration_donne_mandat_personne_texte
+
+    nom_prenom_civilite mandant:nom mandant:prenom mandat:civilite
+
+    champ_texte_avec_remarque procuration_qualite procuration_qualite_remarque
+
+    adresse mandant:adresse mandant:codepostal mandant:commune
 
     champ_texte procuration_sms_telephone
 
@@ -188,23 +223,26 @@ page page_procuration
 
 page page_engagement_operateur
 
+    si engagement_operateur est vide alors afficher le message MSG_ENGAGEMENT
+
     texte engagement_operateur_texte
 
     liste_choix_multiple* engagement_operateur
 
     texte engagement_operateur_modele_accord
 
-    fichier* documents_diagnostic_thermique
-
-    fichier* documents_convention_anah
-
 page page_pieces_justificatives
+
+    si revenu_fiscal_reference_conjoint est vide alors masquer le champ documents_avis_imposition_conjoint
+    si revenu_fiscal_reference_conjoint est égal à 0 alors masquer le champ documents_avis_imposition_conjoint
+    si revenu_fiscal_autre est vide alors masquer le champ documents_avis_imposition_autre
+    si revenu_fiscal_autre est égal à 0 alors masquer le champ documents_avis_imposition_autre
 
     fichier* documents_rib
 
     texte documents_rib_texte
 
-    fichier* documents_mdph
+    fichier* documents_apa
 
     fichier* documents_diagnostic_ergotherapeute
 
@@ -212,32 +250,14 @@ page page_pieces_justificatives
 
     fichier* documents_avis_imposition_beneficiaire
 
-    fichier* documents_avis_imposition_conjoint
+    fichier documents_avis_imposition_conjoint
 
-    fichier* documents_avis_imposition_autre
-
-    texte documents_devis_detailles_texte
+    fichier documents_avis_imposition_autre
 
     fichier* documents_devis_detailles
 
-    texte documents_devis_etudes_techniques_texte
-
-    fichier* documents_devis_etudes_techniques
-
     texte documents_autorisations_secteur_sauvegarde_texte
 
-    fichier* documents_autorisations_secteur_sauvegarde
+    fichier documents_autorisations_secteur_sauvegarde
 
-    texte documents_autres_texte
-
-    fichier documents_autres_1
-
-    fichier documents_autres_2
-
-    fichier documents_autres_3
-
-    fichier documents_autres_4
-
-    fichier documents_autres_5
-
-    champ_texte documents_autres_observations
+    champ_texte_long documents_autres_observations

@@ -47,7 +47,7 @@ page_complement_info_bailleur: Complément d'information Propriétaire bailleur
 
 page_plan_financement: Plan de financement prévisionnel
 
-page_procuration: Procuration
+page_procuration: Procuration pour la perception des fonds
 
 page_engagement_operateur: Engagement
 
@@ -61,7 +61,7 @@ logement: Le logement
 
 ressources_occupant: Ressources des occupant·e·s
 
-revenu_fiscal_reference_beneficiaire: Revenu fiscal de référence du bénéficiaire
+revenu_fiscal_reference_beneficiaire: Dernier revenu fiscal de référence du bénéficiaire
 
 revenu_fiscal_reference_conjoint: >
   Dernier revenu fiscal de référence du conjoint ou de la conjointe 
@@ -167,7 +167,7 @@ logement_seuil_texte: >
 travaux_a_engager_titre: Travaux à engager
 
 travaux_a_engager_texte: >
-  Les travaux seront effectués par des professionnels du bâtiment inscrits soit au registre du commerce, 
+  Les travaux (pose et fourniture) seront effectués par des professionnels du bâtiment inscrits soit au registre du commerce, 
   soit au registre des métiers. 
 
 travaux_a_engager_insa:
@@ -223,10 +223,6 @@ travaux_a_engager_extension_ph:
     - Dans la limite de 45 m² de surface habitable (annexion de parties communes, sur-élévation, création de volume...)
     
 travaux_complement_informations: Complément d'informations sur les travaux
-
-MSG_ELIGI_COURRIEL: >
-  Le courriel est obligatoire. Si vous n'en disposez pas, veuillez [contacter un opérateur](#) pour vous 
-  accompagner dans la démarche.
 
 MSG_ELIGI_TRAVAUXPA: >
   Attention, vous devez sélectionner les travaux que vous envisagez parmi la liste des travaux proposés. 
@@ -327,6 +323,10 @@ procuration_perception_subventions:
     - Le bénéficiaire fait une procuration en ligne validée par SMS
     - Le bénéficiaire fait une procuration papier validée par l'envoi d'un courrier d'un original signé
 
+titre complement_titre_referent_operateur: Référent chez l'opérateur
+
+complement_referent_operateur: Prénom et nom du référent suivant le dossier au sein de l'opérateur
+
 MSG_COMPIN_TELEPHONE: Merci de renseigner au moins un numéro de téléphone.
 
 MSG_COMPIN_SMS: >
@@ -361,10 +361,6 @@ logement_conventionnement_anah:
     - Non
 
 travaux_a_engager: Travaux à engager
-
-travaux_a_engager_texte: >
-  Les travaux seront effectués par des professionnels du bâtiment inscrits soit au registre du commerce, 
-  soit au registre des métiers. 
 
 travaux_eligibles_anah:
   Les travaux pour lesquels l'aide est demandée sont dans la liste des travaux éligibles de l'ANAH:
@@ -500,7 +496,7 @@ apport_titre: Apport personnel et/ou prêt (en €)
 apport: Apport personnel et/ou prêt
 
 MSG_PLFIN_AUTRECOUTS: >
-  Attention. Vous devez préciser à quoi correspondent les autres coûts que vous avez indiqués.
+  Attention. Vous devez préciser à quoi correspondent les autres dépenses que vous avez indiqués.
 
 MSG_PLFIN_AUTREFINANCE: >
   Attention. Vous devez préciser à quoi correspondent les autres financements que vous avez indiqués.
@@ -518,14 +514,9 @@ procuration_titre_texte: >
   Vu la délibération de la Commission permanente du Conseil départemental du 5 septembre 2013 relative à l'ajustement 
   du régime des aides destinées à l'amélioration de l'habitat privé,
 
-  *Je soussign·é·e*
+procuration_soustitre_beneficiaire: Le bénéficiaire
 
-procuration_representant: Le cas échéant, représentant légal de la personne morale
-
-procuration_representant_adresse: >
-  Dont le siège se trouve
-  
-  Adresse
+procuration_soustitre_represente: Représenté par
 
 procuration_adresse_immeuble: >
   Propriétaire de l'immeuble sis à (adresse complète de l'immeuble, désignation, le cas échéant, du bâtiment, 
@@ -542,16 +533,16 @@ procuration_donne_mandat_personne_texte: >
 
 procuration_qualite: Qualité
 
-procuration_qualite_remarque: Par exemple frère, soeur, enfant, voisin, opérateur...
+procuration_qualite_remarque: Par exemple frère, soeur, enfant, voisin...
 
-procuration_donne_mandat_organisme_sous_titre: À un organisme
+procuration_donne_mandat_organisme_sous_titre: À un organisme ou un opérateur
 
 procuration_donne_mandat_organisme_texte: >
-  Si mandat à un organisme, merci de renseigner le nom de l'organisme et le nom du référent et l'adresse.
+  Si mandat à un organisme ou un opérateur, merci de renseigner le nom de l'organisme ou de l'opérateur et le nom du référent et l'adresse.
 
-procuration_nom_organisme: Nom de l'organisme 
+procuration_nom_organisme: Nom de l'organisme ou de l'opérateur
 
-procuration_referent_organisme: Nom du référent au sein de l'organisme
+procuration_referent_organisme: Prénom et Nom du référent suivant le dossier au sein de l’organisme
 
 procuration_sms_telephone: Téléphone portable du mandataire
 
@@ -583,8 +574,15 @@ procuration_courrier_description: >
   Le document à imprimer permettant de donner procuration est accessible [ici](#)
   
   Il est à retourner sous un mois, complété et signé par les deux parties à l'adresse suivante :
+
+
     Hôtel du département – service habitat
-    3 quai Ceineray – CS 94109 – 44041 Nantes cedex
+
+    3 quai Ceineray
+    
+    CS 94109
+    
+    44041 Nantes cedex
 
 MSG_PROCU_NOMPRENOM: >
   Si le bénéficiaire donne mandat à une personne il est obligatoire de préciser le nom et le prénom de cette personne.
@@ -643,6 +641,8 @@ engagement_operateur:
 
 engagement_operateur_modele_accord: Vous pouvez télécharger un modèle d'accord du bénéficiaire [ici](#)
 
+MSG_ENGAGEMENT: Vous devez lire cette page puis cocher la case "Je m'engage..." pour pouvoir continuer.
+
 # 2.12 Page « Engagement si bénéficiaire »
 # --------------------------------------------------
 
@@ -681,8 +681,9 @@ engagement_beneficiaire_thermique_certification:
 documents_rib: Relevé d'Identité Bancaire
 
 documents_rib_texte: >
-  -	RIB au nom du bénéficiaire (ou au double nom « M ou Mme ») si celui-ci perçoit directement les subventions,
-  -	RIB au nom du mandataire habilité à percevoir les fonds, si une personne a été désignée à cet effet et 
+  - RIB au nom du bénéficiaire (ou au double nom « M ou Mme ») si celui-ci perçoit directement les subventions,
+  
+  - RIB au nom du mandataire habilité à percevoir les fonds, si une personne a été désignée à cet effet et 
   accompagné de la procuration, en original, correspondante
 
 documents_apa: Document justifiant de l'éligibilité à l'Allocation Personnalisée d'Autonomie (APA)
@@ -706,26 +707,24 @@ documents_avis_imposition_beneficiaire: Avis d'imposition du bénéficiaire
 
 documents_avis_imposition_conjoint: Avis d'imposition du conjoint ou de la conjointe habitant le logement (si déclaration fiscale distincte de celle du bénéficiaire)
 
-documents_avis_imposition_autre: Avis d'imposition d'un·e autre occupant·e du logement (si déclaration fiscale distincte de celle du bénéficiaire
-
-documents_devis_detailles_texte: >
-  *Devis détaillés*
+documents_avis_imposition_autre: Avis d'imposition d'un·e autre occupant·e du logement (si déclaration fiscale distincte de celle du bénéficiaire)
 
 documents_devis_detailles: Devis détaillés descriptifs et estimatifs des travaux comprenant la fourniture et la pose des matériaux
 
 documents_devis_etudes_techniques_texte: >
   *Devis des études techniques*
 
+
   Devis des études techniques du maitre d'œuvre, le cas échéant
 
 documents_devis_etudes_techniques: Devis
 
-documents_autorisations_secteur_sauvegarde_texte: >
-  *Si logement en secteur sauvegardé, autorisations administratives*
-  
 documents_autorisations_secteur_sauvegarde: >
-  Si le logement est en secteur sauvegardé, vous devez fournir les autorisations administratives préalables 
-  requises par la réglementation en vigueur et nécessaire à l'instruction des dossiers
+  Si logement en secteur sauvegardé, autorisations administratives
+  
+documents_autorisations_secteur_sauvegarde_texte: >
+  *Si le logement est en secteur sauvegardé, vous devez fournir les autorisations administratives préalables 
+  requises par la réglementation en vigueur et nécessaire à l'instruction des dossiers.*
 
 documents_autres_texte: >
   *Autres justificatifs*

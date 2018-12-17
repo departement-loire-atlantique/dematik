@@ -9,7 +9,11 @@ prenom: Prénom
 
 courriel: Courriel
 
-adresse: Adresse postale
+adresse: Adresse
+
+codepostal: Code postal
+
+commune: Commune
 
 tel_beneficiaire: Téléphone du bénéficiaire
 
