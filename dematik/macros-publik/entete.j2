@@ -1,0 +1,22 @@
+{% macro entete(field_data, type, extra_css_class) -%}
+    <label>{{ get_text(field_data) }}</label>
+    <type>{{ type }}</type>
+    <required>{{ required }}</required>
+    {% if hint -%}
+    <hint>{{ get_text(hint) }}</hint>
+    {% endif -%}
+    <id>{{ get_id(field_data) }}</id>
+    <varname>{{ get_varname(field_data) }}</varname>
+    <in_listing>{{ is_in_listing(field_data) }}</in_listing>
+    <in_filters>{{ is_in_filters(field_data) }}</in_filters>
+    <extra_css_class>{{ extra_css_class }}</extra_css_class>
+    <prefill>
+        <type>none</type>
+    </prefill>
+    {% if condition -%}
+    <condition>
+        <type>python</type>
+        <value>not ({{ condition -}})</value>
+    </condition>
+    {% endif -%}
+{%- endmacro %}

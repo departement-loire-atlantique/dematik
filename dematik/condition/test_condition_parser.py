@@ -7,10 +7,13 @@ class ConditionParserTester(unittest.TestCase):
     def setUp(self):
         self.c = ConditionParser()
 
-    def check(self, expression, message, test_datas):
+    def check(self, expression, data, test_datas):
         python_condition = self.c.parse(expression)
-        if message:
-            self.assertEqual(python_condition.getMessage(), message)
+        if python_condition.type == 'CONDTION_MESSAGE' and data:
+            self.assertEqual(python_condition.getMessage(), data)
+        elif python_condition.type == 'CONDITION_HIDE_FIELD' and data:
+            self.assertEqual(python_condition.getHiddenFieldname(), data)
+
         for i, test_data in enumerate(test_datas):
             result, test_vars = test_data
             expr = python_condition.build()

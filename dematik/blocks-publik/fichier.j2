@@ -1,13 +1,6 @@
 {# field_data -#}
+{% from "macros-publik/entete.j2" import entete with context -%}
 <field>
-    <label>{{ get_text(field_data) }}</label>
-    <type>file</type>
-    <required>{{ required }}</required>
-    <varname>{{ get_varname(field_data) }}</varname>
-    <in_listing>{{ is_in_listing(field_data) }}</in_listing>
-    <prefill>
-        <type>none</type>
-    </prefill>
+    {{ entete(field_data, "file", extra_css_class) }}
     <allow_portfolio_picking>False</allow_portfolio_picking>
-    <id>{{ get_id(field_data) }}</id>
 </field>
