@@ -1,22 +1,10 @@
-{% macro champ_texte_long(field_data, required, hint=None, extra_css_class='', cols='', rows='', maxlength='', validation='') -%}
+{% from "macros-publik/entete.j2" import entete with context -%}
+{% macro champ_texte_long(field_data, extra_css_class='', cols='', rows='', maxlength='', validation='') -%}
 <field>
-    <label>{{ get_text(field_data) }}</label>
-    <type>text</type>
-    <required>{{ required }}</required>
-    {% if hint -%}
-    <hint>{{ get_text(hint) }}</hint>
-    {% endif -%}
-    <varname>{{ get_varname(field_data) }}</varname>
-    <in_listing>{{ is_in_listing(field_data) }}</in_listing>
-    <in_filters>{{ is_in_filters(field_data) }}</in_filters>
-    <extra_css_class>{{ extra_css_class }}</extra_css_class>
-    <prefill>
-        <type>none</type>
-    </prefill>
+    {{ entete(field_data, "text", extra_css_class) }}
     <validation>{{ validation }}</validation>
     <cols>{{ cols }}</cols>
     <rows>{{ rows }}</rows>
     <maxlength>{{ maxlength }}</maxlength>
-    <id>{{ get_id(field_data) }}</id>
 </field>
 {%- endmacro %}

@@ -1,12 +1,7 @@
 {# field_data year -#}
+{% from "macros-publik/entete.j2" import entete with context -%}
 <field>
-    <label>{{ get_text(field_data) }}</label>
-    <type>item</type>
-    <required>{{ required }}</required>
-    <varname>{{ get_varname(field_data) }}</varname>
-    <id>{{ get_id(field_data) }}</id>
-    <in_listing>{{ is_in_listing(field_data) }}</in_listing>
-    <in_filters>{{ is_in_filters(field_data) }}</in_filters>
+    {{ entete(field_data, "item", extra_css_class) }}
     <data_source>
         <type>formula</type>
         <value>[{"id":"ancien", "text":"Avant " + str(datetime.datetime.now().year-{{ year }})},{"id":"recent", "text":"Depuis " + str(datetime.datetime.now().year-{{ year }})}]</value>

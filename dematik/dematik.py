@@ -1,3 +1,4 @@
+# coding: utf8
 from jinja2 import Environment, PackageLoader, PrefixLoader, Markup, select_autoescape, StrictUndefined
 from collections import Counter
 from datetime import datetime
@@ -112,7 +113,8 @@ class Dematik:
         self.current_page = None
         self.current_page_conditions = []
         self.current_page_post_conditions = []
-        self.current_page_fields = ""
+        self.current_page_field_conditions = []
+        self.current_page_fields = []
 
         # Used field code table (to prevent duplicate ID)
         self.used_field_data = []
@@ -144,24 +146,32 @@ class Dematik:
             return True
         return False
 
+    def merge_conditions(self, conditions):
+        condition = ""
+        if conditions:
+            condition = '(%s)' % conditions[0].build()
+            conditions = conditions[1:]
+            for cond in conditions:
+                condition = '%s or (%s)' % (condition, cond.build())
+        
+        return Markup(condition)
+
     def render_current_form_page(self):
         if self.current_page:
             if not self.current_page_post_conditions:
                 self.current_page_post_conditions += []
 
             # Merge hide page conditions into a unique condition
-            condition = None
-            if self.current_page_conditions:
-                condition = '(%s)' % self.current_page_conditions[0].build()
-                self.current_page_conditions = self.current_page_conditions[1:]
-                for cond in self.current_page_conditions:
-                    condition = '%s or (%s)' % (condition, cond.build())
-            
-            self.current_page.extend([self.current_page_post_conditions])
-            self.current_page.extend([Markup(condition)])
-
+            self.env.globals["post_conditions"] = self.current_page_post_conditions
+            self.env.globals["condition"] = self.merge_conditions(self.current_page_conditions)
             self.form_fields_as_xml += self.blocks(self.current_page)
-            self.form_fields_as_xml += self.current_page_fields
+
+            for current_page_field in self.current_page_fields:
+                conds = [c for c in self.current_page_field_conditions if c.getHiddenFieldname() in current_page_field]
+                self.env.globals["condition"] = self.merge_conditions(conds)
+                self.env.globals["hint"] = current_page_field["hint"]
+                self.env.globals["extra_css_class"] = ""
+                self.form_fields_as_xml += self.blocks(current_page_field["t"])
 
     # Parse form fields
     def parseFieldBlock(self, tokens):
@@ -173,14 +183,15 @@ class Dematik:
                 # Create a new page
                 self.current_page = tokens
                 self.current_page_conditions = []
-                self.current_page_fields = ""
+                self.current_page_fields = []
+                self.current_page_field_conditions = []
               
             elif "formulaire" in tokens[0]:
                 # Form is rendered at the end of the process, safe this line
                 self.form = tokens
 
             else:
-                self.current_page_fields += self.blocks(tokens)
+                self.current_page_fields += [{"t":tokens, "hint":""}]
 
             return True
 
@@ -192,7 +203,13 @@ class Dematik:
                 self.current_page_post_conditions += [cond]
             elif cond.type == 'CONDITION_HIDE_PAGE':
                 self.current_page_conditions += [cond]
+            elif cond.type == 'CONDITION_HIDE_FIELD':
+                self.current_page_field_conditions += [cond]
 
+            return True
+
+        if ' '.join(tokens[0:4]) == 'aide à la saisie':
+            self.current_page_fields[-1]["hint"] = tokens[4]
             return True
         
         # Line could not be parsed, first token is unknown

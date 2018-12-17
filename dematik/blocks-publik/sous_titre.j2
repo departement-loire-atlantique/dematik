@@ -3,4 +3,10 @@
     <label>{{ get_text(field_data) }}</label>
     <type>subtitle</type>
     <id>{{ get_id(field_data) }}</id>
+    {% if condition -%}
+    <condition>
+        <type>python</type>
+        <value>not ({{ condition -}})</value>
+    </condition>
+    {% endif -%}
 </field>
