@@ -1,0 +1,4 @@
+{# nom prerempli_nom prenom prerempli_prenom -#}
+{%- from "macros-publik/champ_texte.j2" import champ_texte with context -%}
+{{ champ_texte(nom, prefill_formula='form_var_%s' % prerempli_nom) }}
+{{ champ_texte(prenom, prefill_formula='form_var_%s' % prerempli_prenom) }}
