@@ -64,7 +64,8 @@ page page_eligibilite
 
     montant* revenu_fiscal_reference_beneficiaire
 
-    montant_avec_remarque revenu_fiscal_reference_conjoint revenu_fiscal_reference_conjoint_remarque
+    montant revenu_fiscal_reference_conjoint
+        aide à la saisie revenu_fiscal_reference_conjoint_remarque
 
     montant revenu_fiscal_autre
 
@@ -99,8 +100,6 @@ page page_complement_info
     telephone tel_portable
 
     texte MSG_COMPIN_SMS
-
-    titre complement_
 
     # Messages d'erreurs
 
@@ -160,11 +159,13 @@ page page_plan_financement
 
 page page_procuration
 
-    si qui_saisit_list est égal à "Le bénéficiaire ou un de ses proches" alors masquer cette page
+    si procuration_perception_subventions est égal à "Le bénéficiaire ne fait pas de procuration" alors masquer cette page
 
     si procuration_perception_subventions n'est pas égal à "Le bénéficiaire fait une procuration en ligne validée par SMS" alors masquer le champ procuration_sms_telephone
     si procuration_perception_subventions n'est pas égal à "Le bénéficiaire fait une procuration en ligne validée par SMS" alors masquer le champ procuration_sms_description
     si procuration_perception_subventions n'est pas égal à "Le bénéficiaire fait une procuration papier validée par l'envoi d'un courrier d'un original signé" alors masquer le champ procuration_courrier_description
+
+    si qui_saisit_list est égal à "Un opérateur" alors masquer le champ procuration_referent_organisme
 
     titre procuration:procuration_titre
 
@@ -177,11 +178,10 @@ page page_procuration
 
     nom_prenom* procurationbeneficiaire:nom procurationbeneficiaire:prenom
 
-    #nom_prenom_prerempli* procurationbeneficiaire:nom procurationbeneficiaire:prenom
-
-    #nom_prenom_prerempli procurationbeneficiaire:nom procurationbeneficiaire:prenom beneficiaire:nom beneficiaire:prenom
+    texte rappel_beneficiaire_nom 
 
     adresse* procurationbeneficiaire:adresse procurationbeneficiaire:codepostal procurationbeneficiaire:commune
+
 
     sous_titre procuration_soustitre_represente
 
@@ -189,7 +189,8 @@ page page_procuration
 
     nom_prenom procurationrepresentant:nom procurationrepresentant:prenom
 
-    champ_texte_avec_remarque procurationrepresentant_qualite procurationrepresentant_qualite_remarque
+    champ_texte procurationrepresentant:qualite
+        aide à la saisie qualite_aide
 
     adresse procurationrepresentant:adresse procurationrepresentant:codepostal procurationrepresentant:commune
 
@@ -211,7 +212,8 @@ page page_procuration
 
     nom_prenom_civilite mandant:nom mandant:prenom mandat:civilite
 
-    champ_texte_avec_remarque procuration_qualite procuration_qualite_remarque
+    champ_texte procuration:qualite
+        aide à la saisie qualite_aide
 
     adresse mandant:adresse mandant:codepostal mandant:commune
 

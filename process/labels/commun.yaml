@@ -17,8 +17,12 @@ commune: Commune
 
 tel_beneficiaire: Téléphone du bénéficiaire
 
-tel_fixe : Téléphone fixe
+tel_fixe: Téléphone fixe
 
 tel_portable: Téléphone portable
 
 beneficiaire: Bénéficiaire
+
+qualite: Qualité
+
+qualite_aide: Par exemple frère, soeur, enfant, voisin...

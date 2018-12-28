@@ -317,13 +317,16 @@ autre_occupant: Autre occupant majeur du logement si nom de famille différent
 
 procuration_titre: Procuration
 
+beneficiaire_nom:
+  Nom : [form_var_beneficiaire_nom]
+
 procuration_perception_subventions:
   Procuration pour la perception des subventions :
     - Le bénéficiaire ne fait pas de procuration
     - Le bénéficiaire fait une procuration en ligne validée par SMS
     - Le bénéficiaire fait une procuration papier validée par l'envoi d'un courrier d'un original signé
 
-titre complement_titre_referent_operateur: Référent chez l'opérateur
+complement_titre_referent_operateur: Référent chez l'opérateur
 
 complement_referent_operateur: Prénom et nom du référent suivant le dossier au sein de l'opérateur
 
@@ -524,16 +527,15 @@ procuration_adresse_immeuble: >
 
   Adresse
 
+rappel_beneficiaire_nom: >
+  {{form_var_beneficiaire_nom}}
+
 procuration_donne_mandat_titre: Donne Mandat
 
 procuration_donne_mandat_personne_sous_titre: À une personne
 
 procuration_donne_mandat_personne_texte: >
   Si mandat à une personne, merci de renseigner les informations de civilité, nom et prénom.
-
-procuration_qualite: Qualité
-
-procuration_qualite_remarque: Par exemple frère, soeur, enfant, voisin...
 
 procuration_donne_mandat_organisme_sous_titre: À un organisme ou un opérateur
 

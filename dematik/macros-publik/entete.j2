@@ -1,4 +1,4 @@
-{% macro entete(field_data, type, extra_css_class) -%}
+{% macro entete(field_data, type, extra_css_class='', prefill_text='', prefill_formula='', prefill_user='') -%}
     <label>{{ get_text(field_data) }}</label>
     <type>{{ type }}</type>
     <required>{{ required }}</required>
@@ -9,9 +9,22 @@
     <varname>{{ get_varname(field_data) }}</varname>
     <in_listing>{{ is_in_listing(field_data) }}</in_listing>
     <in_filters>{{ is_in_filters(field_data) }}</in_filters>
+    {% if extra_css_class -%}
     <extra_css_class>{{ extra_css_class }}</extra_css_class>
+    {% endif -%}
     <prefill>
+    {% if prefill_text -%}
+        <type>string</type>
+        <value>{{ prefill_text }}</value>
+    {% elif prefill_formula -%}
+        <type>formula</type>
+        <value>{{ prefill_formula }}</value>
+    {% elif prefill_user -%}
+        <type>user</type>
+        <value>{{ prefill_user }}</value>
+    {% else -%}
         <type>none</type>
+    {% endif -%}
     </prefill>
     {% if condition -%}
     <condition>
