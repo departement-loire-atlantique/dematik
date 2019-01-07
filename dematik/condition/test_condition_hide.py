@@ -11,7 +11,7 @@ class ConditionHideTest(ConditionParserTester):
 
 
     def test_hide_field(self):
-        self.check('si x1 est égal à 1 alors masquer le champ x2', 'form_var_x2',
+        self.check('si x1 est égal à 1 alors masquer le champ x2', 'x2',
             [ (True, {'form_var_x1':1 }) ]
         )
 

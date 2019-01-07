@@ -23,9 +23,15 @@ class ConditionCheckCount(Condition):
     def __init__(self, sentence_tokens):
         self.type = "CONDITION"
         
-        self.fieldname = self.protect(sentence_tokens[3].value)
+        self.fieldname = sentence_tokens[3].value
         self.count = sentence_tokens[1].value
         self.op = ConditionCheckCount.operator[sentence_tokens[0].type]
         
-    def build(self):
-        return 'len(' + self.protect_as_list(self.fieldname) +')' + self.op + self.count
+    def build(self, language):
+        if language == 'python':
+            return 'len(' + self.protect_as_list(self.fieldname, language) +')' + self.op + self.count
+        elif language == 'django':
+            field =  self.protect(self.fieldname, language)
+            return '((' + field + ' is none and 0' + self.op + self.count + ') or (' + field + '|length' + self.op + self.count + '))'
+        else:
+            raise Exception("not implemented")

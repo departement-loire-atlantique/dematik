@@ -96,7 +96,6 @@ class ConditionEmptyTest(ConditionParserTester):
                 (False, {'form_var_x1':3    }),
                 (False, {'form_var_x1':5    }),
                 (True, {'form_var_x1':6    }),
-                (False, {'form_var_x1':"a"  }), 
             ]
         )
 
@@ -105,7 +104,6 @@ class ConditionEmptyTest(ConditionParserTester):
             [
                 (False, {'form_var_x1':None , 'form_var_x2':None}),
                 (False, {'form_var_x1':None , 'form_var_x2':"b" }),
-                (False, {'form_var_x1':3 , 'form_var_x2':"b" }),
                 (True, {'form_var_x1':"a"  , 'form_var_x2':"b" }), 
                 (False, {'form_var_x1':"b"  , 'form_var_x2':"b" }), 
                 (False, {'form_var_x1':"c"  , 'form_var_x2':"b" }), 
@@ -118,7 +116,6 @@ class ConditionEmptyTest(ConditionParserTester):
         self.check('si x1 est inférieur à "b" alors afficher le message m1', 'm1',
             [
                 (False, {'form_var_x1':None }),
-                (False, {'form_var_x1':5    }),
                 (True, {'form_var_x1':"a"  }), 
                 (False, {'form_var_x1':"c"  }), 
             ]

@@ -146,13 +146,13 @@ class Dematik:
             return True
         return False
 
-    def merge_conditions(self, conditions):
+    def merge_conditions(self, conditions, language):
         condition = ""
         if conditions:
-            condition = '(%s)' % conditions[0].build()
+            condition = '(%s)' % conditions[0].build(language)
             conditions = conditions[1:]
             for cond in conditions:
-                condition = '%s or (%s)' % (condition, cond.build())
+                condition = '%s or (%s)' % (condition, cond.build(language))
         
         return Markup(condition)
 
@@ -163,15 +163,16 @@ class Dematik:
 
             # Merge hide page conditions into a unique condition
             self.env.globals["post_conditions"] = self.current_page_post_conditions
-            self.env.globals["condition"] = self.merge_conditions(self.current_page_conditions)
+            self.env.globals["condition"] = self.merge_conditions(self.current_page_conditions, 'python')
             self.form_fields_as_xml += self.blocks(self.current_page)
 
             for current_page_field in self.current_page_fields:
-                conds = [c for c in self.current_page_field_conditions if c.getHiddenFieldname() in current_page_field]
-                self.env.globals["condition"] = self.merge_conditions(conds)
+                current_page_fielddata = current_page_field["t"]
+                conds = [c for c in self.current_page_field_conditions if c.getHiddenFieldname() == current_page_fielddata[1]]
+                self.env.globals["condition"] = self.merge_conditions(conds, 'django')
                 self.env.globals["hint"] = current_page_field["hint"]
                 self.env.globals["extra_css_class"] = ""
-                self.form_fields_as_xml += self.blocks(current_page_field["t"])
+                self.form_fields_as_xml += self.blocks(current_page_fielddata)
 
     # Parse form fields
     def parseFieldBlock(self, tokens):

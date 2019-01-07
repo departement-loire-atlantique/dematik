@@ -38,17 +38,23 @@ class ConditionCompare(Condition):
     def __init__(self, sentence_tokens):
         self.type = "CONDITION"
         
-        self.field = self.protect(sentence_tokens[0].value)
+        self.field = sentence_tokens[0].value
+        self.operator = ConditionCompare.operators[sentence_tokens[1].type]  
+        self.operand = sentence_tokens[2]
 
-        self.operator = ConditionCompare.operators[sentence_tokens[1].type]
+    def build(self, language):   
+        operand = self.protect(self.operand.value, language) if self.operand.type == 'FIELDNAME' else self.operand.value
+        field = self.protect(self.field, language)
 
-        if sentence_tokens[2].type == 'FIELDNAME':
-            self.operand = self.protect(sentence_tokens[2].value)
+        if language == 'python':
+            if self.operator == '!=':
+                return field + self.operator + operand + ' if isinstance(' + field + ', (' + operand + ').__class__) else True'
+            else:    
+                return field + self.operator + operand + ' if ' +field + ' and isinstance(' + field + ', (' + operand + ').__class__) else False'
+        elif language == 'django':
+            if self.operator == '!=':
+                return '(' + field + ' is none and ' + operand + ' is not none or ' + field + self.operator + operand + ')'
+            else:  
+                return '(' + field + ' is not none and ' + field + self.operator + operand + ')'
         else:
-            self.operand = sentence_tokens[2].value
-
-    def build(self):   
-        if self.operator == '!=':
-            return self.field + self.operator + self.operand + ' if isinstance(' + self.field + ', (' + self.operand + ').__class__) else True'
-        else:    
-            return self.field + self.operator + self.operand + ' if ' + self.field + ' and isinstance(' + self.field + ', (' + self.operand + ').__class__) else False'
+            raise('not implemented')

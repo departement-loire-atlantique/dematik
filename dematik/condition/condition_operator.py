@@ -15,9 +15,9 @@ class ConditionOperator(Condition):
     def __init__(self, sentence_tokens):
         self.type = "CONDITION"
        
-        self.left_condition = sentence_tokens[0].value.build()
+        self.left_condition = sentence_tokens[0].value
         self.operator = sentence_tokens[1].type.lower()
-        self.right_condition = sentence_tokens[2].value.build()
+        self.right_condition = sentence_tokens[2].value
 
-    def build(self):
-        return '(' + self.left_condition + ') ' + self.operator + ' (' + self.right_condition + ')'
+    def build(self, language):
+        return '(' + self.left_condition.build(language) + ') ' + self.operator + ' (' + self.right_condition.build(language) + ')'

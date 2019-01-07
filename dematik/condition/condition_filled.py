@@ -22,5 +22,15 @@ class ConditionFilled(Condition):
         else:
             self.op = '> 0'
 
-    def build(self):
-        return 'len(' + self.protect_as_list(self.fieldname) +')' + self.op
+    def build(self, language):
+        
+        if language == 'python':
+            return 'len(' + self.protect_as_list(self.fieldname,language) +')' + self.op
+        elif language == 'django':
+            field = self.protect(self.fieldname, language)
+            if "== 0" in self.op:
+                return '(' + field + ' is none or ' + field + '|length' + self.op + ')'
+            else:
+                return '(' + field + ' is not none and ' + field + '|length' + self.op + ')'
+        else:
+            raise Exception("not implemented")

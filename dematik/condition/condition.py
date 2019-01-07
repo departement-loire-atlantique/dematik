@@ -27,21 +27,27 @@ class Condition:
     def getType(self):
         return self.type
     
-    def protect(self, f):
+    def protect(self, f, language):
         if '_var_' in f:
             return f
         else:
             return 'form_var_' + f
 
-    def protect_as_list(self, field):
-        f = self.protect(field)
-        return f + ' if isinstance(' + f + ', list) else ([' + f + '] if ' + f + ' else [])'
 
-    def build(self):
-        return self.condition.build()
+    def protect_as_list(self, field, language):
+        if language == 'python':
+            f = self.protect(field, language)
+            return f + ' if isinstance(' + f + ', list) else ([' + f + '] if ' + f + ' else [])'
+        elif language == 'django':
+            return self.protect(field, language) 
+        else:
+            raise Exception('not implemented')
+
+    def build(self, language):
+        return self.condition.build(language)
 
     def getPythonExpression(self):
-        return Markup(self.build())
+        return Markup(self.build('python'))
 
     def getMessage(self):
         if hasattr(self, "message"):
@@ -56,4 +62,4 @@ class Condition:
             raise Exception("Aucun nom de champ pour cette condition")
 
     def __repr__(self):
-        return self.build()
+        return self.build('python')

@@ -24,5 +24,5 @@ class ConditionAntonym(Condition):
         if sentence_tokens[1].type == 'FILLED' or sentence_tokens[1].type == 'CHECKED':
             self.type = 'EMPTY'
     
-    def build(self):
+    def build(self, language):
         return self.type

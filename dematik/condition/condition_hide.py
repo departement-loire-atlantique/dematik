@@ -18,4 +18,4 @@ class ConditionHide(Condition):
             self.type = 'HIDE_PAGE'
         else:
             self.type = 'HIDE_FIELD'
-            self.hidden_fieldname = self.protect(sentence_tokens[2].value)
+            self.hidden_fieldname = sentence_tokens[2].value
