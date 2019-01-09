@@ -1,7 +1,7 @@
 formulaire metadata_name_aide_habitat_pa 
 
-    url metadata_url_name_aide_habitat_pa 
-    description metadata_description_aide_habitat_pa 
+    url metadata_url_name_aide_habitat_pa
+    description metadata_description_aide_habitat_pa
     identifiant metadata_internal_identifier_aide_habitat_pa
 
     listing type_proprietaire_list
@@ -18,8 +18,18 @@ page page_preambule
 
 page page_eligibilite
 
-    si travaux_a_engager_ascenceur_pa est vide et travaux_a_engager_amenagement_pa est vide et travaux_a_engager_passage_pa est vide et travaux_a_engager_extension_pa est vide alors afficher le message MSG_ELIGI_TRAVAUXPA
+    si annee_de_construction contient "Depuis" alors afficher le message MSG_NONEL_ANNEECONSTRUCTION
     
+    si eligibilite_beneficiaire_apa est égal à "Non" alors afficher le message MSG_NONEL_NONAPA
+
+    si eligibilite_beneficiaire_retraite est égal à "Oui" alors afficher le message MSG_NONEL_CAISSERETRAITE
+
+    # TODO 12948 : si beneficiaire_codepostal ne commence pas par "44" alors afficher le message MSG_NONEL_HABITANTDELA
+
+    # TODO 12948 : si revenus supérieur au barème de ressources très modestes alors afficher le message MSG_NONEL_REVENUTRESMODESTE
+
+    si travaux_a_engager_ascenceur_pa est vide et travaux_a_engager_amenagement_pa est vide et travaux_a_engager_passage_pa est vide et travaux_a_engager_extension_pa est vide alors afficher le message MSG_ELIGI_TRAVAUXPA
+
     titre beneficiaire
 
     liste* type_proprietaire_list
@@ -30,7 +40,7 @@ page page_eligibilite
 
     liste* eligibilite_beneficiaire_retraite
 
-    liste beneficiaire:civilite
+    liste* beneficiaire:civilite
     
     nom_prenom* beneficiaire:nom beneficiaire:prenom
     
@@ -74,11 +84,12 @@ page page_eligibilite
 page page_complement_info
    
     si qui_saisit_list n'est pas égal à "Un opérateur" alors masquer le champ complement_titre_referent_operateur
+
     si qui_saisit_list n'est pas égal à "Un opérateur" alors masquer le champ complement_referent_operateur
 
     titre autre_occupant
 
-    liste civilite
+    liste autre_occupant:civilite
 
     champ_texte autre_occupant:nom
   
@@ -97,6 +108,7 @@ page page_complement_info
     texte MSG_COMPIN_TELEPHONE
     
     telephone tel_fixe
+
     telephone tel_portable
 
     texte MSG_COMPIN_SMS
@@ -125,9 +137,9 @@ page page_plan_financement
 
     champ_texte_long depenses_autres_precisions
 
-    montant depenses_total_ht
+    montant* depenses_total_ht
 
-    montant depenses_total_ttc
+    montant* depenses_total_ttc
 
     titre subventions_titre
 
@@ -162,7 +174,9 @@ page page_procuration
     si procuration_perception_subventions est égal à "Le bénéficiaire ne fait pas de procuration" alors masquer cette page
 
     si procuration_perception_subventions n'est pas égal à "Le bénéficiaire fait une procuration en ligne validée par SMS" alors masquer le champ procuration_sms_telephone
+
     si procuration_perception_subventions n'est pas égal à "Le bénéficiaire fait une procuration en ligne validée par SMS" alors masquer le champ procuration_sms_description
+
     si procuration_perception_subventions n'est pas égal à "Le bénéficiaire fait une procuration papier validée par l'envoi d'un courrier d'un original signé" alors masquer le champ procuration_courrier_description
 
     si qui_saisit_list est égal à "Un opérateur" alors masquer le champ procuration_referent_organisme
@@ -181,7 +195,6 @@ page page_procuration
     texte rappel_beneficiaire_nom 
 
     adresse* procurationbeneficiaire:adresse procurationbeneficiaire:codepostal procurationbeneficiaire:commune
-
 
     sous_titre procuration_soustitre_represente
 
@@ -225,6 +238,8 @@ page page_procuration
 
 page page_engagement_operateur
 
+    si qui_saisit_list n'est pas égal à "Un opérateur" alors masquer cette page
+
     si engagement_operateur est vide alors afficher le message MSG_ENGAGEMENT
 
     texte engagement_operateur_texte
@@ -233,11 +248,24 @@ page page_engagement_operateur
 
     texte engagement_operateur_modele_accord
 
+page page_engagement_beneficiaire
+
+    si qui_saisit_list n'est pas égal à "Le bénéficiaire ou un de ses proches" alors masquer cette page
+
+    si engagement_beneficiaire est vide alors afficher le message MSG_ENGAGEMENT
+
+    texte engagement_beneficiaire_texte
+
+    liste_choix_multiple* engagement_beneficiaire
+
 page page_pieces_justificatives
 
     si revenu_fiscal_reference_conjoint est vide alors masquer le champ documents_avis_imposition_conjoint
+
     si revenu_fiscal_reference_conjoint est égal à 0 alors masquer le champ documents_avis_imposition_conjoint
+
     si revenu_fiscal_autre est vide alors masquer le champ documents_avis_imposition_autre
+
     si revenu_fiscal_autre est égal à 0 alors masquer le champ documents_avis_imposition_autre
 
     fichier* documents_rib
@@ -257,6 +285,7 @@ page page_pieces_justificatives
     fichier documents_avis_imposition_autre
 
     fichier* documents_devis_detailles
+        aide à la saisie documents_devis_detailles_aide
 
     texte documents_autorisations_secteur_sauvegarde_texte
 

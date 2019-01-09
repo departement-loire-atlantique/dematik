@@ -43,8 +43,6 @@ page_rapport_situation: Rapport de situation
 
 page_complement_info: Complément d'information
 
-page_complement_info_bailleur: Complément d'information Propriétaire bailleur
-
 page_plan_financement: Plan de financement prévisionnel
 
 page_procuration: Procuration pour la perception des fonds
@@ -84,6 +82,7 @@ qui_saisit_list:
     - Le bénéficiaire ou un de ses proches
     - Un opérateur
 
+# TODO lien "cliquez ici"
 qui_saisit_conseil: >
   ll est conseillé de passer par un opérateur, afin de bénéficier d'informations complètes sur les aides 
   mobilisables et de faciliter toute vos démarches. Dans certains territoires l'accompagnement est gratuit 
@@ -112,6 +111,7 @@ type_proprietaire_aide: >
   Si le bénéficiaire n'est ni l'un ni l'autre, nous vous invitons à rechercher ici un opérateur qui étudiera les 
   autres sources éventuelles de financement mobilisables.
 
+# TODO lien [ici]
 qui_saisit_comment: >
   ll est conseillé de passer par un opérateur, afin de bénéficier d'informations complètes sur les aides mobilisables 
   et de faciliter toute vos démarches. Dans certains territoires l'accompagnement est gratuit pour les particuliers. 
@@ -363,8 +363,6 @@ logement_conventionnement_anah:
     - Oui
     - Non
 
-travaux_a_engager: Travaux à engager
-
 travaux_eligibles_anah:
   Les travaux pour lesquels l'aide est demandée sont dans la liste des travaux éligibles de l'ANAH:
     - Oui
@@ -377,7 +375,7 @@ travaux_gain_energetique:
 
 travaux_description: Description des travaux à engager
 
-  # 2.5 Page « Non éligible »
+# 2.5 Page « Non éligible »
 # --------------------------------------------------
 
 MSG_NONEL_ANNEECONSTRUCTION: >
@@ -426,7 +424,7 @@ MSG_NONEL_LOCATIONSOCIALE: >
 
 MSG_NONEL_VACANT: >
   L'aide à l'amélioration thermique concerne les logements occupés ou vacants depuis moins d'un an, ce qui n'est pas 
-  le cas ici
+  le cas ici.
 
 MSG_NONEL_CONVENTIONANAH: >
   L'aide à l'amélioration thermique concerne les logements faisant l'objet d'un conventionnement ANAH « social » ou 
@@ -446,6 +444,25 @@ MSG_NONEL_RECOURS: >
 
 # 2.8 Page « Complément d'information Propriétaire bailleur »
 # --------------------------------------------------
+
+proprietaire_bailleur_titre: Propriétaire bailleur
+
+sci_nom: Nom de la SCI
+
+sci_adresse: Adresse de la SCI
+
+indivision_nom: Nom de l'indivisition
+
+indivision_adresse: Adresse de l'indivisition
+
+proprietaire_bailleur_tel_titre: Téléphone du propriétaire bailleur
+
+proprietaire_bailleur_typologie_list:
+  Typologie du logement:
+    - Maison
+    - Appartement
+
+proprietaire_bailleur_type_appartement: Si appartement, précisez le type (T1, T1 bis...)
 
 MSG_COMPIN_SMS: >
   Le numéro de téléphone portable du bénéficiaire doit obligatoirement être renseigné si vous souhaiter 
@@ -571,6 +588,7 @@ procuration_sms_description: >
 
   La saisie de ce code est à faire à l'issue de la validation du présent formulaire, après la saisie du code du mandant. Ce code est indispensable pour que le dossier soit instruit.
 
+# TODO lien [ici]
 procuration_courrier_description: >
 
   Le document à imprimer permettant de donner procuration est accessible [ici](#)
@@ -641,9 +659,10 @@ engagement_operateur:
   En tant qu'opérateur, en validant ce formulaire, je deviens responsable des informations qui y sont saisies:
     - Je m'engage à pouvoir fournir au Département la preuve de l'accord du bénéficiaire en cas de contrôle
 
+# TODO lien [ici]
 engagement_operateur_modele_accord: Vous pouvez télécharger un modèle d'accord du bénéficiaire [ici](#)
 
-MSG_ENGAGEMENT: Vous devez lire cette page puis cocher la case "Je m'engage..." pour pouvoir continuer.
+MSG_ENGAGEMENT: Vous devez lire cette page puis cocher la case d'engagement pour pouvoir continuer.
 
 # 2.12 Page « Engagement si bénéficiaire »
 # --------------------------------------------------
@@ -651,31 +670,31 @@ MSG_ENGAGEMENT: Vous devez lire cette page puis cocher la case "Je m'engage..." 
 engagement_beneficiaire_texte: >
   Je m'engage à
   
-  - À attendre, si possible, le courrier de notification de subvention avant de démarrer les travaux. Il est toutefois autorisé de démarrer les travaux une fois reçu l'accusé de réception du dossier complet. Mais seul le courrier de notification garantit l'attribution de l'aide.
+    - À attendre, si possible, le courrier de notification de subvention avant de démarrer les travaux. Il est toutefois autorisé de démarrer les travaux une fois reçu l'accusé de réception du dossier complet. Mais seul le courrier de notification garantit l'attribution de l'aide.
 
-  - Faire réaliser les travaux (fourniture et pose), conformément au projet présenté, par des professionnels du bâtiment inscrits soit au registre du commerce, soit au répertoire des métiers et en justifier l'exécution, dans le délai de trois ans suivant la date de la décision de subvention.
+    - Faire réaliser les travaux (fourniture et pose), conformément au projet présenté, par des professionnels du bâtiment inscrits soit au registre du commerce, soit au répertoire des métiers et en justifier l'exécution, dans le délai de trois ans suivant la date de la décision de subvention.
 
-  - Être en possession des autorisations administratives préalables requises par la réglementation en vigueur et nécessaires à l'instruction des dossiers en "secteur sauvegardé" (permis de construire ou déclaration de travaux).
+    - Être en possession des autorisations administratives préalables requises par la réglementation en vigueur et nécessaires à l'instruction des dossiers en "secteur sauvegardé" (permis de construire ou déclaration de travaux).
 
   Je reconnais être informé que
 
-  - Le non-respect des engagements, toute déclaration frauduleuse, entraînent l'annulation de cette aide et son reversement si elle a été payée. Le montant des sommes à reverser est établi en fonction du nombre d'années durant lesquels les engagements sont respectés,
+    - Le non-respect des engagements, toute déclaration frauduleuse, entraînent l'annulation de cette aide et son reversement si elle a été payée. Le montant des sommes à reverser est établi en fonction du nombre d'années durant lesquels les engagements sont respectés,
 
-  - L'accusé de réception ne préjuge pas de la décision d'octroi ou de rejet de la demande de subvention qui sera prise par la Commission permanente du Conseil départemental,
+    - L'accusé de réception ne préjuge pas de la décision d'octroi ou de rejet de la demande de subvention qui sera prise par la Commission permanente du Conseil départemental,
 
-  - L'indication par le Département du montant de la subvention n'a pas de valeur contractuelle, le calcul définitif de cette aide étant réalisé au vu des factures produites à l'appui de la demande de paiement,
+    - L'indication par le Département du montant de la subvention n'a pas de valeur contractuelle, le calcul définitif de cette aide étant réalisé au vu des factures produites à l'appui de la demande de paiement,
 
-  - L'écrêtement des aides publiques et sociales est fixé par l'ANAH,
+    - L'écrêtement des aides publiques et sociales est fixé par l'ANAH,
 
-  - Tout bénéficiaire d'une subvention à l'amélioration de l'habitat privé dispose d'un délai de 4 ans pour présenter sa demande de versement . La subvention n'est donc plus valable au 31 décembre de la quatrième année qui suit son attribution.
+    - Tout bénéficiaire d'une subvention à l'amélioration de l'habitat privé dispose d'un délai de 4 ans pour présenter sa demande de versement . La subvention n'est donc plus valable au 31 décembre de la quatrième année qui suit son attribution.
 
-engagement_beneficiaire_certification:
+engagement_beneficiaire:
   Engagement:
-    - Je soussign·é·e, *Prénom Nom*, propriétaire occupant ou usufruitier du logement cité dans ce dossier affirme avoir lu les informations ci-dessus et certifie sur l'honneur l'exactitude des renseignements donnés dans ce formulaire.
+    - En tant que propriétaire occupant ou usufruitier du logement cité dans ce dossier, j'affirme avoir lu les informations ci-dessus et certifie sur l'honneur l'exactitude des renseignements donnés dans ce formulaire.
 
-engagement_beneficiaire_thermique_certification:
+engagement_beneficiaire_thermique:
   Engagement:
-    - Je soussign·é·e, *Prénom Nom*, propriétaire bailleur du logement cité dans ce dossier affirme avoir lu les informations ci-dessus et certifie sur l'honneur l'exactitude des renseignements donnés dans ce formulaire.
+    - En tant que propriétaire bailleur du logement cité dans ce dossier, j'affirme avoir lu les informations ci-dessus et certifie sur l'honneur l'exactitude des renseignements donnés dans ce formulaire.
 
 # 2.13 Page « Document à fournir »
 # --------------------------------------------------
@@ -712,6 +731,8 @@ documents_avis_imposition_conjoint: Avis d'imposition du conjoint ou de la conjo
 documents_avis_imposition_autre: Avis d'imposition d'un·e autre occupant·e du logement (si déclaration fiscale distincte de celle du bénéficiaire)
 
 documents_devis_detailles: Devis détaillés descriptifs et estimatifs des travaux comprenant la fourniture et la pose des matériaux
+
+documents_devis_detailles_aide: Merci de compiler les devis dans une archive ZIP.
 
 documents_devis_etudes_techniques_texte: >
   *Devis des études techniques*
