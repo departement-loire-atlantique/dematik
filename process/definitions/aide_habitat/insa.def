@@ -93,10 +93,6 @@ page page_complement_info
     liste* procuration_perception_subventions
 
     titre tel_beneficiaire
-
-    titre complement_titre_referent_operateur
-
-    champ_texte* complement_referent_operateur
     
     texte MSG_COMPIN_TELEPHONE
     
@@ -105,6 +101,10 @@ page page_complement_info
     telephone tel_portable
 
     texte MSG_COMPIN_SMS
+
+    titre complement_titre_referent_operateur
+
+    champ_texte complement_referent_operateur
 
     # Messages d'erreurs
 

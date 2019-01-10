@@ -89,21 +89,13 @@ page page_rapport_situation
 
     liste_choix_multiple amenagement_prioritaire_5
 
-    champ_texte_long* observations
-
-    champ_texte_long* situation_menage
-
-    champ_texte_long* recherche_solutions
-
     champ_texte_long amenagement:observations
 
     champ_texte_long amenagement:situation_menage
-
-    texte situation_menage_aide
+        aide à la saisie situation_menage_aide
 
     champ_texte_long amenagement:recherche_solutions
-
-    texte recherche_solutions_aide
+        aide à la saisie recherche_solutions_aide
 
 page page_complement_info
    
@@ -124,10 +116,6 @@ page page_complement_info
     liste* procuration_perception_subventions
 
     titre tel_beneficiaire
-
-    titre complement_titre_referent_operateur
-
-    champ_texte* complement_referent_operateur
     
     texte MSG_COMPIN_TELEPHONE
     
@@ -136,6 +124,10 @@ page page_complement_info
     telephone tel_portable
 
     texte MSG_COMPIN_SMS
+
+    titre complement_titre_referent_operateur
+
+    champ_texte complement_referent_operateur
 
     # Messages d'erreurs
 
@@ -262,8 +254,6 @@ page page_procuration
 
 page page_engagement_operateur
 
-    si qui_saisit_list n'est pas égal à "Un opérateur" alors masquer cette page
-
     si engagement_operateur est vide alors afficher le message MSG_ENGAGEMENT
 
     texte engagement_operateur_texte
@@ -271,16 +261,6 @@ page page_engagement_operateur
     liste_choix_multiple* engagement_operateur
 
     texte engagement_operateur_modele_accord
-
-page page_engagement_beneficiaire
-
-    si qui_saisit_list n'est pas égal à "Le bénéficiaire ou un de ses proches" alors masquer cette page
-
-    si engagement_beneficiaire est vide alors afficher le message MSG_ENGAGEMENT
-
-    texte engagement_beneficiaire_texte
-
-    liste_choix_multiple* engagement_beneficiaire
 
 page page_pieces_justificatives
 
