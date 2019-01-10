@@ -184,6 +184,7 @@ class Dematik:
                 # Create a new page
                 self.current_page = tokens
                 self.current_page_conditions = []
+                self.current_page_post_conditions = []
                 self.current_page_fields = []
                 self.current_page_field_conditions = []
               
