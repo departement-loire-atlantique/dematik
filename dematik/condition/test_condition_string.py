@@ -21,10 +21,9 @@ class ConditionStringTest(ConditionParserTester):
 
         self.check('si x1 contient x2 alors afficher le message m1', 'm1',
             [
-                (False, {'form_var_x1':None , 'form_var_x2':None }),
                 (False, {'form_var_x1':None , 'form_var_x2':"b"  }),
-                (False, {'form_var_x1':3    , 'form_var_x2':"b"  }),
                 (False, {'form_var_x1':"a"  , 'form_var_x2':"b"  }), 
+                (False, {'form_var_x1':3    , 'form_var_x2':"b"  }),
                 (True, {'form_var_x1':"ba" , 'form_var_x2':"a"  }),
                 (True, {'form_var_x1':"ab" , 'form_var_x2':"a" }),
                 (True, {'form_var_x1':"abc " , 'form_var_x2':"ab" }), 
@@ -48,7 +47,6 @@ class ConditionStringTest(ConditionParserTester):
         
         self.check('si x1 ne contient pas x2 alors afficher le message m1', 'm1',
             [
-                (True, {'form_var_x1':None , 'form_var_x2':None }),
                 (True, {'form_var_x1':None , 'form_var_x2':"b"  }),
                 (True, {'form_var_x1':3    , 'form_var_x2':"b"  }),
                 (False, {'form_var_x1':"a"  , 'form_var_x2':"a"  }), 

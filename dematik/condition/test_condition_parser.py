@@ -1,12 +1,22 @@
 # coding: utf8
 from condition_parser import ConditionParser
-from jinja2 import Environment
+import django
+from django.template import Context, Template
+from django.conf import settings
 import unittest
 
 class ConditionParserTester(unittest.TestCase):
 
     def setUp(self):
         self.c = ConditionParser()
+        if not settings.configured:
+            settings.configure(TEMPLATES=[
+                {
+                    'BACKEND': 'django.template.backends.django.DjangoTemplates',
+                    'APP_DIRS': False, # we have no apps
+                }])
+            django.setup()
+        
 
     def check(self, expression, data, test_datas):
         condition = self.c.parse(expression)
@@ -17,17 +27,19 @@ class ConditionParserTester(unittest.TestCase):
 
         for i, test_data in enumerate(test_datas):
             result, test_vars = test_data
+            test_awaited = "True" if result else "False"
             expr_python = condition.build('python')
-            self.assertEqual(eval(expr_python, test_vars), result, "case python %s, expression : %s" % (i+1, expr_python))
-
+            test_result = eval(expr_python, test_vars)
+            self.assertEqual(test_result, result, "case python %s, expression : %s, returns: %s, awaited: %s" % (i+1, expr_python, test_result, test_awaited))
             expr_django = condition.build('django')
-            test_code = "{% if " + expr_django + " %}True{% else %}False{% endif %}"
+            test_code = Template('{% if ' + expr_django + ' %}True{% else %}False{% endif %}')
             test_result = "False"
             try:
-                test_result = Environment().from_string(test_code).render(test_vars)
+                context = Context(test_vars)
+                test_result = test_code.render(context)
             except:
                 pass
-            test_awaited = "True" if result else "False"
+            
             self.assertEqual(test_result, test_awaited, "case django %s, expression : %s, returns: %s, awaited: %s" % (i+1, expr_django, test_result, test_awaited))
 
 

@@ -29,7 +29,7 @@
     {% if condition -%}
     <condition>
         <type>django</type>
-        <value>not ({{ condition -}})</value>
+        <value>{{ condition -}}</value>
     </condition>
     {% endif -%}
 {%- endmacro %}

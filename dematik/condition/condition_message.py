@@ -17,5 +17,5 @@ class ConditionMessage(Condition):
         self.type = 'MESSAGE'
         self.message = sentence_tokens[2].value
 
-    def build(self):
+    def build(self, language):
         return self.message 

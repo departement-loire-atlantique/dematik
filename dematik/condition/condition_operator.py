@@ -20,4 +20,9 @@ class ConditionOperator(Condition):
         self.right_condition = sentence_tokens[2].value
 
     def build(self, language):
-        return '(' + self.left_condition.build(language) + ') ' + self.operator + ' (' + self.right_condition.build(language) + ')'
+        if language == "python":
+            return '(' + self.left_condition.build(language) + ') ' + self.operator + ' (' + self.right_condition.build(language) + ')'
+        elif language == "django":
+            return self.left_condition.build(language) + ' ' + self.operator + ' ' + self.right_condition.build(language)
+        else:
+            raise Exception("not implemented")
