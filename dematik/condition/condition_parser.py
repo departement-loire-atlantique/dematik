@@ -15,6 +15,7 @@ from condition_hide import ConditionHide
 from condition_message import ConditionMessage
 from condition_operator import ConditionOperator
 from condition_string import ConditionString
+from condition_startwith import ConditionStartWith
 from condition_token import Token
 
 condition_classes = [
@@ -27,6 +28,7 @@ condition_classes = [
     ConditionMessage,
     ConditionOperator,
     ConditionString,
+    ConditionStartWith,
 ]
 
 # ConditionParser allows to parse a condition as "french text" and
