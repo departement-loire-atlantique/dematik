@@ -6,6 +6,8 @@ formulaire metadata_name_aide_habitat_therm
     
 page page_preambule
 
+    texte page_preambule:intro_textes_obligatoires
+
     liste* qui_saisit_list
 
     texte qui_saisit_conseil
@@ -27,6 +29,8 @@ page page_eligibilite
     # TODO 12948 : si beneficiaire_codepostal ne commence pas par "44" alors afficher le message MSG_NONEL_HABITANTDELA
 
     # TODO 12948 : si revenus supérieur au barème de ressources modestes alors afficher le message MSG_NONEL_REVENUMODESTE
+
+    texte page_eligibilite:intro_textes_obligatoires
 
     titre beneficiaire
 
@@ -76,6 +80,8 @@ page page_complement_info
 
     si proprietaire_bailleur n'est pas égal à "Indivisition" alors masquer le champ complement_info_proprietaire_bailleur_indivision_adresse
 
+    texte page_complement_info:intro_textes_obligatoires
+
     titre proprietaire_bailleur_titre
 
     champ_texte complement_info_proprietaire_bailleur:sci_nom
@@ -107,6 +113,8 @@ page page_plan_financement
     si depenses_autres_precisions est vide et depenses_autres est rempli alors afficher le message MSG_PLFIN_AUTRECOUTS
 
     si subventions_autres_precisions est vide et subventions_autres est rempli alors afficher le message MSG_PLFIN_AUTREFINANCE
+
+    texte page_plan_financement:intro_textes_obligatoires
 
     titre depenses_titre
 
@@ -158,6 +166,8 @@ page page_engagement_operateur
 
     si engagement_operateur est vide alors afficher le message MSG_ENGAGEMENT
 
+    texte page_engagement_operateur:intro_textes_obligatoires
+
     texte engagement_operateur_texte
 
     liste_choix_multiple* engagement_operateur
@@ -170,9 +180,13 @@ page page_engagement_beneficiaire
 
     si engagement_beneficiaire_thermique est vide alors afficher le message MSG_ENGAGEMENT
 
+    texte page_engagement_beneficiaire:intro_textes_obligatoires
+
     liste_choix_multiple* engagement_beneficiaire_thermique
 
 page page_pieces_justificatives
+
+    texte page_pieces_justificatives:intro_textes_obligatoires
 
     fichier* documents_rib
 
