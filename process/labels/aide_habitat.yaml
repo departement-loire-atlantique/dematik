@@ -85,7 +85,7 @@ qui_saisit_list:
 # TODO lien "cliquez ici"
 qui_saisit_conseil: >
   ll est conseillé de passer par un opérateur, afin de bénéficier d'informations complètes sur les aides 
-  mobilisables et de faciliter toute vos démarches. Dans certains territoires l'accompagnement est gratuit 
+  mobilisables et de faciliter toutes vos démarches. Dans certains territoires l'accompagnement est gratuit 
   pour les particuliers. Pour savoir quel opérateur vous pouvez contacter, cliquez ici.
 
 # 2.2 Page « Préambule aide exceptionnelle » 
@@ -114,7 +114,7 @@ type_proprietaire_aide: >
 # TODO lien [ici]
 qui_saisit_comment: >
   ll est conseillé de passer par un opérateur, afin de bénéficier d'informations complètes sur les aides mobilisables 
-  et de faciliter toute vos démarches. Dans certains territoires l'accompagnement est gratuit pour les particuliers. 
+  et de faciliter toutes vos démarches. Dans certains territoires l'accompagnement est gratuit pour les particuliers. 
   Pour savoir quel opérateur vous pouvez contacter, cliquez [ici](#).
 
 eligibilite_beneficiaire_apa:
@@ -194,11 +194,11 @@ travaux_a_engager_passage_pa:
   Chemins extérieurs, cours, passages, locaux communs:
     - Réfection ou adaptation des cheminements extérieurs , de cour ou de passage dans un projet d'accessibilité ou de restructuration
     - Aménagement de bateaux pour franchir le trottoir
-    - Élargissement ou aménagement de place de parking (un iquement en cas de travaux pour l'autonomie de la personne)
+    - Élargissement ou aménagement de place de parking (uniquement en cas de travaux pour l'autonomie de la personne)
 
 travaux_a_engager_extension_pa:
   Extension de logement:
-    - Dans la limite de 45 m² de surface habitable (annex ion de parties communes, sur-élévation, création de volume...)
+    - Dans la limite de 45 m² de surface habitable (annexion de parties communes, sur-élévation, création de volume...)
 
 travaux_a_engager_ascenceur_ph:
   Ascenseur / Monte personne:
