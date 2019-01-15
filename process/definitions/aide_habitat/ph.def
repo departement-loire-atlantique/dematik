@@ -1,20 +1,36 @@
-formulaire metadata_name_aide_habitat_excep 
+formulaire metadata_name_aide_habitat_ph
 
-    url metadata_url_name_aide_habitat_excep 
-    description metadata_description_aide_habitat_excep 
-    identifiant metadata_internal_identifier_aide_habitat_excep
+    url metadata_url_name_aide_habitat_ph
+    description metadata_description_aide_habitat_ph
+    identifiant metadata_internal_identifier_aide_habitat_ph
+
+    listing type_proprietaire_list
+    listing revenu_fiscal_reference_beneficiaire
+
+    filter type_proprietaire_list
+    filter revenu_fiscal_reference_beneficiaire
 
 page page_preambule
 
     texte page_preambule:intro_textes_obligatoires
 
-    liste* preambule_excep_question_contact
+    liste* qui_saisit_list
 
-    texte preambule_excep_conseil
+    texte qui_saisit_conseil
 
 page page_eligibilite
 
-    # Pas de critère d'éligibilité pour l'aide exceptionnelle
+    si annee_de_construction contient "Depuis" alors afficher le message MSG_NONEL_ANNEECONSTRUCTION
+    
+    si eligibilite_taux_invalidite_superieur_80 est égal à "Non" alors afficher le message MSG_NONEL_NONPH
+
+    si eligibilite_beneficiaire_compensation_handicap est égal à "Non" alors afficher le message MSG_NONEL_NONPH
+
+    # TODO 12948 : si beneficiaire_codepostal ne commence pas par "44" alors afficher le message MSG_NONEL_HABITANTDELA
+
+    # TODO 12948 : si revenus supérieur au barème de ressources très modestes alors afficher le message MSG_NONEL_REVENUTRESMODESTE
+
+    si travaux_a_engager_ascenceur_ph est vide et travaux_a_engager_unite_vie_complete_ph est vide et travaux_a_engager_extension_ph est vide et travaux_a_engager_unite_vie_complete_texte_ph est vide alors afficher le message MSG_ELIGI_TRAVAUXPA
 
     texte page_eligibilite:intro_textes_obligatoires
 
@@ -24,13 +40,17 @@ page page_eligibilite
 
     texte type_proprietaire_aide
 
-    liste* eligibilite_beneficiaire_aide_exceptionnelle
+    liste* eligibilite_taux_invalidite_superieur_80
 
-    nom_prenom_civilite* nom prenom civilite
+    liste* eligibilite_beneficiaire_compensation_handicap
+
+    liste* beneficiaire:civilite
     
-    courriel* courriel
+    nom_prenom* beneficiaire:nom beneficiaire:prenom
     
-    champ_texte_long* adresse
+    courriel courriel
+
+    adresse* beneficiaire:adresse beneficiaire:codepostal beneficiaire:commune
 
     titre logement
 
@@ -44,6 +64,14 @@ page page_eligibilite
 
     texte travaux_a_engager_texte
 
+    liste_choix_multiple travaux_a_engager_ascenceur_ph
+
+    liste_choix_multiple travaux_a_engager_unite_vie_complete_ph
+
+    liste_choix_multiple travaux_a_engager_extension_ph
+
+    texte travaux_a_engager_unite_vie_complete_texte_ph
+
     champ_texte_long travaux_complement_informations
 
     titre ressources_occupant
@@ -56,52 +84,6 @@ page page_eligibilite
     montant revenu_fiscal_autre
 
     nombre* nombre_occupants
-
-page page_rapport_situation
-
-    texte page_rapport_situation:intro_textes_obligatoires
-
-    titre rapport_situation
-
-    texte travaux_preconises
-
-    champ_texte* nature_travaux_1
-
-    champ_texte* couts_ht_1
-
-    liste_choix_multiple amenagement_prioritaire_1
-
-    champ_texte nature_travaux_2
-
-    champ_texte couts_ht_2
-
-    liste_choix_multiple amenagement_prioritaire_2
-
-    champ_texte nature_travaux_3
-
-    champ_texte couts_ht_3
-
-    liste_choix_multiple amenagement_prioritaire_3
-
-    champ_texte nature_travaux_4
-
-    champ_texte couts_ht_4
-
-    liste_choix_multiple amenagement_prioritaire_4
-
-    champ_texte nature_travaux_5
-
-    champ_texte couts_ht_5
-
-    liste_choix_multiple amenagement_prioritaire_5
-
-    champ_texte_long amenagement:observations
-
-    champ_texte_long amenagement:situation_menage
-        aide à la saisie situation_menage_aide
-
-    champ_texte_long amenagement:recherche_solutions
-        aide à la saisie recherche_solutions_aide
 
 page page_complement_info
    
@@ -266,6 +248,8 @@ page page_procuration
 
 page page_engagement_operateur
 
+    si qui_saisit_list n'est pas égal à "Un opérateur" alors masquer cette page
+
     si engagement_operateur est vide alors afficher le message MSG_ENGAGEMENT
 
     texte page_engagement_operateur:intro_textes_obligatoires
@@ -275,6 +259,18 @@ page page_engagement_operateur
     liste_choix_multiple* engagement_operateur
 
     texte engagement_operateur_modele_accord
+
+page page_engagement_beneficiaire
+
+    si qui_saisit_list n'est pas égal à "Le bénéficiaire ou un de ses proches" alors masquer cette page
+
+    si engagement_beneficiaire est vide alors afficher le message MSG_ENGAGEMENT
+
+    texte page_engagement_beneficiaire:intro_textes_obligatoires
+
+    texte engagement_beneficiaire_texte
+
+    liste_choix_multiple* engagement_beneficiaire
 
 page page_pieces_justificatives
 
@@ -291,8 +287,6 @@ page page_pieces_justificatives
     fichier* documents_rib
 
     texte documents_rib_texte
-
-    fichier* documents_apa
 
     fichier* documents_mdph
 
@@ -312,17 +306,5 @@ page page_pieces_justificatives
     texte documents_autorisations_secteur_sauvegarde_texte
 
     fichier documents_autorisations_secteur_sauvegarde
-
-    texte documents_autres_texte
-
-    fichier documents_autres_1
-
-    fichier documents_autres_2
-
-    fichier documents_autres_3
-
-    fichier documents_autres_4
-
-    fichier documents_autres_5
 
     champ_texte_long documents_autres_observations

@@ -1,3 +1,6 @@
+intro_textes_obligatoires: >
+  Les champs suivis d'un astérisque * sont obligatoires.
+
 civilite:
   Civilité:
     - M.

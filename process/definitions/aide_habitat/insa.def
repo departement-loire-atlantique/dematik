@@ -6,23 +6,38 @@ formulaire metadata_name_aide_habitat_insa
 
 page page_preambule
 
+    texte page_preambule:intro_textes_obligatoires
+
     liste* qui_saisit_list
 
     texte qui_saisit_conseil
 
 page page_eligibilite
-#, conditions_de_sortie=
-#    [c.un_des_champs(
-#    _.travaux_a_engager_ascenceur_pa, 
-#    _.travaux_a_engager_amenagement_pa,
-#    _.travaux_a_engager_passage_pa,
-#    _.travaux_a_engager_extension_pa).n_est_pas_rempli().alors_message MSG_ELIGI_TRAVAUXPA)] 
+
+    si annee_de_construction contient "Depuis" alors afficher le message MSG_NONEL_ANNEECONSTRUCTION
+    
+    # TODO les 4 critères suivants font planter l'importation du formulaire
+    #si logement_insa_coef est inférieur à 30 alors afficher le message MSG_NONEL_COEFINSAFAIBLE
+
+    #si logement_insa_coef est supérieur à 100 alors afficher le message MSG_ELIGI_COEFINSA
+
+    #si logement_insa_gain_energetique est inférieur à 0 alors afficher le message MSG_ELIGI_GAINENERG
+
+    #si logement_insa_gain_energetique est supérieur à 100 alors afficher le message MSG_ELIGI_GAINENERG
+
+    si travaux_a_engager_insa est égal à "Non" alors afficher le message MSG_NONEL_TRAVAUXANAH
+
+    # TODO 12948 : si beneficiaire_codepostal ne commence pas par "44" alors afficher le message MSG_NONEL_HABITANTDELA
+
+    # TODO 12948 : si revenus supérieur au barème de ressources modestes alors afficher le message MSG_NONEL_REVENUMODESTE
+
+    texte page_eligibilite:intro_textes_obligatoires
 
     titre beneficiaire
 
     liste* type_proprietaire_list
 
-     nom_prenom_civilite* nom prenom civilite
+    nom_prenom_civilite* nom prenom civilite
     
     courriel* courriel
     
@@ -56,20 +71,27 @@ page page_eligibilite
 
     montant* revenu_fiscal_reference_beneficiaire
 
-    montant_avec_remarque revenu_fiscal_reference_conjoint revenu_fiscal_reference_conjoint_remarque
+    montant revenu_fiscal_reference_conjoint
+        aide à la saisie revenu_fiscal_reference_conjoint_remarque
 
     montant revenu_fiscal_autre
 
     nombre* nombre_occupants
 
 page page_complement_info
+   
+    si qui_saisit_list n'est pas égal à "Un opérateur" alors masquer le champ complement_titre_referent_operateur
+
+    si qui_saisit_list n'est pas égal à "Un opérateur" alors masquer le champ complement_referent_operateur
+
+    texte page_complement_info:intro_textes_obligatoires
 
     titre autre_occupant
 
     liste autre_occupant:civilite
 
     champ_texte autre_occupant:nom
-
+  
     champ_texte autre_occupant:prenom
 
     titre procuration_titre
@@ -77,18 +99,32 @@ page page_complement_info
     liste* procuration_perception_subventions
 
     titre tel_beneficiaire
-
+    
     texte MSG_COMPIN_TELEPHONE
-
+    
     telephone tel_fixe
 
     telephone tel_portable
 
+    texte MSG_COMPIN_SMS
+
+    titre complement_titre_referent_operateur
+
+    champ_texte complement_referent_operateur
+
+    # Messages d'erreurs
+
+    si tel_fixe est vide et tel_portable est vide alors afficher le message MSG_COMPIN_TELEPHONE
+
+    si procuration_perception_subventions est égal à "Le bénéficiaire fait une procuration en ligne validée par SMS" et tel_portable n'est pas rempli alors afficher le message MSG_COMPIN_SMS
+
 page page_plan_financement
 
-#, conditions_de_sortie=[
-#    c.le_champ depenses_autres_precisions).est*_si(c.le_champ depenses_autres).est_rempli()).alors_message MSG_PLFIN_AUTRECOUTS)
-#]
+    si depenses_autres_precisions est vide et depenses_autres est rempli alors afficher le message MSG_PLFIN_AUTRECOUTS
+
+    si subventions_autres_precisions est vide et subventions_autres est rempli alors afficher le message MSG_PLFIN_AUTREFINANCE
+
+    texte page_plan_financement:intro_textes_obligatoires
 
     titre depenses_titre
 
@@ -102,9 +138,9 @@ page page_plan_financement
 
     champ_texte_long depenses_autres_precisions
 
-    montant depenses_total_ht
+    montant* depenses_total_ht
 
-    montant depenses_total_ttc
+    montant* depenses_total_ttc
 
     titre subventions_titre
 
@@ -128,7 +164,7 @@ page page_plan_financement
 
     montant subventions_autres
 
-    champ_texte subventions_autres_precisions
+    champ_texte_long subventions_autres_precisions
 
     titre apport_titre
 
@@ -136,34 +172,66 @@ page page_plan_financement
 
 page page_procuration
 
+    si procuration_perception_subventions est égal à "Le bénéficiaire ne fait pas de procuration" alors masquer cette page
+
+    si procuration_perception_subventions n'est pas égal à "Le bénéficiaire fait une procuration en ligne validée par SMS" alors masquer le champ procuration_sms_telephone
+
+    si procuration_perception_subventions n'est pas égal à "Le bénéficiaire fait une procuration en ligne validée par SMS" alors masquer le champ procuration_sms_description
+
+    si procuration_perception_subventions n'est pas égal à "Le bénéficiaire fait une procuration papier validée par l'envoi d'un courrier d'un original signé" alors masquer le champ procuration_courrier_description
+
+    si qui_saisit_list est égal à "Un opérateur" alors masquer le champ procuration_referent_organisme
+
+    texte page_procuration:intro_textes_obligatoires
+
     titre procuration:procuration_titre
 
-    texte procuration_titre_texte
+    texte procuration:procuration_titre_texte
 
-    liste procuration:civilite
+    sous_titre procuration_soustitre_beneficiaire
 
-    nom_prenom* procuration:nom procuration:prenom
+    # TODO préremplir civilite, nom, prenom et adresse du bénéficiaire
+    liste* procurationbeneficiaire:civilite
 
-    champ_texte_long* procuration:adresse
+    nom_prenom* procurationbeneficiaire:nom procurationbeneficiaire:prenom
 
-    champ_texte procuration_representant
+    texte rappel_beneficiaire_nom 
 
-    champ_texte_long* procuration_representant_adresse
+    adresse* procurationbeneficiaire:adresse procurationbeneficiaire:codepostal procurationbeneficiaire:commune
 
-    champ_texte_long* procuration_adresse_immeuble
+    sous_titre procuration_soustitre_represente
 
-    #pas compris 
-    #liste* procuration_donne_mandat
+    liste procurationrepresentant:civilite
 
-    nom_prenom_civilite* mandant:nom mandant:prenom mandant:civilite
+    nom_prenom procurationrepresentant:nom procurationrepresentant:prenom
+
+    champ_texte procurationrepresentant:qualite
+        aide à la saisie qualite_aide
+
+    adresse procurationrepresentant:adresse procurationrepresentant:codepostal procurationrepresentant:commune
+
+    titre procuration_donne_mandat_titre
+
+    sous_titre procuration_donne_mandat_organisme_sous_titre
+
+    texte procuration_donne_mandat_organisme_texte
 
     champ_texte procuration_nom_organisme
 
     champ_texte procuration_referent_organisme
 
-    champ_texte_long* organisme:adresse
+    adresse organisme:adresse organisme:codepostal organisme:commune
 
-    champ_texte_avec_remarque procuration_qualite procuration_qualite_remarque
+    sous_titre procuration_donne_mandat_personne_sous_titre
+
+    texte procuration_donne_mandat_personne_texte
+
+    nom_prenom_civilite mandant:nom mandant:prenom mandat:civilite
+
+    champ_texte procuration:qualite
+        aide à la saisie qualite_aide
+
+    adresse mandant:adresse mandant:codepostal mandant:commune
 
     champ_texte procuration_sms_telephone
 
@@ -173,45 +241,56 @@ page page_procuration
 
 page page_engagement_operateur
 
+    si qui_saisit_list n'est pas égal à "Un opérateur" alors masquer cette page
+
+    si engagement_operateur est vide alors afficher le message MSG_ENGAGEMENT
+
+    texte page_engagement_operateur:intro_textes_obligatoires
+
     texte engagement_operateur_texte
 
     liste_choix_multiple* engagement_operateur
 
     texte engagement_operateur_modele_accord
 
+page page_engagement_beneficiaire
 
-#page page_engagement_beneficiaire
-#
-#    texte engagement_beneficiaire_texte
-#
-#    liste_choix_multiple engagement_beneficiaire_certification, condition=c.obligatoire()
-#}
+    si qui_saisit_list n'est pas égal à "Le bénéficiaire ou un de ses proches" alors masquer cette page
+
+    si engagement_beneficiaire est vide alors afficher le message MSG_ENGAGEMENT
+
+    texte page_engagement_beneficiaire:intro_textes_obligatoires
+
+    texte engagement_beneficiaire_texte
+
+    liste_choix_multiple* engagement_beneficiaire
 
 page page_pieces_justificatives
+
+    si revenu_fiscal_reference_conjoint est vide alors masquer le champ documents_avis_imposition_conjoint
+
+    si revenu_fiscal_reference_conjoint est égal à 0 alors masquer le champ documents_avis_imposition_conjoint
+
+    si revenu_fiscal_autre est vide alors masquer le champ documents_avis_imposition_autre
+
+    si revenu_fiscal_autre est égal à 0 alors masquer le champ documents_avis_imposition_autre
+
+    texte page_pieces_justificatives:intro_textes_obligatoires
 
     fichier* documents_rib
 
     texte documents_rib_texte
 
-    fichier* documents_mdph
-
-    fichier* documents_diagnostic_thermique
-
-    fichier* documents_convention_anah
-
-    fichier* documents_diagnostic_ergotherapeute
-
     texte documents_avis_imposition_texte
 
     fichier* documents_avis_imposition_beneficiaire
 
-    fichier* documents_avis_imposition_conjoint
+    fichier documents_avis_imposition_conjoint
 
-    fichier* documents_avis_imposition_autre
-
-    texte documents_devis_detailles_texte
+    fichier documents_avis_imposition_autre
 
     fichier* documents_devis_detailles
+        aide à la saisie documents_devis_detailles_aide
 
     texte documents_devis_etudes_techniques_texte
 
@@ -219,18 +298,6 @@ page page_pieces_justificatives
 
     texte documents_autorisations_secteur_sauvegarde_texte
 
-    fichier* documents_autorisations_secteur_sauvegarde
+    fichier documents_autorisations_secteur_sauvegarde
 
-    texte documents_autres_texte
-
-    fichier documents_autres_1
-
-    fichier documents_autres_2
-
-    fichier documents_autres_3
-
-    fichier documents_autres_4
-
-    fichier documents_autres_5
-
-    champ_texte documents_autres_observations
+    champ_texte_long documents_autres_observations
