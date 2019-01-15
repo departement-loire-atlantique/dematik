@@ -29,10 +29,10 @@ class ConditionCompare(Condition):
     ]
 
     operators = {
-        'EQUAL':'==', 
-        'GREATER':'>', 
-        'LOWER':'<', 
-        'DIFFERENT':'!='
+        'EQUAL':' == ', 
+        'GREATER':' > ', 
+        'LOWER':' < ', 
+        'DIFFERENT':' != '
     }
 
     def __init__(self, sentence_tokens):
@@ -47,14 +47,10 @@ class ConditionCompare(Condition):
         field = self.protect(self.field, language)
 
         if language == 'python':
-            if self.operator == '!=':
-                return field + self.operator + operand + ' if isinstance(' + field + ', (' + operand + ').__class__) else True'
-            else:    
-                return field + self.operator + operand + ' if ' +field + ' and isinstance(' + field + ', (' + operand + ').__class__) else False'
+            return '(' + field + ' if ' + field + ' and isinstance(' + field + ', (' + operand + ').__class__) else "")' + self.operator + '(' + operand + ' if ' + operand + ' else "")'
+        
         elif language == 'django':
-            if self.operator == '!=':
-                return '(' + field + ' is none and ' + operand + ' is not none or ' + field + self.operator + operand + ')'
-            else:  
-                return '(' + field + ' is not none and ' + field + self.operator + operand + ')'
+            return field + '|default_if_none:""' + self.operator + operand + '|default_if_none:""'
+          
         else:
             raise('not implemented')

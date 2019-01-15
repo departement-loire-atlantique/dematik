@@ -16,8 +16,8 @@ class ConditionCheckCount(Condition):
     ]
 
     operator = {
-            'AT_LEAST' : '>=', 
-            'AT_MOST' : '<' 
+            'AT_LEAST' : '>= ', 
+            'AT_MOST' : '< ' 
     }
 
     def __init__(self, sentence_tokens):
@@ -32,6 +32,6 @@ class ConditionCheckCount(Condition):
             return 'len(' + self.protect_as_list(self.fieldname, language) +')' + self.op + self.count
         elif language == 'django':
             field =  self.protect(self.fieldname, language)
-            return '((' + field + ' is none and 0' + self.op + self.count + ') or (' + field + '|length' + self.op + self.count + '))'
+            return field + '|default_if_none:""|length ' + self.op + self.count
         else:
-            raise Exception("not implemented")
+            raise Exception("Not implemented")

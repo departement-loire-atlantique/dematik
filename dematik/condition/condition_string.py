@@ -37,10 +37,7 @@ class ConditionString(Condition):
             return operand + self.op[0] + field + self.op[1] + isstr
         
         elif language == 'django':
-            if "not" in self.op[0]:
-                return '(' + field + ' is none or ' + operand + '|string' + self.op[0] + field + '|string' + self.op[1] + ')'
-            else:
-                return '(' + field + ' is not none and ' + operand + '|string' + self.op[0] + field + '|string' + self.op[1] + ')'
+            return operand + '|default_if_none:""|stringformat:"s"' + self.op[0] + field + '|default_if_none:""|stringformat:"s" ' + self.op[1]
 
         else:
             raise('not implemented')

@@ -29,8 +29,8 @@ class ConditionFilled(Condition):
         elif language == 'django':
             field = self.protect(self.fieldname, language)
             if "== 0" in self.op:
-                return '(' + field + ' is none or ' + field + '|length' + self.op + ')'
+                return field + '|default_if_none:""|length ' + self.op
             else:
-                return '(' + field + ' is not none and ' + field + '|length' + self.op + ')'
+                return field + '|default_if_none:""|length ' + self.op
         else:
             raise Exception("not implemented")
