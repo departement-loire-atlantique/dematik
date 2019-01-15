@@ -59,6 +59,16 @@ logement: Le logement
 
 ressources_occupant: Ressources des occupant·e·s
 
+eligibilite_revenus_modestes: >
+  L'aide à l'habitat pour le soutien à domicile est uniquement réservée aux ménages dont les revenus ne dépassent 
+  pas les plafonds de ressources modestes. Vous pouvez consulter ces plafonds en 
+  [cliquant ici](http://www.anah.fr/proprietaires/proprietaires-occupants/les-conditions-de-ressources/).
+
+eligibilite_revenus_tres_modestes: >
+  L'aide à l'habitat pour la sortie d'insalubrité est uniquement réservée aux ménages dont les revenus ne dépassent 
+  pas les plafonds de ressources très modestes. Vous pouvez consulter ces plafonds en 
+  [cliquant ici](http://www.anah.fr/proprietaires/proprietaires-occupants/les-conditions-de-ressources/).
+
 revenu_fiscal_reference_beneficiaire: Dernier revenu fiscal de référence du bénéficiaire
 
 revenu_fiscal_reference_conjoint: >
