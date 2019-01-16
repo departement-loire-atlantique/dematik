@@ -53,11 +53,10 @@ page page_eligibilite
 
     texte logement_reconnu_insalubre_texte
 
-    champ_texte logement_insa_coef
+    champ_texte* logement_insa_coef
+        aide à la saisie logement_insa_coef_aide
 
-    champ_texte logement_insa_gain_energetique
-
-    texte logement_seuil_texte
+    champ_texte* logement_insa_gain_energetique
 
     titre travaux_a_engager_titre
 
@@ -219,8 +218,6 @@ page page_mandat_organisme
     champ_texte* procuration_nom_organisme
 
     champ_texte* procuration_referent_organisme
-
-    si qui_saisit_list est égal à "Un opérateur" alors masquer le champ procuration_referent_organisme
 
     champ_texte* page_mandat_organisme:procuration_sms_telephone
 

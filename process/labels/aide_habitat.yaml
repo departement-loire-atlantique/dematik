@@ -173,10 +173,10 @@ logement_reconnu_insalubre_texte: >
 
 logement_insa_coef: Coefficient d’insalubrité (en %)
 
-logement_insa_gain_energetique: Gain énergétique (en %) après travaux
-
-logement_seuil_texte: >
+logement_insa_coef_aide: >
   En dessous de 30% le logement n'est pas considéré comme insalubre
+
+logement_insa_gain_energetique: Gain énergétique (en %) après travaux
 
 travaux_a_engager_titre: Travaux à engager
 
@@ -185,7 +185,7 @@ travaux_a_engager_texte: >
   soit au registre des métiers. 
 
 travaux_a_engager_insa:
-  Les travaux pour lesquels l’aide est demandée sont dans la liste des travaux éligibles de l’ANAH:
+  Les travaux pour lesquels l’aide est demandée sont-ils dans la liste des travaux éligibles de l’ANAH:
     - Oui
     - Non
 
