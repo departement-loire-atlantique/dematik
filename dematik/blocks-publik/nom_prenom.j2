@@ -1,4 +1,4 @@
 {# nom prenom -#}
 {%- from "macros-publik/champ_texte.j2" import champ_texte with context -%}
-{{ champ_texte(nom) }}
-{{ champ_texte(prenom) }}
+{{ champ_texte(nom, extra_css_class='grid-1-2') }}
+{{ champ_texte(prenom, extra_css_class='grid-1-2') }}
