@@ -69,7 +69,7 @@ page page_eligibilite
 
     titre ressources_occupant
 
-    texte eligibilite_revenus_tres_modestes
+    texte eligibilite_revenus_modestes
 
     montant* revenu_fiscal_reference_beneficiaire
 

@@ -76,6 +76,8 @@ page page_eligibilite
 
     titre ressources_occupant
 
+    texte eligibilite_revenus_tres_modestes
+
     montant* revenu_fiscal_reference_beneficiaire
 
     montant revenu_fiscal_reference_conjoint
