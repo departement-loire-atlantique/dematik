@@ -51,10 +51,10 @@ page page_eligibilite
 
     texte logement_reconnu_insalubre_texte
 
-    champ_texte* logement_insa_coef
+    nombre* logement_insa_coef
         aide à la saisie logement_insa_coef_aide
 
-    champ_texte* logement_insa_gain_energetique
+    nombre* logement_insa_gain_energetique
 
     titre travaux_a_engager_titre
 
