@@ -222,9 +222,9 @@ page page_mandat_organisme
 
     adresse* organisme:adresse organisme:codepostal organisme:commune
 
-    texte page_mandat_organisme:procuration_sms_description
+    texte page_mandat_organisme:procuration_sms_description_insa
 
-    si procuration_perception_subventions n'est pas égal à "Le bénéficiaire fait une procuration en ligne validée par SMS" alors masquer le champ page_mandat_organisme:procuration_sms_description
+    si procuration_perception_subventions n'est pas égal à "Le bénéficiaire fait une procuration en ligne validée par SMS" alors masquer le champ page_mandat_organisme:procuration_sms_description_insa
 
     texte page_mandat_organisme:procuration_courrier_description
 
@@ -249,9 +249,9 @@ page page_mandat_personne
 
     adresse* mandant:adresse mandant:codepostal mandant:commune
 
-    texte page_mandat_personne:procuration_sms_description
+    texte page_mandat_personne:procuration_sms_description_insa
 
-    si procuration_perception_subventions n'est pas égal à "Le bénéficiaire fait une procuration en ligne validée par SMS" alors masquer le champ page_mandat_personne:procuration_sms_description
+    si procuration_perception_subventions n'est pas égal à "Le bénéficiaire fait une procuration en ligne validée par SMS" alors masquer le champ page_mandat_personne:procuration_sms_description_insa
 
     texte page_mandat_personne:procuration_courrier_description
 
