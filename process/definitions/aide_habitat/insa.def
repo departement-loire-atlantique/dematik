@@ -39,7 +39,7 @@ page page_eligibilite
 
     nom_prenom_civilite* nom prenom civilite
     
-    courriel* courriel
+    courriel courriel
     
     champ_texte_long* adresse
 
