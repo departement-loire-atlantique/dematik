@@ -81,10 +81,6 @@ page page_eligibilite
     nombre* nombre_occupants
 
 page page_complement_info
-   
-    si qui_saisit_list n'est pas égal à "Un opérateur" alors masquer le champ complement_titre_referent_operateur
-
-    si qui_saisit_list n'est pas égal à "Un opérateur" alors masquer le champ complement_referent_operateur
 
     texte page_complement_info:intro_textes_obligatoires
 
@@ -112,7 +108,11 @@ page page_complement_info
 
     titre complement_titre_referent_operateur
 
+    si qui_saisit_list n'est pas égal à "Un opérateur" alors masquer le champ complement_titre_referent_operateur
+
     champ_texte complement_referent_operateur
+
+    si qui_saisit_list n'est pas égal à "Un opérateur" alors masquer le champ complement_referent_operateur
 
     # Messages d'erreurs
 
@@ -176,8 +176,6 @@ page page_procuration
 
     si procuration_perception_subventions est égal à "Le bénéficiaire ne fait pas de procuration" alors masquer cette page
 
-    si qui_saisit_list est égal à "Un opérateur" alors masquer le champ procuration_referent_organisme
-
     texte page_procuration:intro_textes_obligatoires
 
     titre procuration:procuration_titre
@@ -214,12 +212,6 @@ page page_mandat_organisme
 
     si procuration_donne_mandat_list n'est pas égal à "Un organisme ou un opérateur" alors masquer cette page
 
-    si procuration_perception_subventions n'est pas égal à "Le bénéficiaire fait une procuration en ligne validée par SMS" alors masquer le champ page_mandat_organisme:procuration_sms_telephone
-
-    si procuration_perception_subventions n'est pas égal à "Le bénéficiaire fait une procuration en ligne validée par SMS" alors masquer le champ page_mandat_organisme:procuration_sms_description
-
-    si procuration_perception_subventions n'est pas égal à "Le bénéficiaire fait une procuration papier validée par l'envoi d'un courrier d'un original signé" alors masquer le champ page_mandat_organisme:procuration_courrier_description
-
     texte page_mandat_organisme:intro_textes_obligatoires
 
     titre procuration_donne_mandat_organisme_sous_titre
@@ -228,23 +220,25 @@ page page_mandat_organisme
 
     champ_texte* procuration_referent_organisme
 
+    si qui_saisit_list est égal à "Un opérateur" alors masquer le champ procuration_referent_organisme
+
     champ_texte* page_mandat_organisme:procuration_sms_telephone
+
+    si procuration_perception_subventions n'est pas égal à "Le bénéficiaire fait une procuration en ligne validée par SMS" alors masquer le champ page_mandat_organisme:procuration_sms_telephone
 
     adresse* organisme:adresse organisme:codepostal organisme:commune
 
     texte page_mandat_organisme:procuration_sms_description
 
+    si procuration_perception_subventions n'est pas égal à "Le bénéficiaire fait une procuration en ligne validée par SMS" alors masquer le champ page_mandat_organisme:procuration_sms_description
+
     texte page_mandat_organisme:procuration_courrier_description
+
+    si procuration_perception_subventions n'est pas égal à "Le bénéficiaire fait une procuration papier validée par l'envoi d'un courrier d'un original signé" alors masquer le champ page_mandat_organisme:procuration_courrier_description
 
 page page_mandat_personne
 
     si procuration_donne_mandat_list n'est pas égal à "Une personne" alors masquer cette page
-
-    si procuration_perception_subventions n'est pas égal à "Le bénéficiaire fait une procuration en ligne validée par SMS" alors masquer le champ page_mandat_personne:procuration_sms_telephone
-
-    si procuration_perception_subventions n'est pas égal à "Le bénéficiaire fait une procuration en ligne validée par SMS" alors masquer le champ page_mandat_personne:procuration_sms_description
-
-    si procuration_perception_subventions n'est pas égal à "Le bénéficiaire fait une procuration papier validée par l'envoi d'un courrier d'un original signé" alors masquer le champ page_mandat_personne:procuration_courrier_description
 
     texte page_mandat_personne:intro_textes_obligatoires
 
@@ -257,11 +251,17 @@ page page_mandat_personne
 
     champ_texte* page_mandat_personne:procuration_sms_telephone
 
+    si procuration_perception_subventions n'est pas égal à "Le bénéficiaire fait une procuration en ligne validée par SMS" alors masquer le champ page_mandat_personne:procuration_sms_telephone
+
     adresse* mandant:adresse mandant:codepostal mandant:commune
 
     texte page_mandat_personne:procuration_sms_description
 
+    si procuration_perception_subventions n'est pas égal à "Le bénéficiaire fait une procuration en ligne validée par SMS" alors masquer le champ page_mandat_personne:procuration_sms_description
+
     texte page_mandat_personne:procuration_courrier_description
+
+    si procuration_perception_subventions n'est pas égal à "Le bénéficiaire fait une procuration papier validée par l'envoi d'un courrier d'un original signé" alors masquer le champ page_mandat_personne:procuration_courrier_description
 
 page page_engagement_operateur
 
@@ -291,14 +291,6 @@ page page_engagement_beneficiaire
 
 page page_pieces_justificatives
 
-    si revenu_fiscal_reference_conjoint est vide alors masquer le champ documents_avis_imposition_conjoint
-
-    si revenu_fiscal_reference_conjoint est égal à 0 alors masquer le champ documents_avis_imposition_conjoint
-
-    si revenu_fiscal_autre est vide alors masquer le champ documents_avis_imposition_autre
-
-    si revenu_fiscal_autre est égal à 0 alors masquer le champ documents_avis_imposition_autre
-
     texte page_pieces_justificatives:intro_textes_obligatoires
 
     fichier* documents_rib
@@ -311,7 +303,15 @@ page page_pieces_justificatives
 
     fichier documents_avis_imposition_conjoint
 
+    si revenu_fiscal_reference_conjoint est vide alors masquer le champ documents_avis_imposition_conjoint
+
+    si revenu_fiscal_reference_conjoint est égal à 0 alors masquer le champ documents_avis_imposition_conjoint
+
     fichier documents_avis_imposition_autre
+
+    si revenu_fiscal_autre est vide alors masquer le champ documents_avis_imposition_autre
+
+    si revenu_fiscal_autre est égal à 0 alors masquer le champ documents_avis_imposition_autre
 
     fichier* documents_devis_detailles
         aide à la saisie documents_devis_detailles_aide

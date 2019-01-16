@@ -72,25 +72,25 @@ page page_eligibilite
 
 page page_complement_info
    
-    si proprietaire_bailleur est égal à "Indivisition" alors masquer le champ complement_info_proprietaire_bailleur_sci_nom
-
-    si proprietaire_bailleur est égal à "Indivisition" alors masquer le champ complement_info_proprietaire_bailleur_sci_adresse
-
-    si proprietaire_bailleur n'est pas égal à "Indivisition" alors masquer le champ complement_info_proprietaire_bailleur_indivision_nom
-
-    si proprietaire_bailleur n'est pas égal à "Indivisition" alors masquer le champ complement_info_proprietaire_bailleur_indivision_adresse
-
     texte page_complement_info:intro_textes_obligatoires
 
     titre proprietaire_bailleur_titre
 
     champ_texte complement_info_proprietaire_bailleur:sci_nom
+
+    si proprietaire_bailleur est égal à "Indivisition" alors masquer le champ complement_info_proprietaire_bailleur:sci_nom
     
     champ_texte_long complement_info_proprietaire_bailleur:sci_adresse
+
+    si proprietaire_bailleur est égal à "Indivisition" alors masquer le champ complement_info_proprietaire_bailleur:sci_adresse
     
     champ_texte complement_info_proprietaire_bailleur:indivision_nom
+
+    si proprietaire_bailleur n'est pas égal à "Indivisition" alors masquer le champ complement_info_proprietaire_bailleur:indivision_nom
     
     champ_texte_long complement_info_proprietaire_bailleur:indivision_adresse
+
+    si proprietaire_bailleur n'est pas égal à "Indivisition" alors masquer le champ complement_info_proprietaire_bailleur:indivision_adresse
     
     titre proprietaire_bailleur_tel_titre
     
