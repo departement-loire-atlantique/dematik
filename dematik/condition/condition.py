@@ -9,6 +9,7 @@ class Condition:
             ('CONDITION', 'MESSAGE'),
             ('CONDITION', 'HIDE_PAGE'),
             ('CONDITION', 'HIDE_FIELD'),
+            ('CONDITION', 'PREFILL'),
     ]
 
     def __init__(self, tokens):
@@ -20,6 +21,10 @@ class Condition:
             self.message=tokens[1].value.message
         elif tokens[1].type == 'HIDE_PAGE':
             self.type = "CONDITION_HIDE_PAGE"
+        elif tokens[1].type == 'PREFILL':
+            self.type = "CONDITION_PREFILL"
+            self.prefill_fieldname = tokens[1].value.prefill_fieldname
+            self.prefill_value = tokens[1].value.prefill_value
         else:
             self.type = "CONDITION_HIDE_FIELD"
             self.hidden_fieldname = tokens[1].value.hidden_fieldname
@@ -28,11 +33,21 @@ class Condition:
         return self.type
     
     def protect(self, f, language):
-        if '_var_' in f:
-            return f
-        else:
-            return 'form_var_' + f
+        if 'profil___' in f:
+            f = f.replace('profil___prenom', 'form_user_var_first_name')
+            f = f.replace('profil___nom', 'form_user_var_last_name')
+            f = f.replace('profil___adresse', 'form_user_var_address')
+            f = f.replace('profil___commune', 'form_user_var_city')
+            f = f.replace('profil___courriel', 'form_user_var_email')
+            f = f.replace('profil___telephone_mobile', 'form_user_var_mobile')
+            f = f.replace('profil___telephone_fixe', 'form_user_var_phone')
+            f = f.replace('profil___civilite', 'form_user_var_title')
+            f = f.replace('profil___code_postal', 'form_user_var_zipcode')
 
+        if not '_var_' in f:
+            f = 'form_var_' + f
+        
+        return f
 
     def protect_as_list(self, field, language):
         if language == 'python':
@@ -59,7 +74,23 @@ class Condition:
         if hasattr(self, "hidden_fieldname"):
             return self.hidden_fieldname
         else:
-            raise Exception("Aucun nom de champ pour cette condition")
+            return ""
+
+    def getPrefillFieldname(self):
+        if hasattr(self, "prefill_fieldname"):
+            return self.prefill_fieldname
+        else:
+            return ""
+
+    def getPrefillText(self):
+        python_formula = None
+        if hasattr(self, "prefill_value"):
+            python_formula = self.protect(self.prefill_value, 'python')
+
+        if hasattr(self, "condition"):
+            python_formula += ' if ' + self.condition.build('python') + ' else ""'
+       
+        return python_formula
 
     def __repr__(self):
         return self.build('python')

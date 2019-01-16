@@ -16,13 +16,19 @@ adresse: Adresse
 
 codepostal: Code postal
 
+code_postal: Code postal
+
 commune: Commune
 
 tel_beneficiaire: Téléphone du bénéficiaire
 
 tel_fixe: Téléphone fixe
 
-tel_portable: Téléphone portable
+telephone_fixe: Téléphone fixe
+
+tel_portable: Téléphone mobile
+
+telephone_mobile: Téléphone mobile
 
 beneficiaire: Bénéficiaire
 

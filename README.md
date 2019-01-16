@@ -134,6 +134,27 @@ mandant:nom => Espace de nommage = mandant, libellé = nom
 
 Les espaces de nommages permettent d'utiliser le même libellé plusieurs fois sans pour autant créer d'ambiguité lors de leur utilisateur dans une condition.
 
+
+Pour ajouter un pré-remplissage d'un champ basé sur le profil de l'utilisateur, utiliser la syntaxe suivante :
+
+> si **condition** alors préremplir **code_cham** avec **profil:civilite**
+
+ou 
+
+> préremplir **code_cham** avec **profil:civilite**
+
+Liste des codes pour les valeurs dépendant du profil :
+- profil:civilite : Civilité
+- profil:nom : Nom
+- profil:prenom : Prénom
+- profil:adresse : Adresse (rue et numéro)
+- profil:code_postal : Adresse (code postal)
+- profil:commune : Adresse (commune)
+- profil:courriel : Courriel
+- profil:telephone_mobile : Téléphone mobile
+- profil:telephone_fixe : Téléphone fixe
+
+
 ROADMAP
 -------
 

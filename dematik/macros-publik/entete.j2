@@ -1,3 +1,4 @@
+{%- from "macros-publik/prefill.j2" import prefill with context -%}
 {% macro entete(field_data, type, extra_css_class='', prefill_text='', prefill_formula='', prefill_user='') -%}
     <label>{{ get_text(field_data) }}</label>
     <type>{{ type }}</type>
@@ -12,20 +13,7 @@
     {% if extra_css_class -%}
     <extra_css_class>{{ extra_css_class }}</extra_css_class>
     {% endif -%}
-    <prefill>
-    {% if prefill_text -%}
-        <type>string</type>
-        <value>{{ prefill_text }}</value>
-    {% elif prefill_formula -%}
-        <type>formula</type>
-        <value>{{ prefill_formula }}</value>
-    {% elif prefill_user -%}
-        <type>user</type>
-        <value>{{ prefill_user }}</value>
-    {% else -%}
-        <type>none</type>
-    {% endif -%}
-    </prefill>
+    {{ prefill(field_data, prefill_text, prefill_formula, prefill_user) }}
     {% if condition -%}
     <condition>
         <type>django</type>

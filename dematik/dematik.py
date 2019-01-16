@@ -60,7 +60,7 @@ class Dematik:
 
      # Returns a varname or raise a ValueError
     def get_varname(self, field_data):
-        return field_data.replace(':', '_')
+        return field_data.replace(':', '___')
 
      # Generate ID for form fields using a cache process
     def get_id(self, field_data=None):
@@ -108,6 +108,9 @@ class Dematik:
 
         # form fields (XML)
         self.form_fields_as_xml = ""
+
+        # form prefill
+        self.env.globals["prefill_formulas"] = {}
 
         # current page (buffer)
         self.current_page = None
@@ -176,7 +179,7 @@ class Dematik:
 
             for current_page_field in self.current_page_fields:
                 current_page_fielddata = current_page_field["t"]
-                conds = [c for c in self.current_page_field_conditions if c.getHiddenFieldname() == current_page_fielddata[1]]
+                conds = [c for c in self.current_page_field_conditions if c.getHiddenFieldname().replace('___', ':') in current_page_fielddata]
                 self.env.globals["condition"] = self.merge_and_invert_conditions(conds, 'django')
                 self.env.globals["hint"] = current_page_field["hint"]
                 self.env.globals["extra_css_class"] = ""
@@ -205,7 +208,7 @@ class Dematik:
 
             return True
 
-        if tokens[0] == 'si':
+        if tokens[0] == 'si' or tokens[0] == 'préremplir':
             c = condition.ConditionParser()
             cond = c.parse(' '.join(tokens))
 
@@ -213,9 +216,11 @@ class Dematik:
                 self.current_page_post_conditions += [cond]
             elif cond.type == 'CONDITION_HIDE_PAGE':
                 self.current_page_conditions += [cond]
-            elif cond.type == 'CONDITION_HIDE_FIELD':
+            elif cond.type == 'CONDITION_HIDE_FIELD' :
                 self.current_page_field_conditions += [cond]
-
+            elif cond.type == 'PREFILL' or cond.type == "CONDITION_PREFILL" :
+                self.env.globals["prefill_formulas"][cond.getPrefillFieldname()] = cond.getPrefillText() 
+            
             return True
 
         if ' '.join(tokens[0:4]) == 'aide à la saisie':

@@ -16,6 +16,7 @@ from condition_message import ConditionMessage
 from condition_operator import ConditionOperator
 from condition_string import ConditionString
 from condition_startwith import ConditionStartWith
+from condition_prefill import ConditionPrefill
 from condition_token import Token
 
 condition_classes = [
@@ -29,6 +30,7 @@ condition_classes = [
     ConditionOperator,
     ConditionString,
     ConditionStartWith,
+    ConditionPrefill,
 ]
 
 # ConditionParser allows to parse a condition as "french text" and
@@ -73,7 +75,7 @@ class ConditionParser:
            
             # Namepace support
             if kind == 'FIELDNAME':
-                value = value.replace(':', '_')
+                value = value.replace(':', '___')
 
             # Ignore stop words
             if not 'STOP_WORD' in kind :
