@@ -16,14 +16,13 @@ page page_eligibilite
 
     si annee_de_construction contient "Depuis" alors afficher le message MSG_NONEL_ANNEECONSTRUCTION
     
-    # TODO les 4 critères suivants font planter l'importation du formulaire
-    #si logement_insa_coef est inférieur à 30 alors afficher le message MSG_NONEL_COEFINSAFAIBLE
+    si logement_insa_coef est inférieur à 30 alors afficher le message MSG_NONEL_COEFINSAFAIBLE
 
-    #si logement_insa_coef est supérieur à 100 alors afficher le message MSG_ELIGI_COEFINSA
+    si logement_insa_coef est supérieur à 100 alors afficher le message MSG_ELIGI_COEFINSA
 
-    #si logement_insa_gain_energetique est inférieur à 0 alors afficher le message MSG_ELIGI_GAINENERG
+    si logement_insa_gain_energetique est inférieur à 0 alors afficher le message MSG_ELIGI_GAINENERG
 
-    #si logement_insa_gain_energetique est supérieur à 100 alors afficher le message MSG_ELIGI_GAINENERG
+    si logement_insa_gain_energetique est supérieur à 100 alors afficher le message MSG_ELIGI_GAINENERG
 
     si travaux_a_engager_insa est égal à "Non" alors afficher le message MSG_NONEL_TRAVAUXANAH
 
