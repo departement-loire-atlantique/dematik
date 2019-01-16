@@ -26,7 +26,7 @@ page page_eligibilite
 
     si eligibilite_beneficiaire_compensation_handicap est égal à "Non" alors afficher le message MSG_NONEL_NONPH
 
-    #si beneficiaire:codepostal ne commence pas par "44" alors afficher le message MSG_NONEL_HABITANTDELA
+    si beneficiaire:codepostal ne commence pas par "44" alors afficher le message MSG_NONEL_HABITANTDELA
 
     si travaux_a_engager_ascenceur_ph est vide et travaux_a_engager_unite_vie_complete_ph est vide et travaux_a_engager_extension_ph est vide et travaux_a_engager_unite_vie_complete_texte_ph est vide alors afficher le message MSG_ELIGI_TRAVAUXPA
 

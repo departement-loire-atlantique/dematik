@@ -26,7 +26,7 @@ page page_eligibilite
 
     si travaux_a_engager_insa est égal à "Non" alors afficher le message MSG_NONEL_TRAVAUXANAH
 
-    #si beneficiaire:codepostal ne commence pas par "44" alors afficher le message MSG_NONEL_HABITANTDELA
+    si beneficiaire:codepostal ne commence pas par "44" alors afficher le message MSG_NONEL_HABITANTDELA
 
     texte page_eligibilite:intro_textes_obligatoires
 

@@ -26,7 +26,7 @@ page page_eligibilite
 
     si travaux_gain_energetique est égal à "Non" alors afficher le message MSG_NONEL_GAINENER
 
-    #si beneficiaire:codepostal ne commence pas par "44" alors afficher le message MSG_NONEL_HABITANTDELA
+    si logement_a_modifier:codepostal ne commence pas par "44" alors afficher le message MSG_NONEL_LOCATIONENLA
 
     texte page_eligibilite:intro_textes_obligatoires
 
@@ -46,7 +46,9 @@ page page_eligibilite
 
     titre logement_a_modifier
 
-    champ_texte_long adresse_logement_locatif
+    adresse* logement_a_modifier:adresse_logement_locatif logement_a_modifier:codepostal logement_a_modifier:commune
+
+    code_postal
 
     annee_avant_depuis* annee_de_construction 15
 

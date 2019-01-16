@@ -26,7 +26,7 @@ page page_eligibilite
 
     si eligibilite_beneficiaire_retraite est égal à "Oui" alors afficher le message MSG_NONEL_CAISSERETRAITE
 
-    #si beneficiaire:codepostal ne commence pas par "44" alors afficher le message MSG_NONEL_HABITANTDELA
+    si beneficiaire:codepostal ne commence pas par "44" alors afficher le message MSG_NONEL_HABITANTDELA
 
     si travaux_a_engager_ascenceur_pa est vide et travaux_a_engager_amenagement_pa est vide et travaux_a_engager_passage_pa est vide et travaux_a_engager_extension_pa est vide alors afficher le message MSG_ELIGI_TRAVAUXPA
 
