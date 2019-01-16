@@ -125,11 +125,10 @@ type_proprietaire_aide: >
   Si le bénéficiaire n'est ni l'un ni l'autre, nous vous invitons à rechercher ici un opérateur qui étudiera les 
   autres sources éventuelles de financement mobilisables.
 
-# TODO lien [ici]
 qui_saisit_comment: >
   ll est conseillé de passer par un opérateur, afin de bénéficier d'informations complètes sur les aides mobilisables 
   et de faciliter toutes vos démarches. Dans certains territoires l'accompagnement est gratuit pour les particuliers. 
-  Pour savoir quel opérateur vous pouvez contacter, cliquez [ici](#).
+  Pour savoir quel opérateur vous pouvez contacter, [cliquez ici](https://www.loire-atlantique.fr/demarches-aides-habitat-recherche-operateur).
 
 eligibilite_beneficiaire_apa:
   Bénéficiaire de l'Aide Personnalisée d'Autonomie (APA):
@@ -601,10 +600,9 @@ procuration_sms_description: >
 
   La saisie de ce code est à faire à l'issue de la validation du présent formulaire, après la saisie du code du mandant. Ce code est indispensable pour que le dossier soit instruit.
 
-# TODO lien [ici]
 procuration_courrier_description: >
 
-  Le document à imprimer permettant de donner procuration est accessible [ici](#)
+  Le document à imprimer permettant de donner procuration est [accessible ici](https://www.loire-atlantique.fr/demarches-aides-habitat-modele-procuration)
   
   Il est à retourner sous un mois, complété et signé par les deux parties à l'adresse suivante :
 
@@ -672,8 +670,7 @@ engagement_operateur:
   En tant qu'opérateur, en validant ce formulaire, je deviens responsable des informations qui y sont saisies:
     - Je m'engage à pouvoir fournir au Département la preuve de l'accord du bénéficiaire en cas de contrôle
 
-# TODO lien [ici]
-engagement_operateur_modele_accord: Vous pouvez télécharger un modèle d'accord du bénéficiaire [ici](#)
+engagement_operateur_modele_accord: Vous pouvez télécharger un modèle d'accord du bénéficiaire [en cliquant ici](https://www.loire-atlantique.fr/demarches-aides-habitat-modele-accord-beneficiaire)
 
 MSG_ENGAGEMENT: Vous devez lire cette page puis cocher la case d'engagement pour pouvoir continuer.
 
