@@ -47,6 +47,10 @@ page_plan_financement: Plan de financement prévisionnel
 
 page_procuration: Procuration pour la perception des fonds
 
+page_mandat_organisme: Mandat
+
+page_mandat_personne: Mandat
+
 page_engagement_operateur: Engagement
 
 page_engagement_beneficiaire: Engagement
@@ -559,15 +563,14 @@ rappel_beneficiaire_nom: >
 
 procuration_donne_mandat_titre: Donne Mandat
 
-procuration_donne_mandat_personne_sous_titre: À une personne
+procuration_donne_mandat_list:
+  Mandat à:
+  - Un organisme ou un opérateur
+  - Une personne 
 
-procuration_donne_mandat_personne_texte: >
-  Si mandat à une personne, merci de renseigner les informations de civilité, nom et prénom.
+procuration_donne_mandat_personne_sous_titre: Donne Mandat à une personne
 
-procuration_donne_mandat_organisme_sous_titre: À un organisme ou un opérateur
-
-procuration_donne_mandat_organisme_texte: >
-  Si mandat à un organisme ou un opérateur, merci de renseigner le nom de l'organisme ou de l'opérateur et le nom du référent et l'adresse.
+procuration_donne_mandat_organisme_sous_titre: Donne Mandat à un organisme ou un opérateur
 
 procuration_nom_organisme: Nom de l'organisme ou de l'opérateur
 

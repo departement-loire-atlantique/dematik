@@ -176,12 +176,6 @@ page page_procuration
 
     si procuration_perception_subventions est égal à "Le bénéficiaire ne fait pas de procuration" alors masquer cette page
 
-    si procuration_perception_subventions n'est pas égal à "Le bénéficiaire fait une procuration en ligne validée par SMS" alors masquer le champ procuration_sms_telephone
-
-    si procuration_perception_subventions n'est pas égal à "Le bénéficiaire fait une procuration en ligne validée par SMS" alors masquer le champ procuration_sms_description
-
-    si procuration_perception_subventions n'est pas égal à "Le bénéficiaire fait une procuration papier validée par l'envoi d'un courrier d'un original signé" alors masquer le champ procuration_courrier_description
-
     si qui_saisit_list est égal à "Un opérateur" alors masquer le champ procuration_referent_organisme
 
     texte page_procuration:intro_textes_obligatoires
@@ -214,32 +208,60 @@ page page_procuration
 
     titre procuration_donne_mandat_titre
 
-    sous_titre procuration_donne_mandat_organisme_sous_titre
+    liste* procuration_donne_mandat_list
 
-    texte procuration_donne_mandat_organisme_texte
+page page_mandat_organisme
 
-    champ_texte procuration_nom_organisme
+    si procuration_donne_mandat_list n'est pas égal à "Un organisme ou un opérateur" alors masquer cette page
 
-    champ_texte procuration_referent_organisme
+    si procuration_perception_subventions n'est pas égal à "Le bénéficiaire fait une procuration en ligne validée par SMS" alors masquer le champ page_mandat_organisme:procuration_sms_telephone
 
-    adresse organisme:adresse organisme:codepostal organisme:commune
+    si procuration_perception_subventions n'est pas égal à "Le bénéficiaire fait une procuration en ligne validée par SMS" alors masquer le champ page_mandat_organisme:procuration_sms_description
 
-    sous_titre procuration_donne_mandat_personne_sous_titre
+    si procuration_perception_subventions n'est pas égal à "Le bénéficiaire fait une procuration papier validée par l'envoi d'un courrier d'un original signé" alors masquer le champ page_mandat_organisme:procuration_courrier_description
 
-    texte procuration_donne_mandat_personne_texte
+    texte page_mandat_organisme:intro_textes_obligatoires
 
-    nom_prenom_civilite mandant:nom mandant:prenom mandat:civilite
+    titre procuration_donne_mandat_organisme_sous_titre
+
+    champ_texte* procuration_nom_organisme
+
+    champ_texte* procuration_referent_organisme
+
+    champ_texte* page_mandat_organisme:procuration_sms_telephone
+
+    adresse* organisme:adresse organisme:codepostal organisme:commune
+
+    texte page_mandat_organisme:procuration_sms_description
+
+    texte page_mandat_organisme:procuration_courrier_description
+
+page page_mandat_personne
+
+    si procuration_donne_mandat_list n'est pas égal à "Une personne" alors masquer cette page
+
+    si procuration_perception_subventions n'est pas égal à "Le bénéficiaire fait une procuration en ligne validée par SMS" alors masquer le champ page_mandat_personne:procuration_sms_telephone
+
+    si procuration_perception_subventions n'est pas égal à "Le bénéficiaire fait une procuration en ligne validée par SMS" alors masquer le champ page_mandat_personne:procuration_sms_description
+
+    si procuration_perception_subventions n'est pas égal à "Le bénéficiaire fait une procuration papier validée par l'envoi d'un courrier d'un original signé" alors masquer le champ page_mandat_personne:procuration_courrier_description
+
+    texte page_mandat_personne:intro_textes_obligatoires
+
+    titre procuration_donne_mandat_personne_sous_titre
+
+    nom_prenom_civilite* mandant:nom mandant:prenom mandat:civilite
 
     champ_texte procuration:qualite
         aide à la saisie qualite_aide
 
-    adresse mandant:adresse mandant:codepostal mandant:commune
+    champ_texte* page_mandat_personne:procuration_sms_telephone
 
-    champ_texte procuration_sms_telephone
+    adresse* mandant:adresse mandant:codepostal mandant:commune
 
-    texte procuration_sms_description
+    texte page_mandat_personne:procuration_sms_description
 
-    texte procuration_courrier_description
+    texte page_mandat_personne:procuration_courrier_description
 
 page page_engagement_operateur
 
