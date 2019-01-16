@@ -9,8 +9,8 @@ class ConditionNamespaceTest(ConditionParserTester):
             si namespace:x1 est vide alors afficher le message m1
             ''', 'm1',
             [
-                (True,  {'form_var_namespace_x1': ""     }),
-                (False, {'form_var_namespace_x1': "a"    }),
+                (True,  {'form_var_namespace___x1': ""     }),
+                (False, {'form_var_namespace___x1': "a"    }),
             ]
         )
 
@@ -19,8 +19,8 @@ class ConditionNamespaceTest(ConditionParserTester):
             si namespace_under:x1_under est vide alors afficher le message m1
             ''', 'm1',
             [
-                (True,  {'form_var_namespace_under_x1_under': ""     }),
-                (False, {'form_var_namespace_under_x1_under': "a"    }),
+                (True,  {'form_var_namespace_under___x1_under': ""     }),
+                (False, {'form_var_namespace_under___x1_under': "a"    }),
             ]
         )
         

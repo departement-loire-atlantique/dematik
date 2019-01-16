@@ -5,16 +5,19 @@ class ConditionStartWith(Condition):
 
     tokens = [ 
            ('STARTWITH',   r'commence par'),
+           ('NOT_STARTWITH',   r'ne commence pas par'),
         ]
 
     sentences = [ 
-           ('FIELDNAME', 'STARTWITH', 'VALUE'), 
+           ('FIELDNAME', 'STARTWITH', 'VALUE'),
+           ('FIELDNAME', 'NOT_STARTWITH', 'VALUE'),
     ]
 
     def __init__(self, sentence_tokens):
         self.type = 'CONDITION'
 
         self.field = sentence_tokens[0].value
+        self.subtype = sentence_tokens[1].type
         self.operand = sentence_tokens[2].value
             
     def build(self, language):
@@ -22,11 +25,13 @@ class ConditionStartWith(Condition):
 
         if language == 'python':
             isstr = ' if ' + field + ' and isinstance(' + field + ', str) else False'
-            return field + '.startswith(' + self.operand + ')' + isstr
+            isnot = 'not (' if self.subtype == 'NOT_STARTWITH' else '('
+            return isnot + field + '.startswith(' + self.operand + ')' + isstr + ')'
         
         elif language == 'django':
             s_op = str(len(self.operand)-2)
-            return field + "|make_list|slice:':" + s_op + ":'|join:'' == " + self.operand
+            equals_or_not_equals = '==' if self.subtype == 'STARTWITH' else '!='
+            return field + "|make_list|slice:':" + s_op + ":'|join:'' " + equals_or_not_equals + " " + self.operand
 
         else:
             raise('not implemented')
