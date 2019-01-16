@@ -26,9 +26,7 @@ page page_eligibilite
 
     si travaux_gain_energetique est égal à "Non" alors afficher le message MSG_NONEL_GAINENER
 
-    # TODO 12948 : si beneficiaire_codepostal ne commence pas par "44" alors afficher le message MSG_NONEL_HABITANTDELA
-
-    # TODO 12948 : si revenus supérieur au barème de ressources modestes alors afficher le message MSG_NONEL_REVENUMODESTE
+    #si beneficiaire:codepostal ne commence pas par "44" alors afficher le message MSG_NONEL_HABITANTDELA
 
     texte page_eligibilite:intro_textes_obligatoires
 
