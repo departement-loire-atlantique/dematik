@@ -28,7 +28,7 @@ page page_eligibilite
 
     si beneficiaire:codepostal ne commence pas par "44" alors afficher le message MSG_NONEL_HABITANTDELA
 
-    si travaux_a_engager_ascenceur_ph est vide et travaux_a_engager_unite_vie_complete_ph est vide et travaux_a_engager_extension_ph est vide et travaux_a_engager_unite_vie_complete_texte_ph est vide alors afficher le message MSG_ELIGI_TRAVAUXPA
+    si travaux_a_engager_ascenceur_ph est vide et travaux_a_engager_unite_vie_complete_ph est vide et travaux_a_engager_extension_ph est vide et travaux_a_engager_unite_vie_complete_texte_ph est vide alors afficher le message MSG_ELIGI_TRAVAUX
 
     texte page_eligibilite:intro_textes_obligatoires
 
