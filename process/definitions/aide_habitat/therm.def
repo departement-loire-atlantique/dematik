@@ -48,8 +48,6 @@ page page_eligibilite
 
     adresse* logement_a_modifier:adresse_logement_locatif logement_a_modifier:codepostal logement_a_modifier:commune
 
-    code_postal
-
     annee_avant_depuis* annee_de_construction 15
 
     liste* subvention_obtenue
