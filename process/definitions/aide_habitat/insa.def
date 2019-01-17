@@ -61,6 +61,8 @@ page page_eligibilite
 
     liste* travaux_a_engager_insa
 
+    texte travaux_a_engager_texte_moteur_recherche_operateur_insa
+
     champ_texte_long travaux_complement_informations
 
     titre ressources_occupant

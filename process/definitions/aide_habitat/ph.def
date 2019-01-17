@@ -62,6 +62,8 @@ page page_eligibilite
 
     texte travaux_a_engager_texte
 
+    texte travaux_a_engager_texte_moteur_recherche_operateur
+
     liste_choix_multiple travaux_a_engager_ascenceur_ph
 
     liste_choix_multiple travaux_a_engager_unite_vie_complete_ph

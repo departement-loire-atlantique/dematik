@@ -96,11 +96,11 @@ qui_saisit_list:
     - Le bénéficiaire ou un de ses proches
     - Un opérateur
 
-# TODO lien "cliquez ici"
 qui_saisit_conseil: >
   ll est conseillé de passer par un opérateur, afin de bénéficier d'informations complètes sur les aides 
   mobilisables et de faciliter toutes vos démarches. Dans certains territoires l'accompagnement est gratuit 
-  pour les particuliers. Pour savoir quel opérateur vous pouvez contacter, cliquez ici.
+  pour les particuliers. Pour savoir quel opérateur vous pouvez contacter, 
+  [cliquez ici](https://www.loire-atlantique.fr/demarches-aides-habitat-recherche-operateur).
 
 # 2.2 Page « Préambule aide exceptionnelle » 
 # --------------------------------------------------
@@ -181,7 +181,17 @@ travaux_a_engager_titre: Travaux à engager
 
 travaux_a_engager_texte: >
   Les travaux (pose et fourniture) seront effectués par des professionnels du bâtiment inscrits soit au registre du commerce, 
-  soit au registre des métiers. 
+  soit au registre des métiers.
+
+travaux_a_engager_texte_moteur_recherche_operateur: >
+  Si aucun des travaux listés ci-dessous ne correspond à vos projets, nous vous invitons à utiliser le moteur de recherche 
+  [(cliquez ici)](https://www.loire-atlantique.fr/demarches-aides-habitat-recherche-operateur) 
+  pour connaître le nom d'un opérateur qui étudiera les autres sources éventuelles de financement mobilisables.
+
+travaux_a_engager_texte_moteur_recherche_operateur_insa: >
+  Si aucun des travaux éligibles de l'ANAH ne correspond à vos projets, nous vous invitons à utiliser le moteur de recherche 
+  [(cliquez ici)](https://www.loire-atlantique.fr/demarches-aides-habitat-recherche-operateur) 
+  pour connaître le nom d'un opérateur qui étudiera les autres sources éventuelles de financement mobilisables.
 
 travaux_a_engager_insa:
   Les travaux pour lesquels l’aide est demandée sont-ils dans la liste des travaux éligibles de l’ANAH:
@@ -237,16 +247,11 @@ travaux_a_engager_extension_ph:
     
 travaux_complement_informations: Complément d'informations sur les travaux
 
-MSG_ELIGI_TRAVAUXPA: >
+MSG_ELIGI_TRAVAUX: >
   Attention, vous devez sélectionner les travaux que vous envisagez parmi la liste des travaux proposés. 
   L'aide ne peut être accordée que pour des travaux appartenant à cette liste. 
-  Si aucun ne correspond à vos projets, nous vous invitons à utiliser le moteur de recherche (cliquez ici) 
-  pour connaître le nom d'un opérateur qui étudiera les autres sources éventuelles de financement mobilisables.
-
-MSG_ELIGI_TRAVAUXPH: >
-  Attention, vous devez sélectionner les travaux que vous envisagez parmi la liste des travaux proposés. 
-  L'aide ne peut être accordée que pour des travaux appartenant à cette liste. 
-  Si aucun ne correspond à vos projets, nous vous invitons à utiliser le moteur de recherche (cliquez ici) 
+  Si aucun ne correspond à vos projets, nous vous invitons à utiliser le moteur de recherche 
+  (https://www.loire-atlantique.fr/demarches-aides-habitat-recherche-operateur) 
   pour connaître le nom d'un opérateur qui étudiera les autres sources éventuelles de financement mobilisables.
 
 MSG_ELIGI_COEFINSA: Le coefficient d'insalubrité doit être compris entre 0 et 100
