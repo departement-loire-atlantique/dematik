@@ -38,7 +38,7 @@ page page_eligibilite
     
     courriel courriel
     
-    champ_texte_long* adresse
+    adresse* beneficiaire:adresse beneficiaire:codepostal beneficiaire:commune
 
     titre logement
 
