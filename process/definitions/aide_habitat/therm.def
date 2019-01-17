@@ -40,9 +40,9 @@ page page_eligibilite
 
     adresse* beneficiaire:adresse beneficiaire:codepostal beneficiaire:commune
 
-    liste proprietaire_bailleur
+    liste* proprietaire_bailleur
 
-    liste engagement_proprietaire
+    liste* engagement_proprietaire
 
     titre logement_a_modifier
 
@@ -65,8 +65,9 @@ page page_eligibilite
     liste* travaux_eligibles_anah
 
     liste* travaux_gain_energetique
+        aide à la saisie travaux_gain_energetique_aide
 
-    champ_texte_long travaux_complement_informations
+    champ_texte_long travaux_description
 
 page page_complement_info
    
@@ -76,19 +77,19 @@ page page_complement_info
 
     champ_texte complement_info_proprietaire_bailleur:sci_nom
 
-    si proprietaire_bailleur est égal à "Indivisition" alors masquer le champ complement_info_proprietaire_bailleur:sci_nom
+    si proprietaire_bailleur est égal à "Indivision" alors masquer le champ complement_info_proprietaire_bailleur:sci_nom
     
     champ_texte_long complement_info_proprietaire_bailleur:sci_adresse
 
-    si proprietaire_bailleur est égal à "Indivisition" alors masquer le champ complement_info_proprietaire_bailleur:sci_adresse
+    si proprietaire_bailleur est égal à "Indivision" alors masquer le champ complement_info_proprietaire_bailleur:sci_adresse
     
     champ_texte complement_info_proprietaire_bailleur:indivision_nom
 
-    si proprietaire_bailleur n'est pas égal à "Indivisition" alors masquer le champ complement_info_proprietaire_bailleur:indivision_nom
+    si proprietaire_bailleur n'est pas égal à "Indivision" alors masquer le champ complement_info_proprietaire_bailleur:indivision_nom
     
     champ_texte_long complement_info_proprietaire_bailleur:indivision_adresse
 
-    si proprietaire_bailleur n'est pas égal à "Indivisition" alors masquer le champ complement_info_proprietaire_bailleur:indivision_adresse
+    si proprietaire_bailleur n'est pas égal à "Indivision" alors masquer le champ complement_info_proprietaire_bailleur:indivision_adresse
     
     titre proprietaire_bailleur_tel_titre
     
@@ -98,9 +99,7 @@ page page_complement_info
 
     liste proprietaire_bailleur_typologie_list
 
-    champ_texte proprietaire_bailleur_type_appartement
-
-    champ_texte_long travaux_description
+    liste_deroulante proprietaire_bailleur_type_appartement_list
 
     # Messages d'erreurs
 

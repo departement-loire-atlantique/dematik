@@ -194,9 +194,9 @@ travaux_a_engager_texte_moteur_recherche_operateur_insa: >
   pour connaître le nom d'un opérateur qui étudiera les autres sources éventuelles de financement mobilisables.
 
 travaux_a_engager_insa:
-  Les travaux pour lesquels l’aide est demandée sont-ils dans la liste des travaux éligibles de l’ANAH:
-    - Oui
-    - Non
+  Les travaux pour lesquels l'aide est demandée sont-ils de type:
+    - Rénovation complète du logement dans le cadre d’une « grande insalubrité » (selon l'Anah)
+    - Travaux de mise aux norme dans le cadre d’une « petite insalubrité » (selon l'Anah)
 
 travaux_a_engager_ascenceur_pa: 
   Ascenseur / Monte personne:
@@ -254,6 +254,13 @@ MSG_ELIGI_TRAVAUX: >
   (https://www.loire-atlantique.fr/demarches-aides-habitat-recherche-operateur) 
   pour connaître le nom d'un opérateur qui étudiera les autres sources éventuelles de financement mobilisables.
 
+MSG_ELIGI_TRAVAUX_INSA: >
+  Attention, vous devez sélectionner le type de travaux que vous envisagez parmi la liste des travaux proposés. 
+  L'aide ne peut être accordée que pour des travaux appartenant à cette liste. 
+  Si aucun ne correspond à vos projets, nous vous invitons à utiliser le moteur de recherche 
+  (https://www.loire-atlantique.fr/demarches-aides-habitat-recherche-operateur) 
+  pour connaître le nom d’un opérateur qui étudiera les autres sources éventuelles de financement mobilisables.
+
 MSG_ELIGI_COEFINSA: Le coefficient d'insalubrité doit être compris entre 0 et 100
 
 MSG_ELIGI_GAINENERG: Le gain énergétique doit être compris entre 0 et 100
@@ -264,50 +271,27 @@ rapport_situation: Rapport de situation
 
 travaux_preconises: Travaux préconisés dans le rapport de l'ergothérapeute 
 
-nature_travaux_1: Nature des travaux
+travaux_preconises_titre_1: Travaux préconisés 1
 
-couts_ht_1: Coûts HT
+travaux_preconises_titre_2: Travaux préconisés 2
 
-amenagement_prioritaire_1:
+travaux_preconises_titre_3: Travaux préconisés 3
+
+travaux_preconises_titre_4: Travaux préconisés 4
+
+travaux_preconises_titre_5: Travaux préconisés 5
+
+nature_travaux: Nature des travaux
+
+couts_ht: Coûts HT
+
+amenagement_prioritaire:
   Aménagement prioritaire:
     - Oui
     - Non
 
-nature_travaux_2: Nature des travaux
-
-couts_ht_2: Coûts HT
-
-amenagement_prioritaire_2:
-  Aménagement prioritaire:
-    - Oui
-    - Non
-
-nature_travaux_3: Nature des travaux
-
-couts_ht_3: Coûts HT
-
-amenagement_prioritaire_3:
-  Aménagement prioritaire:
-    - Oui
-    - Non
-
-nature_travaux_4: Nature des travaux
-
-couts_ht_4: Coûts HT
-
-amenagement_prioritaire_4:
-  Aménagement prioritaire:
-    - Oui
-    - Non
-
-nature_travaux_5: Nature des travaux
-
-couts_ht_5: Coûts HT
-
-amenagement_prioritaire_5:
-  Aménagement prioritaire:
-    - Oui
-    - Non
+observations_titre: >
+  Observation sur les travaux préconisés par l'ergothérapeute
 
 observations: Observations
 
@@ -359,7 +343,7 @@ MSG_COMPIN_SMS: >
 
 proprietaire_bailleur:
   Propriétaire bailleur:
-    - Société civile immobilière (SCI)
+    - Société civile immobilière (SCI) 
     - Indivision
 
 engagement_proprietaire:
@@ -391,7 +375,11 @@ travaux_gain_energetique:
     - Oui
     - Non
 
-travaux_description: Description des travaux à engager
+travaux_gain_energetique_aide: >
+    Une dérogation en étiquette E après travaux est envisageable uniquement en cas d’impossibilité technique, 
+    qu'il conviendra de justifier.
+
+travaux_description: Description des travaux envisagés
 
 # 2.5 Page « Non éligible »
 # --------------------------------------------------
@@ -480,7 +468,13 @@ proprietaire_bailleur_typologie_list:
     - Maison
     - Appartement
 
-proprietaire_bailleur_type_appartement: Si appartement, précisez le type (T1, T1 bis...)
+proprietaire_bailleur_type_appartement_list:
+  Si appartement, précisez le type (T1, T1 bis...):
+    - T1
+    - T1 bis
+    - T2
+    - T3
+    - T4 et +
 
 MSG_COMPIN_SMS: >
   Le numéro de téléphone portable du bénéficiaire doit obligatoirement être renseigné si vous souhaitez 

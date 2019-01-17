@@ -40,12 +40,6 @@ page page_eligibilite
 
     champ_texte precedent_dossier
 
-    titre travaux_a_engager_titre
-
-    texte travaux_a_engager_texte
-
-    champ_texte_long travaux_complement_informations
-
     titre ressources_occupant
 
     montant* revenu_fiscal_reference_beneficiaire
@@ -65,42 +59,54 @@ page page_rapport_situation
 
     texte travaux_preconises
 
-    champ_texte* nature_travaux_1
+    sous_titre travaux_preconises_titre_1
 
-    champ_texte* couts_ht_1
+    champ_texte_long* travaux_1:nature_travaux
 
-    liste_choix_multiple amenagement_prioritaire_1
+    montant* travaux_1:couts_ht
 
-    champ_texte nature_travaux_2
+    liste* travaux_1:amenagement_prioritaire
 
-    champ_texte couts_ht_2
+    sous_titre travaux_preconises_titre_2
 
-    liste_choix_multiple amenagement_prioritaire_2
+    champ_texte_long travaux_2:nature_travaux
 
-    champ_texte nature_travaux_3
+    montant travaux_2:couts_ht
 
-    champ_texte couts_ht_3
+    liste travaux_2:amenagement_prioritaire
 
-    liste_choix_multiple amenagement_prioritaire_3
+    sous_titre travaux_preconises_titre_3
 
-    champ_texte nature_travaux_4
+    champ_texte_long travaux_3:nature_travaux
 
-    champ_texte couts_ht_4
+    montant travaux_3:couts_ht
 
-    liste_choix_multiple amenagement_prioritaire_4
+    liste travaux_3:amenagement_prioritaire
 
-    champ_texte nature_travaux_5
+    sous_titre travaux_preconises_titre_4
 
-    champ_texte couts_ht_5
+    champ_texte_long travaux_4:nature_travaux
 
-    liste_choix_multiple amenagement_prioritaire_5
+    montant travaux_4:couts_ht
+
+    liste travaux_4:amenagement_prioritaire
+
+    sous_titre travaux_preconises_titre_5
+
+    champ_texte_long travaux_5:nature_travaux
+
+    montant travaux_5:couts_ht
+
+    liste travaux_5:amenagement_prioritaire
+
+    sous_titre observations_titre
 
     champ_texte_long amenagement:observations
 
-    champ_texte_long amenagement:situation_menage
+    champ_texte_tres_long amenagement:situation_menage
         aide à la saisie situation_menage_aide
 
-    champ_texte_long amenagement:recherche_solutions
+    champ_texte_tres_long amenagement:recherche_solutions
         aide à la saisie recherche_solutions_aide
 
 page page_complement_info

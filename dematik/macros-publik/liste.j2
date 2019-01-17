@@ -1,5 +1,5 @@
 {% from "macros-publik/entete.j2" import entete with context -%}
-{% macro liste(field_data, multi=False) %}
+{% macro liste(field_data, multi=False, deroulante=False) %}
 <field>
     {%- if multi %}
     {{ entete(field_data, "items") }}
@@ -12,7 +12,11 @@
     {% endfor -%}
     </items>
     {%- if not multi %}
+        {%- if deroulante %}
+    <show_as_radio>False</show_as_radio>
+        {% else %}
     <show_as_radio>True</show_as_radio>
+        {% endif -%}
     {% endif -%}
     <anonymise>False</anonymise>
     <display_disabled_items>False</display_disabled_items>

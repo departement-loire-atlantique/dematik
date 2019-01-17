@@ -24,7 +24,7 @@ page page_eligibilite
 
     si logement_insa_gain_energetique est supérieur à 100 alors afficher le message MSG_ELIGI_GAINENERG
 
-    si travaux_a_engager_insa est égal à "Non" alors afficher le message MSG_NONEL_TRAVAUXANAH
+    si travaux_a_engager_insa est vide alors afficher le message MSG_ELIGI_TRAVAUX_INSA
 
     si beneficiaire:codepostal ne commence pas par "44" alors afficher le message MSG_NONEL_HABITANTDELA
 
@@ -59,7 +59,7 @@ page page_eligibilite
 
     texte travaux_a_engager_texte
 
-    liste* travaux_a_engager_insa
+    liste_choix_multiple* travaux_a_engager_insa
 
     texte travaux_a_engager_texte_moteur_recherche_operateur_insa
 
