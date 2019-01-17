@@ -251,11 +251,11 @@ page page_mandat_organisme
 
     si qui_saisit_list est égal à "Un opérateur" alors masquer le champ procuration_referent_organisme
 
+    adresse* organisme:adresse organisme:codepostal organisme:commune
+    
     champ_texte* page_mandat_organisme:procuration_sms_telephone
 
     si procuration_perception_subventions n'est pas égal à "Le bénéficiaire fait une procuration en ligne validée par SMS" alors masquer le champ page_mandat_organisme:procuration_sms_telephone
-
-    adresse* organisme:adresse organisme:codepostal organisme:commune
 
     texte page_mandat_organisme:procuration_sms_description
 
@@ -278,11 +278,11 @@ page page_mandat_personne
     champ_texte procuration:qualite
         aide à la saisie qualite_aide
 
+    adresse* mandant:adresse mandant:codepostal mandant:commune
+
     champ_texte* page_mandat_personne:procuration_sms_telephone
 
     si procuration_perception_subventions n'est pas égal à "Le bénéficiaire fait une procuration en ligne validée par SMS" alors masquer le champ page_mandat_personne:procuration_sms_telephone
-
-    adresse* mandant:adresse mandant:codepostal mandant:commune
 
     texte page_mandat_personne:procuration_sms_description
 

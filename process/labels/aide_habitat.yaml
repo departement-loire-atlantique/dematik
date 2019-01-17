@@ -336,7 +336,7 @@ MSG_COMPIN_TELEPHONE: Merci de renseigner au moins un numéro de téléphone.
 
 MSG_COMPIN_SMS: >
   Le numéro de téléphone portable du bénéficiaire doit obligatoirement être renseigné si vous souhaitez 
-  faire une procuration en ligne validée par SMS
+  faire une procuration en ligne validée par SMS.
 
 # 2.4 Page « Éligibilité propriétaire bailleur »
 # --------------------------------------------------
@@ -403,9 +403,12 @@ MSG_NONEL_NONAPA: >
 MSG_NONEL_CAISSERETRAITE: >
   Cette aide n'est pas cumulable avec l'aide accordée par une caisse de retraite pour l'adaptation du logement.
 
-MSG_NONEL_NONPH: >
-  Cette aide est réservée aux personnes pouvant justifier d'un taux d'invalidité de 80% (ou plus) ou qui sont 
-  bénéficiaire de la prestation de compensation du handicap, ce qui n'est pas votre cas. 
+MSG_NONEL_NONPH_INVALIDITE: >
+  Cette aide est réservée aux personnes pouvant justifier d'un taux d'invalidité de 80%, ce qui n'est pas votre cas.
+
+MSG_NONEL_NONPH_PCH: >
+  Cette aide est réservée aux personnes bénéficiaires de la prestation de compensation du handicap, 
+  ce qui n'est pas votre cas.
 
 MSG_NONEL_VERSOPERATEUR: >
   Nous vous conseillons de vous adresser à un opérateur qui vous aidera à trouver une aide adaptée à votre cas.
@@ -475,10 +478,6 @@ proprietaire_bailleur_type_appartement_list:
     - T2
     - T3
     - T4 et +
-
-MSG_COMPIN_SMS: >
-  Le numéro de téléphone portable du bénéficiaire doit obligatoirement être renseigné si vous souhaitez 
-  faire une procuration en ligne validée par SMS
 
 # 2.9 Page « Plan de financement prévisionnel »
 # --------------------------------------------------
