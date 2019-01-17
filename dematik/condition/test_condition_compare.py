@@ -15,6 +15,7 @@ class ConditionCompareTest(ConditionParserTester):
                 (True, {'form_var_x1':"b"  , 'form_var_x2':"b" }), 
                 (False, {'form_var_x1':2  , 'form_var_x2':3 }), 
                 (True, {'form_var_x1':3  , 'form_var_x2':3 }), 
+                (True, {'form_var_x1':"3"  , 'form_var_x2':"3" }),
             ]
         )
 
@@ -29,11 +30,12 @@ class ConditionCompareTest(ConditionParserTester):
         )
 
     def test_equal_number(self):
-        self.check('si x1 est égal à 5 alors afficher le message m1', 'm1',
+        self.check('si x1 est égal à 53 alors afficher le message m1', 'm1',
             [
                 (False, {'form_var_x1':None }),
                 (False, {'form_var_x1':3    }),
-                (True, {'form_var_x1':5    }),
+                (True, {'form_var_x1':53    }),
+                (True, {'form_var_x1':"53"    }),
                 (False, {'form_var_x1':"a"  }), 
             ]
         )
@@ -63,12 +65,13 @@ class ConditionCompareTest(ConditionParserTester):
         )
 
     def test_different_number(self):
-        self.check('si x1 est différent de 5 alors afficher le message m1', 'm1',
+        self.check('si x1 est différent de 53 alors afficher le message m1', 'm1',
             [
-                (True, {'form_var_x1':None }),
-                (True, {'form_var_x1':3    }),
-                (False, {'form_var_x1':5    }),
-                (True, {'form_var_x1':"a"  }), 
+                (True, {'form_var_x1':None  }),
+                (True, {'form_var_x1':3     }),
+                (False, {'form_var_x1':53   }),
+                (False, {'form_var_x1':"53" }),
+                (True, {'form_var_x1':"a"   }), 
             ]
         )
 
@@ -77,33 +80,25 @@ class ConditionCompareTest(ConditionParserTester):
             [
                 (False, {'form_var_x1':None , 'form_var_x2':None}),
                 (False, {'form_var_x1':None , 'form_var_x2':"b" }),
-                (False, {'form_var_x1':3 , 'form_var_x2':"b" }),
+                (False, {'form_var_x1':"3" , 'form_var_x2':"b" }),
                 (False, {'form_var_x1':"a"  , 'form_var_x2':"b" }), 
                 (False, {'form_var_x1':"b"  , 'form_var_x2':"b" }), 
-                (True, {'form_var_x1':"c"  , 'form_var_x2':"b" }), 
-                (False, {'form_var_x1':3  , 'form_var_x2':3 }), 
-                (True, {'form_var_x1':4  , 'form_var_x2':3 }), 
-                (False, {'form_var_x1':2  , 'form_var_x2':3 }), 
-            ]
-        )
-
-    def test_greater_string(self):
-        self.check('si x1 est supérieur à "b" alors afficher le message m1', 'm1',
-            [
-                (False, {'form_var_x1':None }),
-                (False, {'form_var_x1':5    }),
-                (False, {'form_var_x1':"b"  }), 
-                (True, {'form_var_x1':"c"  }), 
+                (False, {'form_var_x1':"c"  , 'form_var_x2':"b" }), 
+                (False, {'form_var_x1':"3" , 'form_var_x2':"3" }), 
+                (True, {'form_var_x1':"41"  , 'form_var_x2':"4" }), 
+                (True, {'form_var_x1':"141"  , 'form_var_x2':"13" }), 
+                (False, {'form_var_x1':"32"  , 'form_var_x2':"111" }), 
             ]
         )
 
     def test_greater_number(self):
         self.check('si x1 est supérieur à 5 alors afficher le message m1', 'm1',
             [
-                (True, {'form_var_x1':"6"  }),
-                (False, {'form_var_x1':3   }),
-                (False, {'form_var_x1':5   }),
-                (True, {'form_var_x1':6    }),
+                (True, {'form_var_x1':"6"    }),
+                (True, {'form_var_x1':"11"   }),
+                (False, {'form_var_x1':"3"   }),
+                (False, {'form_var_x1':"5"   }),
+                (True, {'form_var_x1':"6"    }),
             ]
         )
 
@@ -111,33 +106,27 @@ class ConditionCompareTest(ConditionParserTester):
         self.check('si x1 est inférieur à x2 alors afficher le message m1', 'm1',
             [
                 (False, {'form_var_x1':None , 'form_var_x2':None}),
-                (True, {'form_var_x1':None , 'form_var_x2':"b" }),
-                (True, {'form_var_x1':"a"  , 'form_var_x2':"b" }), 
+                (False, {'form_var_x1':None , 'form_var_x2':"b" }),
+                (False, {'form_var_x1':"3" , 'form_var_x2':"b" }),
+                (False, {'form_var_x1':"a"  , 'form_var_x2':"b" }), 
                 (False, {'form_var_x1':"b"  , 'form_var_x2':"b" }), 
                 (False, {'form_var_x1':"c"  , 'form_var_x2':"b" }), 
-                (False, {'form_var_x1':3  , 'form_var_x2':3 }), 
-                (False, {'form_var_x1':4  , 'form_var_x2':3 }), 
-                (True, {'form_var_x1':2  , 'form_var_x2':3 }), 
-            ]
-        )
-
-    def test_lower_string(self):
-        self.check('si x1 est inférieur à "b" alors afficher le message m1', 'm1',
-            [
-                (True, {'form_var_x1':None }),
-                (True, {'form_var_x1':"a"  }), 
-                (False, {'form_var_x1':"c"  }), 
+                (False, {'form_var_x1':"3" , 'form_var_x2':"3" }), 
+                (False, {'form_var_x1':"41"  , 'form_var_x2':"4" }), 
+                (False, {'form_var_x1':"141"  , 'form_var_x2':"13" }), 
+                (True, {'form_var_x1':"32"  , 'form_var_x2':"111" }), 
+                (True, {'form_var_x1':"2"  , 'form_var_x2':"3" }), 
             ]
         )
 
     def test_lower_number(self):
         self.check('si x1 est inférieur à 5 alors afficher le message m1', 'm1',
             [
-                (False, {'form_var_x1':None }),
-                (True, {'form_var_x1':3     }),
-                (False, {'form_var_x1':5    }),
-                (False, {'form_var_x1':6    }),
-                (False, {'form_var_x1':"a"  }), 
+                (False, {'form_var_x1':"6"    }),
+                (False, {'form_var_x1':"11"   }),
+                (True, {'form_var_x1':"3"   }),
+                (False, {'form_var_x1':"5"   }),
+                (False, {'form_var_x1':"6"    }),
             ]
         )
 
