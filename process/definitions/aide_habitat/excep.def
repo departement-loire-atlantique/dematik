@@ -292,7 +292,7 @@ page page_engagement_operateur
 
     texte page_engagement_operateur:intro_textes_obligatoires
 
-    texte engagement_operateur_texte
+    texte engagement_operateur_texte_aide_exceptionnelle
 
     liste_choix_multiple* engagement_operateur
 
@@ -306,9 +306,9 @@ page page_pieces_justificatives
 
     texte documents_rib_texte
 
-    fichier* documents_apa
+    fichier documents_apa
 
-    fichier* documents_mdph
+    fichier documents_mdph
 
     fichier* documents_diagnostic_ergotherapeute
 
