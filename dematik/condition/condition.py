@@ -62,7 +62,7 @@ class Condition:
         return self.condition.build(language)
 
     def getPythonExpression(self):
-        return Markup(self.build('python'))
+        return Markup(self.build('python').replace("<", "&lt;"))
 
     def getMessage(self):
         if hasattr(self, "message"):

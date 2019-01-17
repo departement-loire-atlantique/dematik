@@ -165,7 +165,7 @@ class Dematik:
                 for cond in conditions:
                     condition = '%s and not %s' % (condition, cond.build(language))
         
-        return Markup(condition)
+        return Markup(condition.replace("<", "&lt;"))
 
     def render_current_form_page(self):
         if self.current_page:
