@@ -1,0 +1,20 @@
+formulaire metadata_title_jmeter
+    url metadata_id_jmeter
+    description metadata_title_jmeter
+    identifiant metadata_id_jmeter
+
+page page_preambule
+
+    champ_texte* nom
+        préremplir nom avec profil:nom
+
+    champ_texte* prenom
+        préremplir prenom avec profil:prenom
+
+    nombre* age
+
+page page_eligibilite
+ 
+    champ_texte* courriel
+        préremplir courriel avec profil:courriel
+
