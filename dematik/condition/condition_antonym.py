@@ -14,15 +14,15 @@ class ConditionAntonym(Condition):
             ('NOT', 'CHECKED'),
     ]
 
+    antonym = {
+            'EMPTY'   : 'FILLED',
+            'EQUAL'   : 'DIFFERENT',
+            'FILLED'  : 'EMPTY',
+            'CHECKED' : 'EMPTY',
+    }
+
     def __init__(self, sentence_tokens):
-        if sentence_tokens[1].type == 'EMPTY':
-            self.type = 'FILLED'
+        self.type = self.antonym[sentence_tokens[1].type]
 
-        if sentence_tokens[1].type == 'EQUAL':
-            self.type = 'DIFFERENT'
-
-        if sentence_tokens[1].type == 'FILLED' or sentence_tokens[1].type == 'CHECKED':
-            self.type = 'EMPTY'
-    
     def build(self, language):
         return self.type
