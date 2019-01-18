@@ -6,30 +6,55 @@
 # Libellés généraux
 # --------------------------------------------------
 
-metadata_name_aide_habitat_pa: Adaptation des logements de personnes âgées
-metadata_url_name_aide_habitat_pa: aide-habitat-pa
+metadata_name_aide_habitat_pa: Adaptation des logements de personnes âgées (BETA)
+metadata_url_name_aide_habitat_pa: aide-habitat-pa-beta
 metadata_description_aide_habitat_pa: description adaptation des logements de personnes âgées
-metadata_internal_identifier_aide_habitat_pa: aide-habitat-pa
+metadata_internal_identifier_aide_habitat_pa: aide-habitat-pa-beta
 
-metadata_name_aide_habitat_ph: Adaptation des logements de personnes en situation de handicap
-metadata_url_name_aide_habitat_ph: aide-habitat-ph
+metadata_name_aide_habitat_ph: Adaptation des logements de personnes en situation de handicap (BETA)
+metadata_url_name_aide_habitat_ph: aide-habitat-ph-beta
 metadata_description_aide_habitat_ph: description adaptation des logements de personnes en situation de handicap
-metadata_internal_identifier_aide_habitat_ph: aide-habitat-ph
+metadata_internal_identifier_aide_habitat_ph: aide-habitat-ph-beta
 
-metadata_name_aide_habitat_insa: Aide pour des travaux de sortie d'insalubrité
-metadata_url_name_aide_habitat_insa: aide-habitat-insalubrite
+metadata_name_aide_habitat_insa: Aide pour des travaux de sortie d'insalubrité (BETA)
+metadata_url_name_aide_habitat_insa: aide-habitat-insalubrite-beta
 metadata_description_aide_habitat_insa: description aide pour des travaux de sortie d'insalubrité
-metadata_internal_identifier_aide_habitat_insa: aide-habitat-insalubrite
+metadata_internal_identifier_aide_habitat_insa: aide-habitat-insalubrite-beta
 
-metadata_name_aide_habitat_excep: Aide exceptionnelle pour l'adaptation des logements
-metadata_url_name_aide_habitat_excep: aide-habitat-exceptionnelle
+metadata_name_aide_habitat_excep: Aide exceptionnelle pour l'adaptation des logements (BETA)
+metadata_url_name_aide_habitat_excep: aide-habitat-exceptionnelle-beta
 metadata_description_aide_habitat_excep: description aide exceptionnelle pour l'adaptation des logements
-metadata_internal_identifier_aide_habitat_excep: aide-habitat-exceptionnelle
+metadata_internal_identifier_aide_habitat_excep: aide-habitat-exceptionnelle-beta
 
-metadata_name_aide_habitat_therm: Aide à l'amélioration thermique de logements locatifs conventionnés privés
-metadata_url_name_aide_habitat_therm: aide-habitat-thermique
+metadata_name_aide_habitat_therm: Aide à l'amélioration thermique de logements locatifs conventionnés privés (BETA)
+metadata_url_name_aide_habitat_therm: aide-habitat-thermique-beta
 metadata_description_aide_habitat_therm: description aide à l'amélioration thermique de logements locatifs conventionnés privés
-metadata_internal_identifier_aide_habitat_therm: aide-habitat-thermique
+metadata_internal_identifier_aide_habitat_therm: aide-habitat-thermique-beta
+
+# metadata_name_aide_habitat_pa: Adaptation des logements de personnes âgées
+# metadata_url_name_aide_habitat_pa: aide-habitat-pa
+# metadata_description_aide_habitat_pa: description adaptation des logements de personnes âgées
+# metadata_internal_identifier_aide_habitat_pa: aide-habitat-pa
+
+# metadata_name_aide_habitat_ph: Adaptation des logements de personnes en situation de handicap
+# metadata_url_name_aide_habitat_ph: aide-habitat-ph
+# metadata_description_aide_habitat_ph: description adaptation des logements de personnes en situation de handicap
+# metadata_internal_identifier_aide_habitat_ph: aide-habitat-ph
+
+# metadata_name_aide_habitat_insa: Aide pour des travaux de sortie d'insalubrité
+# metadata_url_name_aide_habitat_insa: aide-habitat-insalubrite
+# metadata_description_aide_habitat_insa: description aide pour des travaux de sortie d'insalubrité
+# metadata_internal_identifier_aide_habitat_insa: aide-habitat-insalubrite
+
+# metadata_name_aide_habitat_excep: Aide exceptionnelle pour l'adaptation des logements
+# metadata_url_name_aide_habitat_excep: aide-habitat-exceptionnelle
+# metadata_description_aide_habitat_excep: description aide exceptionnelle pour l'adaptation des logements
+# metadata_internal_identifier_aide_habitat_excep: aide-habitat-exceptionnelle
+
+# metadata_name_aide_habitat_therm: Aide à l'amélioration thermique de logements locatifs conventionnés privés
+# metadata_url_name_aide_habitat_therm: aide-habitat-thermique
+# metadata_description_aide_habitat_therm: description aide à l'amélioration thermique de logements locatifs conventionnés privés
+# metadata_internal_identifier_aide_habitat_therm: aide-habitat-thermique
 
 page_preambule: Préambule
 
@@ -97,10 +122,10 @@ qui_saisit_list:
     - Un opérateur
 
 qui_saisit_conseil: >
-  ll est conseillé de passer par un opérateur, afin de bénéficier d'informations complètes sur les aides 
-  mobilisables et de faciliter toutes vos démarches. Dans certains territoires l'accompagnement est gratuit 
-  pour les particuliers. Pour savoir quel opérateur vous pouvez contacter, 
-  [cliquez ici](https://www.loire-atlantique.fr/demarches-aides-habitat-recherche-operateur).
+  __Pour simplifier vos démarches, le Département vous invite à faire appel à l'un de ses partenaires opérateurs. 
+  Faire appel à un opérateur présente de nombreux avantages. 
+  Pour les découvrir et savoir quel opérateur vous pouvez contacter, 
+  [cliquez ici](https://www.loire-atlantique.fr/demarches-aides-habitat-recherche-operateur).__
 
 # 2.2 Page « Préambule aide exceptionnelle » 
 # --------------------------------------------------
@@ -126,9 +151,10 @@ type_proprietaire_aide: >
   autres sources éventuelles de financement mobilisables.
 
 qui_saisit_comment: >
-  ll est conseillé de passer par un opérateur, afin de bénéficier d'informations complètes sur les aides mobilisables 
-  et de faciliter toutes vos démarches. Dans certains territoires l'accompagnement est gratuit pour les particuliers. 
-  Pour savoir quel opérateur vous pouvez contacter, [cliquez ici](https://www.loire-atlantique.fr/demarches-aides-habitat-recherche-operateur).
+  Pour simplifier vos démarches, le Département vous invite à faire appel à l'un de ses partenaires opérateurs. 
+  Faire appel à un opérateur présente de nombreux avantages. 
+  Pour les découvrir et savoir quel opérateur vous pouvez contacter, 
+  allez sur https://www.loire-atlantique.fr/demarches-aides-habitat-recherche-operateur
 
 eligibilite_beneficiaire_apa:
   Bénéficiaire de l'Aide Personnalisée d'Autonomie (APA):
@@ -319,9 +345,6 @@ autre_occupant: Autre occupant majeur du logement si nom de famille différent
 
 procuration_titre: Procuration
 
-beneficiaire_nom:
-  Nom : [form_var_beneficiaire_nom]
-
 procuration_perception_subventions:
   Procuration pour la perception des subventions :
     - Le bénéficiaire ne fait pas de procuration
@@ -403,12 +426,9 @@ MSG_NONEL_NONAPA: >
 MSG_NONEL_CAISSERETRAITE: >
   Cette aide n'est pas cumulable avec l'aide accordée par une caisse de retraite pour l'adaptation du logement.
 
-MSG_NONEL_NONPH_INVALIDITE: >
-  Cette aide est réservée aux personnes pouvant justifier d'un taux d'invalidité de 80%, ce qui n'est pas votre cas.
-
-MSG_NONEL_NONPH_PCH: >
-  Cette aide est réservée aux personnes bénéficiaires de la prestation de compensation du handicap, 
-  ce qui n'est pas votre cas.
+MSG_NONEL_NONPH: >
+  Cette aide est réservée aux personnes pouvant justifier d'un taux d'invalidité de 80% (ou plus), 
+  ou qui sont bénéficiaires de la prestation de compensation du handicap, ce qui n'est pas votre cas.
 
 MSG_NONEL_VERSOPERATEUR: >
   Nous vous conseillons de vous adresser à un opérateur qui vous aidera à trouver une aide adaptée à votre cas.
@@ -554,9 +574,6 @@ procuration_adresse_immeuble: >
   de l'étage et de l'appartement) 
 
   Adresse
-
-rappel_beneficiaire_nom: >
-  {{form_var_beneficiaire_nom}}
 
 procuration_donne_mandat_titre: Donne Mandat
 
