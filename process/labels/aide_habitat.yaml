@@ -321,7 +321,9 @@ observations_titre: >
 
 observations: Observations
 
-situation_menage: Situation du ménage
+situation_menage_titre: Situation du ménage
+
+situation_menage: Situation
 
 situation_menage_aide: >
   Dans cette partie, il convient de souligner en quoi la situation du ménage 

@@ -103,6 +103,8 @@ page page_rapport_situation
 
     champ_texte_long amenagement:observations
 
+    sous_titre situation_menage_titre
+
     champ_texte_tres_long amenagement:situation_menage
         aide à la saisie situation_menage_aide
 
