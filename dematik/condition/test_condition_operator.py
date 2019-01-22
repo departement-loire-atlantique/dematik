@@ -18,6 +18,14 @@ class ConditionEmptyTest(ConditionParserTester):
             ]
         )
 
+    def test_and_values(self):
+        self.check('si x1 égal à "3" et x1 inférieur à 5 alors afficher le message m1', 'm1',
+            [
+                (True, {'form_var_x1':"3"}),
+                (False, {'form_var_x1':"4"}),
+            ]
+        )
+
     def test_or(self):
         self.check('''
             si x1 est vide 

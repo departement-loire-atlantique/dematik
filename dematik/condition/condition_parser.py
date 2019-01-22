@@ -53,7 +53,7 @@ class ConditionParser:
             ('IS_STOP_WORD',   r'est'),     # Ignored
             ('ARE_STOP_WORD',   r'sont'),   # Ignored
             ('INT_VALUE', r'\d+'),
-            ('VALUE', r'".*"'),
+            ('VALUE', r'"(.+?)"'),
             ('FIELDNAME', r'\w*:?\w+'),
         ]
 
