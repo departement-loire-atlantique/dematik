@@ -368,6 +368,7 @@ MSG_COMPIN_SMS: >
 
 proprietaire_bailleur:
   Propriétaire bailleur:
+    - Propriétaire bailleur simple
     - Société civile immobilière (SCI) 
     - Indivision
 
@@ -381,12 +382,13 @@ logement_a_modifier: Logement à modifier
 adresse_logement_locatif: Adresse du logement locatif
 
 logement_occupe_ou_vacant:
-  Le logement est occupé, ou vacant depuis moins d'un an:
-    - Oui
-    - Non
+  Le logement est:
+    - occupé
+    - vacant depuis moins d'un an
+    - vacant depuis plus d'un an
 
 logement_conventionnement_anah:
-  Le logement fait l'objet d'un conventionnement ANAH social ou très social d'une durée de 9 ans ou plus:
+  Le logement fait ou va faire l’objet d’un conventionnement ANAH social ou très social:
     - Oui
     - Non
 
@@ -488,13 +490,16 @@ indivision_adresse: Adresse de l'indivisition
 
 proprietaire_bailleur_tel_titre: Téléphone du propriétaire bailleur
 
+proprietaire_bailleur_typologie_titre: Typologie du logement
+
 proprietaire_bailleur_typologie_list:
   Typologie du logement:
     - Maison
     - Appartement
 
 proprietaire_bailleur_type_appartement_list:
-  Si appartement, précisez le type (T1, T1 bis...):
+  Si appartement, précisez le type (Studio, T1, T1 bis...):
+    - Studio
     - T1
     - T1 bis
     - T2

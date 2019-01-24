@@ -20,7 +20,7 @@ page page_eligibilite
 
     si engagement_proprietaire est égal à "Non" alors afficher le message MSG_NONEL_LOCATIONSOCIALE
 
-    si logement_occupe_ou_vacant est égal à "Non" alors afficher le message MSG_NONEL_VACANT
+    si logement_occupe_ou_vacant est égal à "vacant depuis plus d'un an" alors afficher le message MSG_NONEL_VACANT
 
     si logement_conventionnement_anah est égal à "Non" alors afficher le message MSG_NONEL_CONVENTIONANAH
 
@@ -75,19 +75,21 @@ page page_complement_info
 
     titre proprietaire_bailleur_titre
 
-    champ_texte complement_info_proprietaire_bailleur:sci_nom
+    si proprietaire_bailleur est égal à "Propriétaire bailleur simple" alors masquer le champ proprietaire_bailleur_titre
 
-    si proprietaire_bailleur est égal à "Indivision" alors masquer le champ complement_info_proprietaire_bailleur:sci_nom
-    
-    champ_texte_long complement_info_proprietaire_bailleur:sci_adresse
+    champ_texte* complement_info_proprietaire_bailleur:sci_nom
 
-    si proprietaire_bailleur est égal à "Indivision" alors masquer le champ complement_info_proprietaire_bailleur:sci_adresse
+    si proprietaire_bailleur n'est pas égal à "Société civile immobilière (SCI)" alors masquer le champ complement_info_proprietaire_bailleur:sci_nom
     
-    champ_texte complement_info_proprietaire_bailleur:indivision_nom
+    champ_texte_long* complement_info_proprietaire_bailleur:sci_adresse
+
+    si proprietaire_bailleur n'est pas égal à "Société civile immobilière (SCI)" alors masquer le champ complement_info_proprietaire_bailleur:sci_adresse
+    
+    champ_texte* complement_info_proprietaire_bailleur:indivision_nom
 
     si proprietaire_bailleur n'est pas égal à "Indivision" alors masquer le champ complement_info_proprietaire_bailleur:indivision_nom
     
-    champ_texte_long complement_info_proprietaire_bailleur:indivision_adresse
+    champ_texte_long* complement_info_proprietaire_bailleur:indivision_adresse
 
     si proprietaire_bailleur n'est pas égal à "Indivision" alors masquer le champ complement_info_proprietaire_bailleur:indivision_adresse
     
@@ -96,6 +98,8 @@ page page_complement_info
     telephone tel_fixe
 
     telephone tel_portable
+
+    titre proprietaire_bailleur_typologie_titre
 
     liste proprietaire_bailleur_typologie_list
 
