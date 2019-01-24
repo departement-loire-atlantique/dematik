@@ -119,8 +119,6 @@ page page_complement_info
 
 page page_plan_financement
 
-    si depenses_autres_precisions est vide et depenses_autres est rempli alors afficher le message MSG_PLFIN_AUTRECOUTS
-
     si subventions_autres_precisions est vide et subventions_autres est rempli alors afficher le message MSG_PLFIN_AUTREFINANCE
 
     texte page_plan_financement:intro_textes_obligatoires
