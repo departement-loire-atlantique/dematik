@@ -162,7 +162,7 @@ eligibilite_beneficiaire_apa:
     - Non
 
 eligibilite_beneficiaire_retraite:
-  Bénéficiaire d'une aide d'une caisse de retraite:
+  L'un des occupant du logement est-il bénéficiaire d'une aide d'une caisse de retraite ?:
     - Oui
     - Non
 
@@ -388,7 +388,7 @@ logement_occupe_ou_vacant:
     - vacant depuis plus d'un an
 
 logement_conventionnement_anah:
-  Le logement fait ou va faire l’objet d’un conventionnement ANAH social ou très social:
+  Le logement fait ou va faire l'objet d'un conventionnement ANAH social ou très social:
     - Oui
     - Non
 
