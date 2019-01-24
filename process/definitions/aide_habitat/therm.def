@@ -77,21 +77,29 @@ page page_complement_info
 
     si proprietaire_bailleur est égal à "Propriétaire bailleur simple" alors masquer le champ proprietaire_bailleur_titre
 
-    champ_texte* complement_info_proprietaire_bailleur:sci_nom
+    champ_texte* sci:sci_nom
 
-    si proprietaire_bailleur n'est pas égal à "Société civile immobilière (SCI)" alors masquer le champ complement_info_proprietaire_bailleur:sci_nom
+    si proprietaire_bailleur n'est pas égal à "Société civile immobilière (SCI)" alors masquer le champ sci:sci_nom
     
-    champ_texte_long* complement_info_proprietaire_bailleur:sci_adresse
+    adresse* sci:sci_adresse sci:codepostal sci:commune
 
-    si proprietaire_bailleur n'est pas égal à "Société civile immobilière (SCI)" alors masquer le champ complement_info_proprietaire_bailleur:sci_adresse
+    si proprietaire_bailleur n'est pas égal à "Société civile immobilière (SCI)" alors masquer le champ sci:sci_adresse
+
+    si proprietaire_bailleur n'est pas égal à "Société civile immobilière (SCI)" alors masquer le champ sci:codepostal
+
+    si proprietaire_bailleur n'est pas égal à "Société civile immobilière (SCI)" alors masquer le champ sci:commune
     
-    champ_texte* complement_info_proprietaire_bailleur:indivision_nom
+    champ_texte* indivision:indivision_nom
 
-    si proprietaire_bailleur n'est pas égal à "Indivision" alors masquer le champ complement_info_proprietaire_bailleur:indivision_nom
+    si proprietaire_bailleur n'est pas égal à "Indivision" alors masquer le champ indivision:indivision_nom
     
-    champ_texte_long* complement_info_proprietaire_bailleur:indivision_adresse
+    adresse* indivision:indivision_adresse indivision:codepostal indivision:commune
 
-    si proprietaire_bailleur n'est pas égal à "Indivision" alors masquer le champ complement_info_proprietaire_bailleur:indivision_adresse
+    si proprietaire_bailleur n'est pas égal à "Indivision" alors masquer le champ indivision:indivision_adresse
+
+    si proprietaire_bailleur n'est pas égal à "Indivision" alors masquer le champ indivision:codepostal
+
+    si proprietaire_bailleur n'est pas égal à "Indivision" alors masquer le champ indivision:commune
     
     titre proprietaire_bailleur_tel_titre
     
