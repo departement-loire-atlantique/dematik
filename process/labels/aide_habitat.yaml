@@ -515,6 +515,8 @@ depenses_cout_envisages: Coût hors taxes (HT) des travaux envisagés
 
 depenses_ergotherapeute: Coût diagnostic ergothérapeute hors taxes (HT)
 
+depenses_diagnostic_thermique: Coût diagnostic thermique hors taxes (HT)
+
 depenses_etude_sol: Coût d'étude de sol ou autres HT (en €) 
 
 depenses_mo: Honoraire de maitrise d'œuvre hors taxes (HT)

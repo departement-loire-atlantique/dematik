@@ -130,7 +130,7 @@ page page_plan_financement
 
     montant* depenses_cout_envisages
 
-    montant documents_diagnostic_thermique
+    montant depenses_diagnostic_thermique
 
     montant depenses_amo
 
