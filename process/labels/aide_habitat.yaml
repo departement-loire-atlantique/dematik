@@ -334,7 +334,7 @@ situation_menage_aide: >
 recherche_solutions: Recherche de solutions de financement
 
 recherche_solutions_aide: >
-  Dans cette partie, il convient de mettre en évidence les démarches mises en oeuvre pour 
+  Dans cette partie, il convient de mettre en évidence les démarches mises en œuvre pour 
   trouver des solutions permettant la concrétisation du projet et les réponses qui y ont 
   été apportées : mobilisation d'autres financeurs (prêts / subventions) pour cofinancer le projet ? 
   Mobilisation de fonds propres ? Solutions pour diminuer le coût des travaux 
@@ -514,6 +514,10 @@ depenses_titre: Dépenses (en €)
 depenses_cout_envisages: Coût hors taxes (HT) des travaux envisagés
 
 depenses_ergotherapeute: Coût diagnostic ergothérapeute hors taxes (HT)
+
+depenses_etude_sol: Coût d'étude de sol ou autres HT (en €) 
+
+depenses_mo: Honoraire de maitrise d'œuvre hors taxes (HT)
 
 depenses_amo: Honoraires d'Assistance à Maitrise d'Ouvrage (AMO) hors taxes (HT)
 

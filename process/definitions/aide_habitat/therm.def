@@ -121,13 +121,9 @@ page page_plan_financement
 
     montant* depenses_cout_envisages
 
-    montant depenses_ergotherapeute
+    montant depenses_etude_sol
 
-    montant depenses_amo
-
-    montant depenses_autres
-
-    champ_texte_long depenses_autres_precisions
+    montant depenses_mo
 
     montant* depenses_total_ht
 
@@ -141,17 +137,9 @@ page page_plan_financement
 
     montant subventions_anah_amo
 
-    montant subventions_prime_habiter_mieux
-
-    montant subventions_mdph
-
     montant subventions_region
 
     montant subventions_commune
-
-    montant subventions_caf
-
-    montant subventions_caisse_retraite
 
     montant subventions_autres
 
