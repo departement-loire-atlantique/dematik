@@ -43,7 +43,11 @@ page page_eligibilite
     liste* beneficiaire:civilite
     
     nom_prenom* beneficiaire:nom beneficiaire:prenom
-    
+
+    si qui_saisit_list est égal à "Le bénéficiaire ou un de ses proches" alors préremplir beneficiaire:nom avec profil:nom
+
+    si qui_saisit_list est égal à "Le bénéficiaire ou un de ses proches" préremplir beneficiaire:prenom avec profil:prenom
+
     courriel courriel
 
     adresse* beneficiaire:adresse beneficiaire:codepostal beneficiaire:commune
@@ -113,11 +117,11 @@ page page_complement_info
 
     titre complement_titre_referent_operateur
 
-    si qui_saisit_list n'est pas égal à "Un opérateur" alors masquer le champ complement_titre_referent_operateur
+    si qui_saisit_list est égal à "Le bénéficiaire ou un de ses proches" alors masquer le champ complement_titre_referent_operateur
 
     champ_texte complement_referent_operateur
 
-    si qui_saisit_list n'est pas égal à "Un opérateur" alors masquer le champ complement_referent_operateur
+    si qui_saisit_list est égal à "Le bénéficiaire ou un de ses proches" alors masquer le champ complement_referent_operateur
 
     # Messages d'erreurs
 
@@ -278,7 +282,7 @@ page page_mandat_personne
 
 page page_engagement_operateur
 
-    si qui_saisit_list n'est pas égal à "Un opérateur" alors masquer cette page
+    si qui_saisit_list est égal à "Le bénéficiaire ou un de ses proches" alors masquer cette page
 
     si engagement_operateur est vide alors afficher le message MSG_ENGAGEMENT
 

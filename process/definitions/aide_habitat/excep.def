@@ -27,7 +27,11 @@ page page_eligibilite
     liste* eligibilite_beneficiaire_aide_exceptionnelle
 
     nom_prenom_civilite* nom prenom civilite
-    
+
+    si qui_saisit_list est égal à "Le bénéficiaire ou un de ses proches" alors préremplir nom avec profil:nom
+
+    si qui_saisit_list est égal à "Le bénéficiaire ou un de ses proches" alors préremplir prenom avec profil:prenom
+
     courriel courriel
     
     adresse* beneficiaire:adresse beneficiaire:codepostal beneficiaire:commune
@@ -139,11 +143,11 @@ page page_complement_info
 
     titre complement_titre_referent_operateur
 
-    si qui_saisit_list n'est pas égal à "Un opérateur" alors masquer le champ complement_titre_referent_operateur
+    si qui_saisit_list est égal à "Le bénéficiaire ou un de ses proches" alors masquer le champ complement_titre_referent_operateur
 
     champ_texte complement_referent_operateur
 
-    si qui_saisit_list n'est pas égal à "Un opérateur" alors masquer le champ complement_referent_operateur
+    si qui_saisit_list est égal à "Le bénéficiaire ou un de ses proches" alors masquer le champ complement_referent_operateur
 
     # Messages d'erreurs
 
