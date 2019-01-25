@@ -326,15 +326,7 @@ page page_pieces_justificatives
 
     fichier* documents_rib
 
-    texte documents_rib_texte_si_pas_procuration
-
-    si procuration_perception_subventions est égal à "Le bénéficiaire fait une procuration en ligne validée par SMS" alors masquer le champ documents_rib_texte_si_pas_procuration
-
-    si procuration_perception_subventions est égal à "Le bénéficiaire fait une procuration papier validée par l'envoi d'un courrier d'un original signé" alors masquer le champ documents_rib_texte_si_pas_procuration
-
-    texte documents_rib_texte_si_procuration
-
-    si procuration_perception_subventions est égal à "Le bénéficiaire ne fait pas de procuration" alors masquer le champ documents_rib_texte_si_procuration
+    texte documents_rib_texte
 
     fichier documents_apa
 
