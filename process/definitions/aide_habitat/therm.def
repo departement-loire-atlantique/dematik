@@ -36,9 +36,9 @@ page page_eligibilite
     
     nom_prenom* beneficiaire:nom beneficiaire:prenom
 
-    si qui_saisit_list est égal à "Le bénéficiaire ou un de ses proches" alors préremplir beneficiaire:nom avec profil:nom
+    si qui_saisit_list contient "ou un de ses proches" alors préremplir beneficiaire:nom avec profil:nom
 
-    si qui_saisit_list est égal à "Le bénéficiaire ou un de ses proches" préremplir beneficiaire:prenom avec profil:prenom
+    si qui_saisit_list contient "ou un de ses proches" alors préremplir beneficiaire:prenom avec profil:prenom
 
     courriel courriel
 
@@ -79,7 +79,7 @@ page page_complement_info
 
     titre proprietaire_bailleur_titre
 
-    si proprietaire_bailleur est égal à "Propriétaire bailleur simple" alors masquer le champ proprietaire_bailleur_titre
+    si proprietaire_bailleur contient "bailleur simple" alors masquer le champ proprietaire_bailleur_titre
 
     champ_texte* sci:sci_nom
 
@@ -161,7 +161,7 @@ page page_plan_financement
 
 page page_engagement_operateur
 
-    si qui_saisit_list est égal à "Le bénéficiaire ou un de ses proches" alors masquer cette page
+    si qui_saisit_list contient "ou un de ses proches" alors masquer cette page
 
     si engagement_operateur est vide alors afficher le message MSG_ENGAGEMENT
 
@@ -175,7 +175,7 @@ page page_engagement_operateur
 
 page page_engagement_beneficiaire
 
-    si qui_saisit_list n'est pas égal à "Le bénéficiaire ou un de ses proches" alors masquer cette page
+    si qui_saisit_list ne contient pas "ou un de ses proches" alors masquer cette page
 
     si engagement_beneficiaire_thermique est vide alors afficher le message MSG_ENGAGEMENT
 

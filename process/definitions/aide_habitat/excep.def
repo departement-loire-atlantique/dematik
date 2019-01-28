@@ -28,9 +28,9 @@ page page_eligibilite
 
     nom_prenom_civilite* nom prenom civilite
 
-    si qui_saisit_list est égal à "Le bénéficiaire ou un de ses proches" alors préremplir nom avec profil:nom
+    si qui_saisit_list contient "ou un de ses proches" alors préremplir nom avec profil:nom
 
-    si qui_saisit_list est égal à "Le bénéficiaire ou un de ses proches" alors préremplir prenom avec profil:prenom
+    si qui_saisit_list contient "ou un de ses proches" alors préremplir prenom avec profil:prenom
 
     courriel courriel
     
@@ -143,17 +143,17 @@ page page_complement_info
 
     titre complement_titre_referent_operateur
 
-    si qui_saisit_list est égal à "Le bénéficiaire ou un de ses proches" alors masquer le champ complement_titre_referent_operateur
+    si qui_saisit_list contient "ou un de ses proches" alors masquer le champ complement_titre_referent_operateur
 
     champ_texte complement_referent_operateur
 
-    si qui_saisit_list est égal à "Le bénéficiaire ou un de ses proches" alors masquer le champ complement_referent_operateur
+    si qui_saisit_list contient "ou un de ses proches" alors masquer le champ complement_referent_operateur
 
     # Messages d'erreurs
 
     si tel_fixe est vide et tel_portable est vide alors afficher le message MSG_COMPIN_TELEPHONE
 
-    si procuration_perception_subventions est égal à "Le bénéficiaire fait une procuration en ligne validée par SMS" et tel_portable n'est pas rempli alors afficher le message MSG_COMPIN_SMS
+    si procuration_perception_subventions contient "fait une procuration en ligne" et tel_portable n'est pas rempli alors afficher le message MSG_COMPIN_SMS
 
 page page_plan_financement
 
@@ -209,7 +209,7 @@ page page_plan_financement
 
 page page_procuration
 
-    si procuration_perception_subventions est égal à "Le bénéficiaire ne fait pas de procuration" alors masquer cette page
+    si procuration_perception_subventions contient "ne fait pas de procuration" alors masquer cette page
 
     texte page_procuration:intro_textes_obligatoires
 
