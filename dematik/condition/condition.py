@@ -88,7 +88,7 @@ class Condition:
             python_formula = self.protect(self.prefill_value, 'python')
 
         if hasattr(self, "condition"):
-            python_formula += ' if ' + self.condition.build('python') + ' else ""'
+            python_formula += ' if (' + self.condition.build('python') + ') else ""'
        
         return python_formula
 
