@@ -23,13 +23,13 @@ condition_classes = [
     Condition,
     ConditionAntonym,
     ConditionCheckCount,
-    ConditionCompare,
     ConditionFilled,
-    ConditionHide,
-    ConditionMessage,
-    ConditionOperator,
+    ConditionCompare,
     ConditionString,
     ConditionStartWith,
+    ConditionOperator,
+    ConditionHide,
+    ConditionMessage,
     ConditionPrefill,
 ]
 
@@ -70,7 +70,6 @@ class ConditionParser:
 
             # Adjacent tokens can't be all FIELDNAME
             if kind == 'FIELDNAME' and last_token.type == 'FIELDNAME':
-                unknowns = (last_token.value, value)
                 raise Exception("Un des termes suivants n'est pas encore supporté dans les conditions : %s" % ' ou '.join(unknowns))
            
             # Namepace support
@@ -94,9 +93,12 @@ class ConditionParser:
             for condition_class in condition_classes:
                 tokens = self.merge_using_condition(condition_class, tokens)
 
+        
         if len(tokens) != 1:
             unknowns = [token.value + '(' + token.type + ')' for token in tokens if not token.merged]
             if unknowns: 
+                for t in tokens:
+                    print(t.type)
                 raise Exception("Les termes suivants ne sont pas encore supportés dans les conditions : %s" % ', '.join(unknowns))
             else:
                 for token in tokens:
