@@ -2,7 +2,7 @@
 <field>
     <label>{{ get_md_text(field_data) }}</label>
     <type>comment</type>
-    <id>{{ get_id(field_data) }}</id>
+    <id remote="{{field_data}}">{{ get_id(field_data) }}</id>
     {% if condition -%}
     <condition>
         <type>django</type>

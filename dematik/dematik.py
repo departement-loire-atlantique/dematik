@@ -7,6 +7,7 @@ import condition
 from blocks import Blocks
 from markdown import markdown
 from os.path import isfile, dirname
+from lxml import etree
 import traceback
 import jinja2.exceptions
 import json
@@ -267,20 +268,24 @@ class Dematik:
         self.reset()
 
         id_before_parse = 0
-        base_path = 'generated/' + path.replace('/','_') \
-                    .replace('._', '') \
-                    .replace('process_definitions_', '') \
+        base_path = path.replace('definitions', 'generated') \
                     .replace('.def', '')
+        wcs_filename = base_path + '.wcs'
 
         # Load ID cache
-        if isfile(base_path + '.cache'):
-            with open(base_path + '.cache') as f:
-                self.ids_cache = json.load(f)
-                if self.ids_cache.values():
+        if isfile(wcs_filename):
+            tree = etree.parse(wcs_filename)
+            for id_elem in tree.xpath("//id"):
+                if 'remote' in id_elem.attrib:
+                     self.ids_cache[id_elem.attrib['remote']] = int(id_elem.text)
+                else:
+                    print("%s - FATAL - Element has no remote ID" % (path))
+                    return
+            if self.ids_cache.values():
                     self.id = max(self.ids_cache.values())
                     id_before_parse = self.id
         else:
-            print("%s - INFO - Generation des ID sans cache" % path)
+            print("%s - WARN - Generation des ID sans cache" % path)
 
         # Render form
         form = self.render_form(path)
@@ -293,12 +298,15 @@ class Dematik:
             os.makedirs(dirname(base_path))
 
         # Save generated form
-        with open(base_path + '.wcs', 'w+') as f:
+        with open(wcs_filename, 'w+') as f:
             f.write(form)
 
-        # Save ID cache for this form
-        with open(base_path + '.cache', 'w+') as f:
-            f.write(json.dumps(self.ids_cache))
+        # Check that every ID element has a remote ID
+        tree = etree.parse(wcs_filename)
+        for i in tree.xpath("//id"):
+            if not 'remote' in i.attrib:
+                print("%s - FATAL - Element has no remote ID" % (path))
+                return
 
         # Some stats
         print('{} - Nombre de champs : {} ({})'.format(path, len(self.used_field_data), self.id - id_before_parse - 1))
