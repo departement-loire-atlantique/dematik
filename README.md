@@ -29,25 +29,39 @@ Installation
 ```bash
 git clone https://github.com/departement-loire-atlantique/dematik
 cd dematik
-pip install -r requirements.txt
+pip install .
 ```
 
 Utilisation
 -----------
 
-Génération de tous les processus :
+Génération de tous les processus modifiés :
 ```bash
 python -m dematik
 ```
 
-Génération d'un seul processus (ici process/definition/aide_habitat/pa.def) sans affichage des messages non utilisés :
+Génération de tous les processus :
 ```bash
-python -m dematik --pattern aide_habitat/pa.def --donotshowunused
+python -m dematik --force
+```
+
+Génération d'un seul processus (ici process/definition/aide_habitat/pa.def) :
+```bash
+python -m dematik --pattern aide_habitat/pa.def
 ```
 
 Génération d'un seul processus (ici process/definition/aide_habitat/pa.def) en mode mise au point :
 ```bash
-python -m dematik --pattern aide_habitat/pa.def --donotshowunused --debug
+python -m dematik --pattern aide_habitat/pa.def --debug
+```
+
+Développement
+-------------
+
+```bash
+git clone https://github.com/departement-loire-atlantique/dematik
+cd dematik
+python setup.py develop
 ```
 
 Validation du programme (éxécution des tests unitaires)

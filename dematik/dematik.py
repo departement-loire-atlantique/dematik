@@ -264,7 +264,7 @@ class Dematik:
         return None
                 
     # Process definition
-    def generate(self, path):
+    def generate(self, path, force=False):
 
         self.reset()
 
@@ -286,6 +286,12 @@ class Dematik:
                 if self.ids_cache.values():
                         self.id = max(self.ids_cache.values())
                         id_before_parse = self.id
+
+                # Skip generation if .wcs file is newer than .def file
+                if not force and os.stat(wcs_filename).st_mtime > os.stat(path).st_mtime:
+                    print("%s - INFO - Skipped - Nothing new" % (path))
+                    return
+
             except:
                 self.ids_cache = {}
         
@@ -314,7 +320,7 @@ class Dematik:
                 return
 
         # Some stats
-        print('{} - Nombre de champs : {} ({})'.format(path, len(self.used_field_data), self.id - id_before_parse - 1))
+        print('{} - OK - Nombre exigences : {} ({})'.format(path, len(self.used_field_data), self.id - id_before_parse - 1))
 
     # Print field data that has not been used yet 
     def show_unused_labels(self):
