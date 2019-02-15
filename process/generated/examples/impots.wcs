@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="iso-8859-15"?>
+<formdef id="100">
+  <name>Lecture d'un avis fiscal</name>
+  <url_name>lecture-avis-fiscal</url_name>
+  <description>Lecture d'un avis fiscal</description>
+  <internal_identifier>lecture-avis-fiscal</internal_identifier>
+  <discussion>false</discussion>
+  <detailed_emails>true</detailed_emails>
+  <disabled>true</disabled>
+  <only_allow_one>false</only_allow_one>
+  <enable_tracking_codes>true</enable_tracking_codes>
+  <confirmation>true</confirmation>
+  <always_advertise>false</always_advertise>
+  <private_status_and_history>false</private_status_and_history>
+  <has_captcha>false</has_captcha>
+  <skip_from_360_view>false</skip_from_360_view>
+  <workflow workflow_id="_default">Par d&#233;faut</workflow>
+  <max_field_id>5</max_field_id>
+  <last_modification user_id="1">2019-02-15 13:51:01</last_modification>
+  <fields>
+    <field>
+    <label>Pr&#233;ambule</label>
+    <type>page</type>
+    <id remote="page_preambule">2</id>
+    <post_conditions>
+    <post_condition>
+        <condition>
+          <type>python</type>
+          <value>not (int(webservice.api_particulier_impots_svair["err"]) == 1 if webservice.api_particulier_impots_svair["err"] and (isinstance(webservice.api_particulier_impots_svair["err"], int) or (isinstance(webservice.api_particulier_impots_svair["err"], str) and webservice.api_particulier_impots_svair["err"].isdigit())) else False)</value>
+        </condition>
+        <error_message>Donn&#38;#233;es incorrectes</error_message>
+      </post_condition>
+    </post_conditions>
+    </field><field>
+    <label>Num&#233;ro fiscal</label>
+    <type>string</type>
+    <required>True</required>
+    <id remote="numero_fiscal">3</id>
+    <varname>numero_fiscal</varname>
+    <in_listing>False</in_listing>
+    <in_filters>False</in_filters>
+    <extra_css_class>grid-1-2</extra_css_class>
+    <prefill>
+    <type>none</type>
+    </prefill>
+    
+    <validation></validation>
+    <size></size>
+</field>
+<field>
+    <label>R&#233;f&#233;rence de votre dernier avis fiscal</label>
+    <type>string</type>
+    <required>True</required>
+    <id remote="reference_avis">4</id>
+    <varname>reference_avis</varname>
+    <in_listing>False</in_listing>
+    <in_filters>False</in_filters>
+    <extra_css_class>grid-1-2</extra_css_class>
+    <prefill>
+    <type>none</type>
+    </prefill>
+    
+    <validation></validation>
+    <size></size>
+</field>
+  </fields>
+  <options />
+  <geolocations />
+</formdef>

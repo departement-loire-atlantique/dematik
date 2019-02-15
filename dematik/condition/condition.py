@@ -32,7 +32,7 @@ class Condition:
     def getType(self):
         return self.type
     
-    def protect(self, f, language):
+    def protect(self, f, language=''):
         if 'profil___' in f:
             f = f.replace('profil___prenom', 'form_user_var_first_name')
             f = f.replace('profil___nom', 'form_user_var_last_name')
@@ -44,7 +44,10 @@ class Condition:
             f = f.replace('profil___civilite', 'form_user_var_title')
             f = f.replace('profil___code_postal', 'form_user_var_zipcode')
 
-        if not '_var_' in f:
+        if 'impots___' in f:
+            f = f.replace('impots___erreur', 'webservice.api_particulier_impots_svair["err"]')
+
+        if not '_var_' in f and not 'webservice' in f:
             f = 'form_var_' + f
         
         return f
@@ -66,7 +69,7 @@ class Condition:
 
     def getMessage(self):
         if hasattr(self, "message"):
-            return self.message
+            return Markup(self.message)
         else:
             raise Exception("Aucun message pour cette condition")
 

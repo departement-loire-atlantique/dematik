@@ -1,0 +1,10 @@
+formulaire "Lecture d'un avis fiscal"
+    url "lecture-avis-fiscal"
+    description "Lecture d'un avis fiscal"
+    identifiant "lecture-avis-fiscal"
+
+page page_preambule
+
+    si impots:erreur est égal à 1 alors afficher le message "Données incorrectes"
+    
+    impots*
