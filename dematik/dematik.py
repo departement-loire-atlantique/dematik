@@ -11,6 +11,7 @@ from lxml import etree
 import traceback
 import jinja2.exceptions
 import json
+import re
 import os
 
 # This class allows to build process and forms form its definition
@@ -47,7 +48,7 @@ class Dematik:
     # Returns text or raise a ValueError
     def get_text(self, field_data):
         if len(field_data) > 1 and field_data[0] == '"' and field_data[-1] == '"':
-            return field_data[1:-1]
+            return Markup(self.fields_data.htmlescape(field_data[1:-1].decode('utf-8')))
         else:
             return getattr(self.fields_data, field_data)["label"]
 
@@ -237,7 +238,7 @@ class Dematik:
         try:
             with open(path, 'r') as f:
                 for i, line in enumerate(f):
-                    tokens = line.strip().split(' ')
+                    tokens = re.findall(r'[^"\s]\S*|".+?"', line.strip())
 
                     # Ignore empty line or comment lines
                     if len(tokens) > 0 and tokens[0] and tokens[0][0] != '#':
@@ -274,17 +275,21 @@ class Dematik:
 
         # Load ID cache
         if isfile(wcs_filename):
-            tree = etree.parse(wcs_filename)
-            for id_elem in tree.xpath("//id"):
-                if 'remote' in id_elem.attrib:
-                     self.ids_cache[id_elem.attrib['remote']] = int(id_elem.text)
-                else:
-                    print("%s - FATAL - Element has no remote ID" % (path))
-                    return
-            if self.ids_cache.values():
-                    self.id = max(self.ids_cache.values())
-                    id_before_parse = self.id
-        else:
+            try:
+                tree = etree.parse(wcs_filename)
+                for id_elem in tree.xpath("//id"):
+                    if 'remote' in id_elem.attrib:
+                        self.ids_cache[id_elem.attrib['remote']] = int(id_elem.text)
+                    else:
+                        print("%s - FATAL - Element has no remote ID" % (path))
+                        return
+                if self.ids_cache.values():
+                        self.id = max(self.ids_cache.values())
+                        id_before_parse = self.id
+            except:
+                self.ids_cache = {}
+        
+        if not id_before_parse:
             print("%s - WARN - Generation des ID sans cache" % path)
 
         # Render form
