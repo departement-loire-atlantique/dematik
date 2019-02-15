@@ -37,17 +37,17 @@ Utilisation
 
 Génération de tous les processus :
 ```bash
-python process.py
+python -m dematik
 ```
 
 Génération d'un seul processus (ici process/definition/aide_habitat/pa.def) sans affichage des messages non utilisés :
 ```bash
-python process.py --pattern aide_habitat/pa.def --donotshowunused
+python -m dematik --pattern aide_habitat/pa.def --donotshowunused
 ```
 
 Génération d'un seul processus (ici process/definition/aide_habitat/pa.def) en mode mise au point :
 ```bash
-python process.py --pattern aide_habitat/pa.def --donotshowunused --debug
+python -m dematik --pattern aide_habitat/pa.def --donotshowunused --debug
 ```
 
 Validation du programme (éxécution des tests unitaires)
@@ -98,11 +98,11 @@ Les définitions de formulaires sont stockés dans des fichiers .def stockés da
 
 Exemple :
 ```
-formulaire nom_du_formulaire 
+formulaire "nom du formulaire" 
 
-    url url_du_formulaire 
-    description description_du_formulaire 
-    identifiant identifiant_du_formulaire
+    url "url-du-formulaire" 
+    description "description du formulaire"
+    identifiant "identifiant-du-formulaire"
 
     listing ce_champ_sera_affiche_en_colonne_dans_les_listes
     listing ce_champ_sera_affiche_en_colonne_dans_les_listes
