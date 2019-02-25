@@ -61,7 +61,7 @@ Développement
 ```bash
 git clone https://github.com/departement-loire-atlantique/dematik
 cd dematik
-python setup.py develop
+pip install -e .
 ```
 
 Validation du programme (éxécution des tests unitaires)
