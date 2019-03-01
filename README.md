@@ -118,6 +118,11 @@ formulaire "nom du formulaire"
     description "description du formulaire"
     identifiant "identifiant-du-formulaire"
 
+    workflow "nom du workflow"
+    Le paramètre "nom_paramètre" du workflow vaut "valeur"
+    Le paramètre "nom_paramètre2" du workflow vaut "valeur2"
+
+
     listing ce_champ_sera_affiche_en_colonne_dans_les_listes
     listing ce_champ_sera_affiche_en_colonne_dans_les_listes
 
