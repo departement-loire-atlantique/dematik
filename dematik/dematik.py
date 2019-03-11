@@ -138,7 +138,14 @@ class Dematik:
 
     # Parse "formulaire" metadata
     def parseFormMetadata(self, tokens):
-        metas = [ "description", "identifiant", "url" ]
+        metas = [
+                "description", "identifiant", "url",
+                "workflow_id", "workflow_name",
+                "category_id", "category_name",
+                "user_roles_id", "user_roles_name",
+                "backoffice_submission_roles_id", "backoffice_submission_roles_name",
+                "roles_id", "roles_key", "roles_name"
+                ]
         for meta in metas:
             if tokens[0] == meta and len(tokens) == 2:
                 self.env.globals["formulaire"][meta] = self.get_text(tokens[1])

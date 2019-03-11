@@ -118,6 +118,22 @@ formulaire "nom du formulaire"
     description "description du formulaire"
     identifiant "identifiant-du-formulaire"
 
+    workflow_id "identifiant-du-workflow"
+    workflow_name "nom du workflow"
+
+    category_id "identifiant-categorie"
+    category_name "nom de la catégorie"
+
+    user_roles_id "identifiant-role-utilisateur"
+    user_roles_name "nom du rôle de l'utilisateur"
+
+    backoffice_submission_roles_id "identifiant-role-saisie-backoffice"
+    backoffice_submission_roles_name "nom du rôle pour la saisie back-office"
+
+    roles_id metadata_roles_id "identifiant-role-destinataire"
+    roles_key metadata_roles_key "clé du rôle pour le rôle destinataire"
+    roles_name metadata_roles_name "nom du rôle pour le rôle destinataire"
+
     listing ce_champ_sera_affiche_en_colonne_dans_les_listes
     listing ce_champ_sera_affiche_en_colonne_dans_les_listes
 

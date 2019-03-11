@@ -13,7 +13,7 @@
   {% endif -%}
   <discussion>false</discussion>
   <detailed_emails>true</detailed_emails>
-  <disabled>true</disabled>
+  <disabled>false</disabled>
   <only_allow_one>false</only_allow_one>
   <enable_tracking_codes>true</enable_tracking_codes>
   <confirmation>true</confirmation>
@@ -21,12 +21,32 @@
   <private_status_and_history>false</private_status_and_history>
   <has_captcha>false</has_captcha>
   <skip_from_360_view>false</skip_from_360_view>
-  <workflow workflow_id="_default">Par d&#233;faut</workflow>
+  {% if "category_id" in formulaire and "category_name" in formulaire -%}
+  <category category_id="{{ formulaire["category_id"] }}">{{ formulaire["category_name"] }}</category>
+  {% endif -%}
+  {% if "workflow_id" in formulaire and "workflow_name" in formulaire -%}
+  <workflow workflow_id="{{ formulaire["workflow_id"] }}">{{ formulaire["workflow_name"] }}</workflow>
+  {% endif -%}
   <max_field_id>{{ get_id() }}</max_field_id>
   <last_modification user_id="1">{{now}}</last_modification>
   <fields>
     {{ form_fields }}
   </fields>
+  {% if "user_roles_id" in formulaire and "user_roles_name" in formulaire -%}
+  <user-roles>
+    <role role_id="{{ formulaire["user_roles_id"] }}">{{ formulaire["user_roles_name"] }}</role>
+  </user-roles>
+  {% endif -%}
+  {% if "backoffice_submission_roles_id" in formulaire and "backoffice_submission_roles_name" in formulaire -%}
+  <backoffice-submission-roles>
+    <role role_id="{{ formulaire["backoffice_submission_roles_id"] }}">{{ formulaire["backoffice_submission_roles_name"] }}</role>
+  </backoffice-submission-roles>
+  {% endif -%}
+  {% if "roles_id" in formulaire and "roles_key" in formulaire and "roles_name" in formulaire -%}
+  <roles>
+    <role role_id="{{ formulaire["roles_id"] }}" role_key="{{ formulaire["roles_key"] }}">{{ formulaire["roles_name"] }}</role>
+  </roles>
+  {% endif -%}
   <options />
   <geolocations />
 </formdef>
