@@ -106,7 +106,19 @@ class Dematik:
         self.form = None
 
         # form metadata
-        self.env.globals["formulaire"] = {}
+        self.env.globals["formulaire"] = {
+                "workflow":"Par d&#233;faut",
+                "category_id": "",
+                "category_name": "",
+                "user_roles_id": "",
+                "user_roles_name": "",
+                "backoffice_submission_roles_id": "",
+                "backoffice_submission_roles_name": "",
+                "roles_id": "",
+                "roles_key": "",
+                "roles_name": "",
+                }
+        self.env.globals["workflow_options"] = {}
 
         # form fields (XML)
         self.form_fields_as_xml = ""
@@ -139,23 +151,32 @@ class Dematik:
     # Parse "formulaire" metadata
     def parseFormMetadata(self, tokens):
         metas = [
-                "description", "identifiant", "url",
-                "workflow_id", "workflow_name",
+                "description", "identifiant", "url", "workflow",
                 "category_id", "category_name",
                 "user_roles_id", "user_roles_name",
                 "backoffice_submission_roles_id", "backoffice_submission_roles_name",
                 "roles_id", "roles_key", "roles_name"
                 ]
+
         for meta in metas:
             if tokens[0] == meta and len(tokens) == 2:
                 self.env.globals["formulaire"][meta] = self.get_text(tokens[1])
                 return True
+
         if tokens[0] == "listing" and len(tokens) == 2:
             self.in_listing += tokens[1]
             return True
+
         if tokens[0] == "filter" and len(tokens) == 2:
             self.in_filters += tokens[1]
             return True
+
+        worflow_option = re.search(r'Le paramètre (?P<key>.*) du workflow vaut (?P<val>.*)', ' '.join(tokens))
+        if worflow_option:
+            wo = self.env.globals["workflow_options"]
+            wo[self.get_text(worflow_option.group("key"))] = self.get_text(worflow_option.group("val"))
+            return True
+
         return False
 
     def merge_and_invert_conditions(self, conditions, language):

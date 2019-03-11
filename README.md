@@ -61,7 +61,7 @@ Développement
 ```bash
 git clone https://github.com/departement-loire-atlantique/dematik
 cd dematik
-python setup.py develop
+pip install -e .
 ```
 
 Validation du programme (éxécution des tests unitaires)
@@ -118,8 +118,9 @@ formulaire "nom du formulaire"
     description "description du formulaire"
     identifiant "identifiant-du-formulaire"
 
-    workflow_id "identifiant-du-workflow"
-    workflow_name "nom du workflow"
+    workflow "nom du workflow"
+    Le paramètre "nom_paramètre" du workflow vaut "valeur"
+    Le paramètre "nom_paramètre2" du workflow vaut "valeur2"
 
     category_id "identifiant-categorie"
     category_name "nom de la catégorie"

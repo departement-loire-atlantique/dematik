@@ -24,8 +24,8 @@
   {% if "category_id" in formulaire and "category_name" in formulaire -%}
   <category category_id="{{ formulaire["category_id"] }}">{{ formulaire["category_name"] }}</category>
   {% endif -%}
-  {% if "workflow_id" in formulaire and "workflow_name" in formulaire -%}
-  <workflow workflow_id="{{ formulaire["workflow_id"] }}">{{ formulaire["workflow_name"] }}</workflow>
+  {% if "workflow" in formulaire -%}
+  <workflow>{{ formulaire['workflow']}}</workflow>
   {% endif -%}
   <max_field_id>{{ get_id() }}</max_field_id>
   <last_modification user_id="1">{{now}}</last_modification>
@@ -47,6 +47,10 @@
     <role role_id="{{ formulaire["roles_id"] }}" role_key="{{ formulaire["roles_key"] }}">{{ formulaire["roles_name"] }}</role>
   </roles>
   {% endif -%}
-  <options />
+  <options>
+    {% for workflow_option_name, workflow_options_value in workflow_options.items() -%}
+         <option varname="{{workflow_option_name}}">{{workflow_options_value}}</option>
+    {% endfor -%}
+  </options>
   <geolocations />
 </formdef>
