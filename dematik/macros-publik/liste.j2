@@ -1,10 +1,10 @@
 {% from "macros-publik/entete.j2" import entete with context -%}
-{% macro liste(field_data, multi=False, deroulante=False) %}
+{% macro liste(field_data, extra_css_class='', multi=False, deroulante=False) %}
 <field>
     {%- if multi %}
-    {{ entete(field_data, "items") }}
+    {{ entete(field_data, "items", extra_css_class) }}
     {% else %}
-    {{ entete(field_data, "item") }}
+    {{ entete(field_data, "item", extra_css_class) }}
     {% endif -%}
     <items>
     {% for term in get_items(field_data) -%}
