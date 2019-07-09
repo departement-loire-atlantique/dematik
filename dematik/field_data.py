@@ -1,4 +1,4 @@
-from yaml import load, YAMLError
+from yaml import load, YAMLError, FullLoader
 from jinja2 import Markup
 from htmlentitydefs import codepoint2name
 
@@ -20,7 +20,7 @@ class FieldData:
 
     def load(self, filename):
         with open(filename, 'r') as stream:
-            yaml_data = load(stream)
+            yaml_data = load(stream, Loader=FullLoader)
             self.fields_data.update(self.parse(yaml_data))
 
     def parse(self, fields_data):
