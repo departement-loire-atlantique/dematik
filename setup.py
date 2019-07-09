@@ -40,7 +40,7 @@ setup(
         'Programming Language :: Python',
         'Programming Language :: Python :: 2',
     ],
-    install_requires=['django >= 1.8, <1.12','Jinja2', 'pyyaml', 'markdown'],
+    install_requires=['django >= 1.8, <1.12','Jinja2', 'pyyaml', 'markdown', 'lxml'],
     zip_safe=False,
     cmdclass={
         'build': _build,
