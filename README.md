@@ -11,12 +11,12 @@ Points forts :
 - L'emploi de simples fichiers texte accélère la mise au point de formulaires (copier/coller, ...).
 - La relecture des libellés ou encore la définition d'un formulaire devient un jeu d'enfant 
 - L'approche par bloc pré-packagé permet une homogénéité des formulaires
-- L'écriture des conditions est simplifiée. Les conditions sont écrites en français et traduites automatiquement en python.
+- L'écriture des conditions est simplifiée. Les conditions sont écrites en français et traduites automatiquement en expression django.
 - Tout est en français (message d'erreur, définition du formulaire, conditions, ...)
 
 Points faibles :
- - L'écriture d'une condition dont la typologie n'a pas été prévue nécessite le recours à des développements
- - L'utilisation de types de champs non prévus nécessite le recours à des développements
+ - L'écriture d'une condition dont la typologie n'a pas été prévue nécessite le recours à des développements complémentaires
+ - L'utilisation de types de champs non prévus nécessite la définition de nouveau block ou macro
 
 Pré-requis
 ----------
@@ -185,10 +185,48 @@ Liste des codes pour les valeurs dépendant du profil :
 - profil:telephone_mobile : Téléphone mobile
 - profil:telephone_fixe : Téléphone fixe
 
+Liste des actions et conditions supportées
+------------------------------------------
+
+Une condition est de la forme : `si CONDITION (et/ou CONDITION) alors ACTION`
+Un action est de la forme : `ACTION`
+
+Liste des *ACTION*s supportées :
+
+* masquer cette page
+* masquer le champ CHAMP
+* afficher le message (CHAMP ou VALEUR)
+* préremplir CHAMP avec (CHAMP ou VALEUR)
+
+Liste des *CONDITION*s supportées :
+
+* CHAMP est vide           
+* CHAMP n'est pas vide
+
+* CHAMP est rempli
+* CHAMP n'est pas rempli
+
+* CHAMP est coché
+* CHAMP n'est pas coché
+
+* moins de N élément(s) de CHAMP sont cochés
+* moins de N élément(s) de CHAMP est(sont) coché(s)
+
+* CHAMP est différent de (CHAMP ou VALEUR_ENTIERE)
+* CHAMP est égal à (CHAMP ou VALEUR_ENTIERE)
+* CHAMP n'est pas égal (CHAMP ou VALEUR_ENTIERE)
+* CHAMP est supérieur à (CHAMP ou VALEUR_ENTIERE)
+* CHAMP est inférieur à (CHAMP ou VALEUR_ENTIERE)
+
+* CHAMP commence par VALEUR
+* CHAMP ne commence pas par VALEUR
+
+* CHAMP contient (CHAMP ou VALEUR_ENTIERE)
+* CHAMP ne contient pas (CHAMP ou VALEUR_ENTIERE)
 
 ROADMAP
 -------
 
-- Support des conditions dans les définitions
+- Support de nouvelles conditions
 - Validation et d'autocomplétion pour les fichiers de définition (éditeur)
-- Mise à jour automatique dans une instance publik
+- Mise à jour automatique dans une instance publik en ligne de commande
