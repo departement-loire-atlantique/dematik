@@ -34,7 +34,7 @@ condition_classes = [
 ]
 
 # ConditionParser allows to parse a condition as "french text" and
-# build a valid python condition from it
+# build a valid django expression
 class ConditionParser:
 
     # Transform a text in a list of Token

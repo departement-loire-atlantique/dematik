@@ -16,21 +16,11 @@ class ConditionFilled(Condition):
 
     def __init__(self, sentence_tokens):
         self.type = "CONDITION"
-        self.fieldname = sentence_tokens[0].value   
+        fieldname = self.protect(sentence_tokens[0].value)
         if sentence_tokens[1].type == 'EMPTY':
-            self.op = '== 0'
+            self.cond = fieldname + '|default_if_none:""|length == 0'
         else:
-            self.op = '> 0'
+            self.cond =  fieldname + '|default_if_none:""|length > 0'
 
-    def build(self, language):
-        
-        if language == 'python':
-            return 'len(' + self.protect_as_list(self.fieldname,language) +')' + self.op
-        elif language == 'django':
-            field = self.protect(self.fieldname, language)
-            if "== 0" in self.op:
-                return field + '|default_if_none:""|length ' + self.op
-            else:
-                return field + '|default_if_none:""|length ' + self.op
-        else:
-            raise Exception("not implemented")
+    def build(self):
+        return self.cond

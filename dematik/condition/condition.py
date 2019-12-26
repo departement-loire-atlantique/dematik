@@ -32,7 +32,7 @@ class Condition:
     def getType(self):
         return self.type
     
-    def protect(self, f, language=''):
+    def protect(self, f):
         if 'profil___' in f:
             f = f.replace('profil___prenom', 'form_user_var_first_name')
             f = f.replace('profil___nom', 'form_user_var_last_name')
@@ -52,20 +52,11 @@ class Condition:
         
         return f
 
-    def protect_as_list(self, field, language):
-        if language == 'python':
-            f = self.protect(field, language)
-            return f + ' if isinstance(' + f + ', list) else ([' + f + '] if ' + f + ' else [])'
-        elif language == 'django':
-            return self.protect(field, language) 
-        else:
-            raise Exception('not implemented')
+    def build(self):
+        return self.condition.build()
 
-    def build(self, language):
-        return self.condition.build(language)
-
-    def getPythonExpression(self):
-        return Markup(self.build('python').replace("<", "&lt;"))
+    def getExpression(self):
+        return Markup(self.build().replace("<", "&lt;"))
 
     def getMessage(self):
         if hasattr(self, "message"):
@@ -86,14 +77,12 @@ class Condition:
             return ""
 
     def getPrefillText(self):
-        python_formula = None
         if hasattr(self, "prefill_value"):
-            python_formula = self.protect(self.prefill_value, 'python')
-
-        if hasattr(self, "condition"):
-            python_formula += ' if (' + self.condition.build('python') + ') else ""'
-       
-        return python_formula
+            return self.protect(self.prefill_value)
+        elif hasattr(self, "condition"):
+            return self.condition.build() + 'default:""'
+        else:
+            return ""
 
     def __repr__(self):
-        return self.build('python')
+        return self.build()

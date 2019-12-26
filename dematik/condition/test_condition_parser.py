@@ -29,10 +29,7 @@ class ConditionParserTester(unittest.TestCase):
             result, test_vars = test_data
             test_vars_debug = ["%s : %s" % t for t in test_vars.items()]
             test_awaited = "True" if result else "False"
-            expr_python = condition.build('python')
-            test_result = eval(expr_python, test_vars)
-            self.assertEqual(test_result, result, "case python %s, expression : %s, vars: %s, returns: %s, awaited: %s" % (i+1, expr_python, test_vars_debug, test_result, test_awaited))
-            expr_django = condition.build('django')
+            expr_django = condition.build()
             test_code = Template('{% if ' + expr_django + ' %}True{% else %}False{% endif %}')
             test_result = "False"
             try:

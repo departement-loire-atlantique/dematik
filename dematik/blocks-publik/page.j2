@@ -5,7 +5,7 @@
     <id remote="{{field_data}}">{{ get_id(field_data) }}</id>
     {% if condition -%}
     <condition>
-        <type>python</type>
+        <type>django</type>
         <value>{{ condition -}}</value>
     </condition>
     {% endif -%}
@@ -14,8 +14,8 @@
     {% for post_condition in post_conditions -%}
       <post_condition>
         <condition>
-          <type>python</type>
-          <value>not ({{ post_condition.getPythonExpression() -}})</value>
+          <type>django</type>
+          <value>not ({{ post_condition.getExpression() -}})</value>
         </condition>
         <error_message>{{ get_text(post_condition.getMessage()) -}}</error_message>
       </post_condition>

@@ -24,5 +24,5 @@ class ConditionAntonym(Condition):
     def __init__(self, sentence_tokens):
         self.type = self.antonym[sentence_tokens[1].type]
 
-    def build(self, language):
+    def build(self):
         return self.type

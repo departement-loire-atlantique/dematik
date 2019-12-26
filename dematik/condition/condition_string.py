@@ -24,20 +24,9 @@ class ConditionString(Condition):
     def __init__(self, sentence_tokens):
         self.type = 'CONDITION'
 
-        self.field = sentence_tokens[0].value
+        self.field = self.protect(sentence_tokens[0].value)
         self.op = ConditionString.operators[sentence_tokens[1].type]
-        self.operand = sentence_tokens[2]
+        self.operand = self.protect(sentence_tokens[2].value) if sentence_tokens[2].type == 'FIELDNAME' else sentence_tokens[2].value
             
-    def build(self, language):
-        operand = self.protect(self.operand.value, language) if self.operand.type == 'FIELDNAME' else self.operand.value
-        field = self.protect(self.field, language)
-
-        if language == 'python':
-            isstr = ' if ' + field + ' and isinstance(' + field + ', str) else '+ self.op[2]
-            return operand + self.op[0] + field + self.op[1] + isstr
-        
-        elif language == 'django':
-            return operand + '|default_if_none:""|stringformat:"s"' + self.op[0] + field + '|default_if_none:""|stringformat:"s" ' + self.op[1]
-
-        else:
-            raise('not implemented')
+    def build(self):
+        return self.operand + '|default_if_none:""|stringformat:"s"' + self.op[0] + self.field + '|default_if_none:""|stringformat:"s" ' + self.op[1]
