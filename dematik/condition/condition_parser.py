@@ -17,6 +17,7 @@ from condition_operator import ConditionOperator
 from condition_string import ConditionString
 from condition_startwith import ConditionStartWith
 from condition_prefill import ConditionPrefill
+from condition_datasource import ConditionDatasource
 from condition_token import Token
 
 condition_classes = [
@@ -31,6 +32,7 @@ condition_classes = [
     ConditionHide,
     ConditionMessage,
     ConditionPrefill,
+    ConditionDatasource,
 ]
 
 # ConditionParser allows to parse a condition as "french text" and
@@ -70,7 +72,7 @@ class ConditionParser:
 
             # Adjacent tokens can't be all FIELDNAME
             if kind == 'FIELDNAME' and last_token.type == 'FIELDNAME':
-                raise Exception("Un des termes suivants n'est pas encore supporté dans les conditions : %s" % ' ou '.join(unknowns))
+                raise Exception("Un des termes suivants n'est pas encore supporté dans les conditions : %s" % ' ou '.join([last_token.value, value]))
            
             # Namepace support
             if kind == 'FIELDNAME':

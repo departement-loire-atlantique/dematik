@@ -4,6 +4,7 @@ formulaire "titre"
     identifiant "identifiant"
     workflow "accentué"
     Le paramètre "test" du workflow vaut "13 élastiques"
+    Le paramètre "toto" du workflow vaut "18 élastiques"
 
     category_id "11"
     category_name "Nom catégorie"
@@ -19,4 +20,28 @@ formulaire "titre"
     roles_name "Nom rôle pour destinataire"
 
 page "Formulaire de test"
+
     champ_texte* "nom"
+
+page "Datasource"
+
+    liste type_python:communes
+    lier le champ type_python:communes avec les choix issus de l'expression python "['élément 1', 'élément 2', 'élément 3']"
+
+    liste type_json:communes
+    lier le champ type_json:communes avec la source de données json liste_communes_json
+
+    liste type_jsonp:communes
+    lier le champ type_jsonp:communes avec la source de données jsonp liste_communes_jsonp
+
+    liste type_sourcename:communes
+    lier le champ type_sourcename:communes avec la source de données nommée liste_commune_datasource
+
+    liste type_json_value:communes
+    lier le champ type_json_value:communes avec la source de données json "URL json"
+
+    liste type_jsonp_value:communes
+    lier le champ type_jsonp_value:communes avec la source de données jsonp "URL jsonp"
+
+    liste type_sourcename_value:communes
+    lier le champ type_sourcename_value:communes avec la source de données nommée "Communes"

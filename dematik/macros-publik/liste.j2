@@ -6,11 +6,13 @@
     {% else %}
     {{ entete(field_data, "item", extra_css_class) }}
     {% endif -%}
+    {%- if not get_varname(field_data) in datasources -%}
     <items>
     {% for term in get_items(field_data) -%}
         <item>{{ term }}</item>
     {% endfor -%}
     </items>
+    {% endif -%}
     {%- if not multi %}
         {%- if deroulante %}
     <show_as_radio>False</show_as_radio>

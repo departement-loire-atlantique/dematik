@@ -126,6 +126,9 @@ class Dematik:
         # form prefill
         self.env.globals["prefill_formulas"] = {}
 
+        # datasources
+        self.env.globals["datasources"] = {}
+        
         # current page (buffer)
         self.current_page = None
         self.current_page_conditions = []
@@ -230,7 +233,7 @@ class Dematik:
 
             return True
 
-        if tokens[0] == 'si' or tokens[0] == 'préremplir':
+        if tokens[0] == 'si' or tokens[0] == 'préremplir' or tokens[0] == 'lier':
             c = condition.ConditionParser()
             cond = c.parse(' '.join(tokens))
 
@@ -240,9 +243,15 @@ class Dematik:
                 self.current_page_conditions += [cond]
             elif cond.type == 'CONDITION_HIDE_FIELD' :
                 self.current_page_field_conditions += [cond]
-            elif cond.type == 'PREFILL' or cond.type == "CONDITION_PREFILL" :
+            elif cond.type == 'PREFILL' :
                 self.env.globals["prefill_formulas"][cond.getPrefillFieldname()] = cond.getPrefillText() 
-            
+            elif cond.type == 'DATASOURCE' :
+                datasource = {'type' : cond.getDatasourceType()}
+                if 'json' != cond.getDatasourceType() and 'jsonp' != cond.getDatasourceType() and 'formula' != cond.getDatasourceType():
+                    datasource['type'] = self.get_text(cond.getDatasourceType())
+                if cond.getDatasourceValue():
+                    datasource['value'] = self.get_text(cond.getDatasourceValue()) if 'formula' != cond.getDatasourceType() else Markup(cond.getDatasourceValue()[1:-1])
+                self.env.globals["datasources"][cond.getDatasourceFieldname()] = datasource
             return True
 
         if ' '.join(tokens[0:4]) == 'aide à la saisie':

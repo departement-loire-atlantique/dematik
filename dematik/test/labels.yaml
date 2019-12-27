@@ -22,3 +22,11 @@ retour_ligne: >
   saut de ligne
 
 ecriture_inclusive: participant·e·s
+
+communes: Communes
+
+liste_commune_datasource: communes_datasource_id
+
+liste_communes_json: "{{passerelle_url}}csvdatasource/dispatch-communes/data"
+
+liste_communes_jsonp: "{{passerelle_url}}csvdatasource/dispatch-communes/data"

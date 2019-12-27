@@ -8,8 +8,7 @@ class Condition:
     sentences = [
             ('CONDITION', 'MESSAGE'),
             ('CONDITION', 'HIDE_PAGE'),
-            ('CONDITION', 'HIDE_FIELD'),
-            ('CONDITION', 'PREFILL'),
+            ('CONDITION', 'HIDE_FIELD')
     ]
 
     def __init__(self, tokens):
@@ -21,10 +20,6 @@ class Condition:
             self.message=tokens[1].value.message
         elif tokens[1].type == 'HIDE_PAGE':
             self.type = "CONDITION_HIDE_PAGE"
-        elif tokens[1].type == 'PREFILL':
-            self.type = "CONDITION_PREFILL"
-            self.prefill_fieldname = tokens[1].value.prefill_fieldname
-            self.prefill_value = tokens[1].value.prefill_value
         else:
             self.type = "CONDITION_HIDE_FIELD"
             self.hidden_fieldname = tokens[1].value.hidden_fieldname
@@ -79,8 +74,26 @@ class Condition:
     def getPrefillText(self):
         if hasattr(self, "prefill_value"):
             return self.protect(self.prefill_value)
-        elif hasattr(self, "condition"):
-            return self.condition.build() + 'default:""'
+        elif hasattr(self, "prefill_formula"):
+             return self.prefill_formula
+        else:
+            return ""
+
+    def getDatasourceFieldname(self):
+        if hasattr(self, "datasource_fieldname"):
+            return self.datasource_fieldname
+        else:
+            return ""
+
+    def getDatasourceType(self):
+        if hasattr(self, "datasource_type"):
+            return self.datasource_type
+        else:
+            return ""
+
+    def getDatasourceValue(self):
+        if hasattr(self, "datasource_value"):
+            return self.datasource_value
         else:
             return ""
 

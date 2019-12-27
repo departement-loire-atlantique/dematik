@@ -27,20 +27,22 @@ Installation
 ------------
 
 ```bash
-git clone https://github.com/departement-loire-atlantique/dematik
-cd dematik
-pip install .
+pip install git+https://github.com/departement-loire-atlantique/dematik.git
 ```
 
 Utilisation
 -----------
+
+La commande doit être tapé dans un dossier contenant deux sous dossiers :
+* Un nommé *labels* contenant les fichiers YAML des libellés
+* Un nommé *definitions* contenant la definition des formulaires
 
 Génération de tous les processus modifiés :
 ```bash
 python -m dematik
 ```
 
-Génération de tous les processus :
+Génération de tous les processus, modifiés ou non :
 ```bash
 python -m dematik --force
 ```
@@ -193,10 +195,15 @@ Un action est de la forme : `ACTION`
 
 Liste des *ACTION*s supportées :
 
-* masquer cette page
-* masquer le champ CHAMP
-* afficher le message (CHAMP ou VALEUR)
-* préremplir CHAMP avec (CHAMP ou VALEUR)
+* masquer cette page - Doit être associé à une condition
+* masquer le champ CHAMP - Doit être associé à une condition
+* afficher le message (CHAMP ou VALEUR) - Doit être associé à une condition
+* préremplir CHAMP avec (CHAMP ou VALEUR) - Non supporté si associé à une condition
+* préremplir CHAMP avec (CHAMP ou VALEUR) - Non supporté si associé à une condition
+* lier le champ CHAMP avec les choix issus de l'expression python VALEUR - Non supporté si associé à une condition
+* lier le champ CHAMP avec la source de données json (CHAMP ou VALEUR) - Non supporté si associé à une condition
+* lier le champ CHAMP avec la source de données jsonp (CHAMP ou VALEUR) - Non supporté si associé à une condition
+* lier le champ CHAMP avec la source de données nommée (CHAMP ou VALEUR) - Non supporté si associé à une condition
 
 Liste des *CONDITION*s supportées :
 
@@ -224,9 +231,19 @@ Liste des *CONDITION*s supportées :
 * CHAMP contient (CHAMP ou VALEUR_ENTIERE)
 * CHAMP ne contient pas (CHAMP ou VALEUR_ENTIERE)
 
+Contribution
+------------
+
+Si vous souhaitez ajouter un nouveau "block", une nouvelle "macro" ou le support de nouvelles "actions" ou "conditions", vous pouvez "forker" ce dépôt et faire un pull request.
+
+Les "blocks" et "macro" sont des templates Jinja2 correspondant à des sections de XML d'un fichier d'export de formulaire WCS.
+
 ROADMAP
 -------
 
+- Migration vers python 3 lorsque Publik (Module WCS) aura été migré en Python 3
+- Dépôt automatique des PyPi
+- Paquet *conditions*, séparer les tokens, les conditions, les actions et l'expression complète (conditions + action)
 - Support de nouvelles conditions
 - Validation et d'autocomplétion pour les fichiers de définition (éditeur)
 - Mise à jour automatique dans une instance publik en ligne de commande

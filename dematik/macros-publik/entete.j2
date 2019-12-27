@@ -1,4 +1,5 @@
 {%- from "macros-publik/prefill.j2" import prefill with context -%}
+{%- from "macros-publik/datasource.j2" import datasource with context -%}
 {% macro entete(field_data, type, extra_css_class='', prefill_text='', prefill_formula='', prefill_user='') -%}
     <label>{{ get_text(field_data) }}</label>
     <type>{{ type }}</type>
@@ -14,6 +15,7 @@
     <extra_css_class>{{ extra_css_class }}</extra_css_class>
     {% endif -%}
     {{ prefill(field_data, prefill_text, prefill_formula, prefill_user) }}
+    {{ datasource(field_data) }}
     {% if condition -%}
     <condition>
         <type>django</type>
