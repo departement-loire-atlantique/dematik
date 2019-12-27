@@ -3,12 +3,12 @@ from os.path import isfile, join, basename, splitext, dirname, realpath
 from re import split
 
 # This class renders blocks (jinja templates)
-#
+# 
 # n = dematik.Blocks(jinja_env)
 # n([block_name, block_param1, block_param2, ...]) renders the block with :
 #
 #   block_name    : Name of the block
-#                   The corresponding block template filename is blocks/block_name.j2)
+#                   The corresponding block template filename is blocks-xxx/block_name.j2)
 #                   If the block_name is followed by a '*' then the block is mandatory
 #   block_line_tokens  : The block parameters
 #                   Must match block template mandatory parameters
