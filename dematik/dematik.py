@@ -1,4 +1,5 @@
 # coding: utf8
+from __future__ import print_function
 from jinja2 import Environment, PackageLoader, PrefixLoader, Markup, select_autoescape, StrictUndefined
 from collections import Counter
 from datetime import datetime
@@ -167,11 +168,11 @@ class Dematik:
                 return True
 
         if tokens[0] == "listing" and len(tokens) == 2:
-            self.in_listing += tokens[1]
+            self.in_listing.append(tokens[1])
             return True
 
         if tokens[0] == "filter" and len(tokens) == 2:
-            self.in_filters += tokens[1]
+            self.in_filters.append(tokens[1])
             return True
 
         worflow_option = re.search(r'Le paramètre (?P<key>.*) du workflow vaut (?P<val>.*)', ' '.join(tokens))
