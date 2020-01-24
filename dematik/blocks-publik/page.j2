@@ -15,7 +15,7 @@
       <post_condition>
         <condition>
           <type>django</type>
-          <value>not ({{ post_condition.getExpression() -}})</value>
+          <value>not {{ post_condition.getExpression() -}}</value>
         </condition>
         <error_message>{{ get_text(post_condition.getMessage()) -}}</error_message>
       </post_condition>
