@@ -53,6 +53,17 @@ class Condition:
     def getExpression(self):
         return Markup(self.build().replace("<", "&lt;"))
 
+    def getNotExpression(self):
+        s = self.build()
+        # TODO a regex would be better
+        s = s.replace("not not", "")
+        s = s.replace(" and ", " OR_NOT ")
+        s = s.replace(" or ", " AND_NOT ")
+        s = s.replace(" OR_NOT ", " or not ")
+        s = s.replace(" AND_NOT ", " and not ")
+        s = s.replace("<", "&lt;")
+        return Markup("not " + s)
+
     def getMessage(self):
         if hasattr(self, "message"):
             return Markup(self.message)
