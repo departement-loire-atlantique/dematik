@@ -47,12 +47,12 @@ Génération de tous les processus, modifiés ou non :
 python -m dematik --force
 ```
 
-Génération d'un seul processus (ici process/definition/aide_habitat/pa.def) :
+Génération d'un seul processus (ici process/definitions/aide_habitat/pa.def) :
 ```bash
 python -m dematik --pattern aide_habitat/pa.def
 ```
 
-Génération d'un seul processus (ici process/definition/aide_habitat/pa.def) en mode mise au point :
+Génération d'un seul processus (ici process/definitions/aide_habitat/pa.def) en mode mise au point :
 ```bash
 python -m dematik --pattern aide_habitat/pa.def --debug
 ```
@@ -110,7 +110,7 @@ texte_enrichi: >
   - élément 2
 ```
 
-Les définitions de formulaires sont stockés dans des fichiers .def stockés dans le dossier process/definition
+Les définitions de formulaires sont stockés dans des fichiers .def stockés dans le dossier process/definitions
 
 Exemple :
 ```
