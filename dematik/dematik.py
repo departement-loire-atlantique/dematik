@@ -3,7 +3,7 @@ from __future__ import print_function
 from jinja2 import Environment, PackageLoader, PrefixLoader, Markup, select_autoescape, StrictUndefined
 from collections import Counter
 from datetime import datetime
-from .field_data import FieldData
+from field_data import FieldData
 import condition 
 from blocks import Blocks
 from markdown import markdown
@@ -36,6 +36,8 @@ class Dematik:
             "get_text" : self.get_text,
             "get_md_text" : self.get_md_text,
             "get_items" : self.get_items,
+            "get_rows" : self.get_rows,
+            "get_columns" : self.get_columns,
             "get_varname" : self.get_varname,
             "get_id" : self.get_id,
             "is_in_listing" : self.is_in_listing,
@@ -61,6 +63,14 @@ class Dematik:
     def get_items(self, field_data):
         return getattr(self.fields_data, field_data)["items"]
 
+    # Returns a list of rows or raise a ValueError
+    def get_rows(self, field_data):
+        return getattr(self.fields_data, field_data)["rows"]
+        
+   # Returns a list of columns or raise a ValueError
+    def get_columns(self, field_data):
+        return getattr(self.fields_data, field_data)["columns"]
+        
      # Returns a varname or raise a ValueError
     def get_varname(self, field_data):
         return field_data.replace(':', '___')

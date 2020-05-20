@@ -42,10 +42,17 @@ class FieldData:
         field_data = {}
         if isinstance(self.fields_data[attribute], dict):
             for label, items in self.fields_data[attribute].items():
-                field_data = {
-                    "label": Markup(label.strip('\n')),
-                    "items" : [Markup(item) for item in items]
-                }
+                if len(items) == 2 and isinstance(items[0],list) :
+                    field_data = {
+                        "label": Markup(label.strip('\n')),
+                        "rows": [Markup(item) for item in items[0]],
+                        "columns": [Markup(item) for item in items[1]]
+                    }
+                else :
+                    field_data = {
+                        "label": Markup(label.strip('\n')),
+                        "items" : [Markup(item) for item in items]
+                    }
         else:
             field_data = {
                 "label": Markup(self.fields_data[attribute].strip('\n'))
