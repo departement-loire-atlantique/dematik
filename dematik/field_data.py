@@ -29,14 +29,10 @@ class FieldData:
         if isinstance(fields_data, dict):
             return {self.htmlescape(key):self.parse(field_data) for (key, field_data) in fields_data.items()}
         else:
-            if fields_data != None :
-                return self.htmlescape(fields_data)
-            else:        
-                return fields_data
+            return self.htmlescape(fields_data)
 
     def __getattr__(self, attribute):
         namespace = ""
-        elements = []
         if ':' in attribute:
             namespace, attribute = attribute.split(':')
 
@@ -46,30 +42,10 @@ class FieldData:
         field_data = {}
         if isinstance(self.fields_data[attribute], dict):
             for label, items in self.fields_data[attribute].items():
-                if isinstance(items, dict):
-                    for sous_label, sous_items in items.items():                      
-                        nom_sous_label = Markup(sous_label.strip('\n'))
-                        if "ligne" in nom_sous_label :
-                            lignes =  [Markup(item) for item in sous_items]
-                        elif "colonne" in nom_sous_label:
-                            colonnes = [Markup(item) for item in sous_items]
-                        elif  "element" in nom_sous_label:
-                            elements = [Markup(item) for item in sous_items]
-                        else:
-                            raise ValueError("L'attribut " + nom_sous_label + " est inconnu")
-                    field_data = {
-                        "label": Markup(label.strip('\n')),
-                        "rows": lignes,
-                        "columns": colonnes
-                    }
-                    if elements != []:
-                        field_data["items"] = elements
-                        
-                else :
-                    field_data = {
-                        "label": Markup(label.strip('\n')),
-                        "items" : [Markup(item) for item in items]
-                    }
+                field_data = {
+                    "label": Markup(label.strip('\n')),
+                    "items" : [Markup(item) for item in items]
+                }
         else:
             field_data = {
                 "label": Markup(self.fields_data[attribute].strip('\n'))
