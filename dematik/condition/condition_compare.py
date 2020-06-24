@@ -37,7 +37,7 @@ class ConditionCompare(Condition):
         self.type = "CONDITION"
         
         self.field = self.protect(sentence_tokens[0].value)
-        self.operator = ConditionCompare.operators[sentence_tokens[1].type]  
+        self.operator = ConditionCompare.operators[sentence_tokens[1].type] 
         self.operand = sentence_tokens[2]
 
     def build(self):   
