@@ -7,6 +7,9 @@
     {% if hint -%}
     <hint>{{ get_text(hint) }}</hint>
     {% endif -%}
+    {% if nombre_max -%}
+    <maxlength>{{ get_text(nombre_max) }}</maxlength>
+    {% endif -%}
     <id remote="{{field_data}}">{{ get_id(field_data) }}</id>
     <varname>{{ get_varname(field_data) }}</varname>
     <in_listing>{{ is_in_listing(field_data) }}</in_listing>
