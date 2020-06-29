@@ -215,7 +215,7 @@ class Dematik:
     def parseFieldBlock(self, tokens):
     
         print(tokens)
-        if ' '.join(tokens[0:4]) == 'nombre maximal de carat\xc3\xa8re':
+        if ' '.join(tokens[0:4]) == 'nombre maximal de carat\xc3\xa8res':
             self.current_page_fields[-1]["nombre_max"] = tokens[4]
             print(self.current_page_fields)
             return True
