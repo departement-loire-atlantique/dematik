@@ -208,18 +208,31 @@ class Dematik:
                 conds = [c for c in self.current_page_field_conditions if c.getHiddenFieldname().replace('___', ':') in current_page_fielddata]
                 self.env.globals["condition"] = self.merge_and_invert_conditions(conds)
                 self.env.globals["hint"] = current_page_field["hint"]
-                self.env.globals["nombre_max"] = current_page_field["nombre_max"]
+                self.env.globals["validation"] = current_page_field["validation"]
+                self.env.globals["extra_css_class"] = ""
                 self.form_fields_as_xml += self.blocks(current_page_fielddata)
 
     # Parse form fields
     def parseFieldBlock(self, tokens):
     
-        print(tokens)
-        if ' '.join(tokens[0:4]) == 'nombre maximal de carat\xc3\xa8re':
-            self.current_page_fields[-1]["nombre_max"] = tokens[4]
-            print(self.current_page_fields)
+        if ' '.join(tokens[0:2]) == 'avec validation':
+            if ' '.join(tokens[2:]) == 'code postal' :
+                validation = '"zipcode-fr"'
+            elif ' '.join(tokens[2:]) == 'code SIREN' :
+                validation = '"siren-fr"'
+            elif ' '.join(tokens[2:]) == 'code SIRET' :
+                validation = '"siret-fr"'
+            elif ' '.join(tokens[2:]) == 'NIR' :
+                validation = '"nir-fr"'
+            elif ' '.join(tokens[2:]) == 'IBAN' :
+                validation = '"iban"'
+            elif ' '.join(tokens[2:]) == 'numéro de téléphone' :
+                validation = '"phone"'
+            else :
+                validation = '""'
+            self.current_page_fields[-1]["validation"] = validation
             return True
-    
+            
         if tokens[0] in self.blocks:
             if "page" in tokens[0]:
                 # Generate previous page
@@ -237,7 +250,7 @@ class Dematik:
                 self.form = tokens
 
             else:
-                self.current_page_fields += [{"t":tokens, "hint":"", "nombre_max":""}]
+                self.current_page_fields += [{"t":tokens, "hint":"", "validation":""}]
 
             return True
 
@@ -265,8 +278,6 @@ class Dematik:
         if ' '.join(tokens[0:4]) == 'aide à la saisie':
             self.current_page_fields[-1]["hint"] = tokens[4]
             return True
-            
-            
         
         # Line could not be parsed, first token is unknown
         return False
