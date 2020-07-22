@@ -1,6 +1,8 @@
+# coding: utf-8
 from yaml import load, YAMLError, FullLoader
 from jinja2 import Markup
 from htmlentitydefs import codepoint2name
+import re
 
 # A field data keep track
 class FieldData:
@@ -53,7 +55,7 @@ class FieldData:
                             lignes =  [Markup(item) for item in sous_items]
                         elif "colonne" in nom_sous_label:
                             colonnes = [Markup(item) for item in sous_items]
-                        elif  "element" in nom_sous_label:
+                        elif any(element in nom_sous_label for element in ["element","&#233;l&#233;ment"]):
                             elements = [Markup(item) for item in sous_items]
                         else:
                             raise ValueError("L'attribut " + nom_sous_label + " est inconnu")
