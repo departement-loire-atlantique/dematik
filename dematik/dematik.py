@@ -230,9 +230,8 @@ class Dematik:
             condition = 'not %s' % not_condition
             conditions = conditions[1:]
             for cond in conditions:
-                not_cond = cond.build().replace(" and "," ou not ").replace(" or ", " and not ").replace(" ou ", " or ")
-                condition = '%s and not %s' % (condition, not_cond)
-                
+                condition = '%s and not %s' % (condition, cond.build())
+        
         return Markup(condition.replace("<", "&lt;"))
 
     def render_current_form_page(self):
@@ -250,11 +249,17 @@ class Dematik:
                 conds = [c for c in self.current_page_field_conditions if c.getHiddenFieldname().replace('___', ':') in current_page_fielddata]
                 self.env.globals["condition"] = self.merge_and_invert_conditions(conds)
                 self.env.globals["hint"] = current_page_field["hint"]
-                self.env.globals["extra_css_class"] = ""
+                self.env.globals["nombre_max"] = current_page_field["nombre_max"]
                 self.form_fields_as_xml += self.blocks(current_page_fielddata)
 
     # Parse form fields
     def parseFieldBlock(self, tokens):
+    
+        print(tokens)
+        if ' '.join(tokens[0:4]) == 'nombre maximal de carat\xc3\xa8res':
+            self.current_page_fields[-1]["nombre_max"] = tokens[4]
+            return True
+    
         if tokens[0] in self.blocks:
             if "page" in tokens[0]:
                 # Generate previous page
@@ -272,7 +277,7 @@ class Dematik:
                 self.form = tokens
 
             else:
-                self.current_page_fields += [{"t":tokens, "hint":""}]
+                self.current_page_fields += [{"t":tokens, "hint":"", "nombre_max":""}]
 
             return True
 
@@ -300,6 +305,8 @@ class Dematik:
         if ' '.join(tokens[0:4]) == 'aide à la saisie':
             self.current_page_fields[-1]["hint"] = tokens[4]
             return True
+            
+            
         
         # Line could not be parsed, first token is unknown
         return False
