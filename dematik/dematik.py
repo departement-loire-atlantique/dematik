@@ -3,7 +3,7 @@ from __future__ import print_function
 from jinja2 import Environment, PackageLoader, PrefixLoader, Markup, select_autoescape, StrictUndefined
 from collections import Counter
 from datetime import datetime
-from field_data import FieldData
+from .field_data import FieldData
 import condition 
 from blocks import Blocks
 from markdown import markdown
@@ -36,10 +36,13 @@ class Dematik:
             "get_text" : self.get_text,
             "get_md_text" : self.get_md_text,
             "get_items" : self.get_items,
-            "get_rows" : self.get_rows,
-            "get_columns" : self.get_columns,
             "get_varname" : self.get_varname,
             "get_id" : self.get_id,
+            "get_date_min" : self.get_date_min,
+            "get_date_is_futur" : self.get_date_is_futur,
+            "get_date_max" : self.get_date_max,
+            "get_date_in_past" : self.get_date_in_past,
+            "get_date_can_be_today" : self.get_date_can_be_today,
             "is_in_listing" : self.is_in_listing,
             "is_in_filters" : self.is_in_filters,
         }
@@ -63,14 +66,6 @@ class Dematik:
     def get_items(self, field_data):
         return getattr(self.fields_data, field_data)["items"]
 
-    # Returns a list of rows or raise a ValueError
-    def get_rows(self, field_data):
-        return getattr(self.fields_data, field_data)["rows"]
-        
-   # Returns a list of columns or raise a ValueError
-    def get_columns(self, field_data):
-        return getattr(self.fields_data, field_data)["columns"]
-        
      # Returns a varname or raise a ValueError
     def get_varname(self, field_data):
         return field_data.replace(':', '___')
@@ -97,7 +92,42 @@ class Dematik:
             self.used_field_data += [field_data]
        
         return id
+        
+    # Returns text for a date or raise a ValueError
+    def get_date_min(self, field_data):
+        for item in getattr(self.fields_data, field_data)["items"]:
+            if "minimum" in item :
+                return item.split(" ")[1]
+        return None
 
+    # Returns text for a date or raise a ValueError
+    def get_date_is_futur(self, field_data):
+        for item in getattr(self.fields_data, field_data)["items"]:
+            if "future" in item or "futur" in item :
+                return Markup("True")
+        return Markup("False")
+                
+    # Returns text for a date or raise a ValueError
+    def get_date_max(self, field_data):
+        for item in getattr(self.fields_data, field_data)["items"]:
+            if "maximum" in item :
+                return item.split(" ")[1]
+        return None
+        
+    # Returns text for a date or raise a ValueError
+    def get_date_in_past(self, field_data):
+        for item in getattr(self.fields_data, field_data)["items"]:
+            if "passee" in item or "passe" in item :
+                return Markup("True")
+        return Markup("False")
+     
+    # Returns text for a date or raise a ValueError
+    def get_date_can_be_today(self, field_data):
+        for item in getattr(self.fields_data, field_data)["items"]:
+            if "aujourdhui" in item or "aujourd'hui" in item :
+                return Markup("True")
+        return Markup("False")
+        
     # Returns if a field should appear in listing
     def is_in_listing(self, field_data):
         return str(field_data in self.in_listing)
