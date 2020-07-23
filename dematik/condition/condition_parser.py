@@ -3,7 +3,7 @@ import re
 import importlib
 from os import listdir
 from os.path import isfile, join, realpath, dirname
-from field_data import FieldData
+from dematik.field_data import FieldData
 
 # Import and declare all conditions
 from condition import Condition
