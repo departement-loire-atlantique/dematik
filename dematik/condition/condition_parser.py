@@ -21,11 +21,11 @@ from condition_datasource import ConditionDatasource
 from condition_token import Token
 
 condition_classes = [
-    Condition,
     ConditionAntonym,
     ConditionCheckCount,
     ConditionFilled,
     ConditionCompare,
+    Condition,
     ConditionString,
     ConditionStartWith,
     ConditionOperator,
@@ -93,18 +93,15 @@ class ConditionParser:
         while(last_token_count > len(tokens)):
             last_token_count = len(tokens)
             for condition_class in condition_classes:
-                tokens = self.merge_using_condition(condition_class, tokens)
+                new_merge = True
+                while new_merge :
+                    tokens,new_merge = self.merge_using_condition(condition_class, tokens)
 
-        
         if len(tokens) != 1:
             unknowns = [token.value + '(' + token.type + ')' for token in tokens if not token.merged]
             if unknowns: 
-                for t in tokens:
-                    print(t.type)
                 raise Exception("Les termes suivants ne sont pas encore supportés dans les conditions : %s" % ', '.join(unknowns))
             else:
-                for token in tokens:
-                    print(token)
                 raise Exception("La phrase n'est pas supportée")
         
         return tokens[0].value
@@ -114,7 +111,6 @@ class ConditionParser:
         sentences = condition_class.sentences
         for sentence in sentences:
             sentence_index = 0
-
             for i, token in enumerate(tokens):
                 if token.type == sentence[sentence_index]:
                     sentence_index = sentence_index + 1
@@ -122,9 +118,9 @@ class ConditionParser:
                         # A valid sentense for this condition match => Merge
                         c = condition_class(tokens[i-sentence_index+1:i+1])
                         condition_token = [Token(type=c.getType(), value=c, merged=True)]
-                        return tokens[:i-sentence_index+1] + condition_token + tokens[i+1:]
+                        return tokens[:i-sentence_index+1] + condition_token + tokens[i+1:],True
                 else:
                    sentence_index = 0
-        
         # No any sentense for this condition match => Do nothing
-        return tokens
+        
+        return tokens,False

@@ -226,11 +226,13 @@ class Dematik:
     def merge_and_invert_conditions(self, conditions):
         condition = ""
         if conditions:
-            condition = 'not %s' % conditions[0].build()
+            not_condition = conditions[0].build().replace(" and "," ou not ").replace(" or ", " and not ").replace(" ou ", " or ")
+            condition = 'not %s' % not_condition
             conditions = conditions[1:]
             for cond in conditions:
-                condition = '%s and not %s' % (condition, cond.build())
-        
+                not_cond = cond.build().replace(" and "," ou not ").replace(" or ", " and not ").replace(" ou ", " or ")
+                condition = '%s and not %s' % (condition, not_cond)
+                
         return Markup(condition.replace("<", "&lt;"))
 
     def render_current_form_page(self):
