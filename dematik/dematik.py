@@ -38,6 +38,11 @@ class Dematik:
             "get_items" : self.get_items,
             "get_varname" : self.get_varname,
             "get_id" : self.get_id,
+            "get_date_min" : self.get_date_min,
+            "get_date_is_futur" : self.get_date_is_futur,
+            "get_date_max" : self.get_date_max,
+            "get_date_in_past" : self.get_date_in_past,
+            "get_date_can_be_today" : self.get_date_can_be_today,
             "is_in_listing" : self.is_in_listing,
             "is_in_filters" : self.is_in_filters,
         }
@@ -87,7 +92,42 @@ class Dematik:
             self.used_field_data += [field_data]
        
         return id
+        
+    # Returns text for a date or raise a ValueError
+    def get_date_min(self, field_data):
+        for item in getattr(self.fields_data, field_data)["items"]:
+            if "minimum" in item :
+                return item.split(" ")[1]
+        return None
 
+    # Returns text for a date or raise a ValueError
+    def get_date_is_futur(self, field_data):
+        for item in getattr(self.fields_data, field_data)["items"]:
+            if "future" in item or "futur" in item :
+                return Markup("True")
+        return Markup("False")
+                
+    # Returns text for a date or raise a ValueError
+    def get_date_max(self, field_data):
+        for item in getattr(self.fields_data, field_data)["items"]:
+            if "maximum" in item :
+                return item.split(" ")[1]
+        return None
+        
+    # Returns text for a date or raise a ValueError
+    def get_date_in_past(self, field_data):
+        for item in getattr(self.fields_data, field_data)["items"]:
+            if "passee" in item or "passe" in item :
+                return Markup("True")
+        return Markup("False")
+     
+    # Returns text for a date or raise a ValueError
+    def get_date_can_be_today(self, field_data):
+        for item in getattr(self.fields_data, field_data)["items"]:
+            if "aujourdhui" in item or "aujourd'hui" in item :
+                return Markup("True")
+        return Markup("False")
+        
     # Returns if a field should appear in listing
     def is_in_listing(self, field_data):
         return str(field_data in self.in_listing)
