@@ -188,7 +188,6 @@ class Dematik:
         if conditions:
             not_condition = conditions[0].build().replace(" and "," ou not ").replace(" or ", " and not ").replace(" ou ", " or ")
             condition = 'not %s' % not_condition
-            # print(condition)
             conditions = conditions[1:]
             for cond in conditions:
                 not_cond = cond.build().replace(" and "," ou not ").replace(" or ", " and not ").replace(" ou ", " or ")
