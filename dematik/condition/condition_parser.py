@@ -121,5 +121,5 @@ class ConditionParser:
                         return tokens[:i-sentence_index+1] + condition_token + tokens[i+1:],True
                 else:
                    sentence_index = 0
-                
+        # No any sentense for this condition match => Do nothing
         return tokens,False
