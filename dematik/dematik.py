@@ -3,7 +3,7 @@ from __future__ import print_function
 from jinja2 import Environment, PackageLoader, PrefixLoader, Markup, select_autoescape, StrictUndefined
 from collections import Counter
 from datetime import datetime
-from field_data import FieldData
+from .field_data import FieldData
 import condition 
 from blocks import Blocks
 from markdown import markdown
