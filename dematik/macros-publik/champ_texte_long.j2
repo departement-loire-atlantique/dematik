@@ -1,10 +1,12 @@
 {% from "macros-publik/entete.j2" import entete with context -%}
-{% macro champ_texte_long(field_data, extra_css_class='', cols='', rows='', maxlength='', validation='') -%}
+{% macro champ_texte_long(field_data, extra_css_class='', cols='', rows='', validation='') -%}
 <field>
     {{ entete(field_data, "text", extra_css_class) }}
     <validation>{{ validation }}</validation>
     <cols>{{ cols }}</cols>
     <rows>{{ rows }}</rows>
-    <maxlength>{{ maxlength }}</maxlength>
+    {% if nombre_max -%}
+    <maxlength>{{ get_text(nombre_max) }}</maxlength>
+    {% endif -%}
 </field>
 {%- endmacro %}
