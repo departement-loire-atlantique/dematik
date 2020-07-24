@@ -1,9 +1,0 @@
-{% macro datasource(field_data) -%}
-{%- if get_varname(field_data) in datasources and datasources[get_varname(field_data)] -%}
-    <data_source><type>{{ datasources[get_varname(field_data)]['type'] }}</type>
-        {%- if 'value' in datasources[get_varname(field_data)] and datasources[get_varname(field_data)]['value'] -%}
-        <value>{{ datasources[get_varname(field_data)]['value'] }}</value>
-        {%- endif -%}
-    </data_source>
-{%- endif -%}
-{%- endmacro %}
