@@ -1,0 +1,23 @@
+formulaire "titre"
+	 url "url"
+    description "description"
+    identifiant "identifiant"
+    workflow "accentué"
+    Le paramètre "test" du workflow vaut "13 élastiques"
+    Le paramètre "toto" du workflow vaut "18 élastiques"
+
+    category_id "11"
+    category_name "Nom catégorie"
+
+    user_roles_id "logged-users"
+    user_roles_name "logged-users"
+
+    backoffice_submission_roles_id "9e4dacfc848045b2a22773f3de3fbd67"
+    backoffice_submission_roles_name "Nom rôle pour saisie back-office"
+
+    roles_id "9e4dacfc848045b2a22773f3de3fbd67"
+    roles_key "_receiver"
+    roles_name "Nom rôle pour destinataire"
+
+page "Formulaire de test"
+	siren "SIREN"
