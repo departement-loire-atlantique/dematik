@@ -122,4 +122,5 @@ class ConditionParser:
                 else:
                    sentence_index = 0
         # No any sentense for this condition match => Do nothing
+
         return tokens,False

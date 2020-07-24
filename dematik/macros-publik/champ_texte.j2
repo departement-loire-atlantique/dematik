@@ -1,8 +1,10 @@
 {% from "macros-publik/entete.j2" import entete with context -%}
-{% macro champ_texte(field_data, extra_css_class='', size='', validation='', prefill_text='', prefill_formula='', prefill_user='') -%}
+{% macro champ_texte(field_data, extra_css_class='', size='', prefill_text='', prefill_formula='', prefill_user='') -%}
 <field>
     {{ entete(field_data, "string", extra_css_class) }}
-    <validation>{{ validation }}</validation>
+    {% if validation -%}
+    <validation><type>{{ get_text(validation) }}</type></validation>
+    {% endif -%}
     <size>{{ size }}</size>
 </field>
 {%- endmacro %}
