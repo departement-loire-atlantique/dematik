@@ -1,0 +1,14 @@
+{# field_data -#}
+<field>
+    <label>&lt;div id="cd44-contact"&gt;
+	{{ get_md_text(field_data) }}
+    &lt;/div&gt;</label>
+    <type>comment</type>
+    <id remote="{{field_data}}">{{ get_id(field_data) }}</id>
+    {% if condition -%}
+    <condition>
+        <type>django</type>
+        <value>{{ condition -}}</value>
+    </condition>
+    {% endif -%}
+</field>

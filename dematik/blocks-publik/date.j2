@@ -1,0 +1,14 @@
+{# field_data -#}
+{% from "macros-publik/entete.j2" import entete with context -%}
+<field>
+    {{ entete(field_data, "date", extra_css_class) }}  
+	{% if get_date_min(field_data) -%}
+	<minimum_date>{{get_date_min(field_data)}}</minimum_date> 
+	{% endif -%}
+	<minimum_is_future>{{get_date_is_futur(field_data)}}</minimum_is_future>
+	{% if get_date_max(field_data) -%}
+	<maximum_date>{{get_date_max(field_data)}}</maximum_date>
+	{% endif -%}
+	<date_in_the_past>{{get_date_in_past(field_data)}}</date_in_the_past>
+	<date_can_be_today>{{get_date_can_be_today(field_data)}}</date_can_be_today>		
+</field>

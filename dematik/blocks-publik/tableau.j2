@@ -1,0 +1,15 @@
+{# field_data -#}
+{% from "macros-publik/entete.j2" import entete with context -%}
+<field>
+    {{ entete(field_data, "table", extra_css_class) }}
+    <rows>
+		{% for term in get_rows(field_data) -%}
+			<row>{{ term }}</row>
+		{% endfor -%}
+	</rows>
+	<columns>
+		{% for term in get_columns(field_data) -%}
+			<column>{{ term }}</column>
+		{% endfor -%}
+	</columns>
+</field>
