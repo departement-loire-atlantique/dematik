@@ -1,3 +1,7 @@
 {# field_data -#}
-{%- from "macros-publik/champ_texte.j2" import champ_texte with context -%}
-{{ champ_texte(field_data, validation='phone') }}
+{% from "macros-publik/entete.j2" import entete with context -%}
+<field>
+    {{ entete(field_data, "string", extra_css_class) }}
+    <validation><type>phone</type></validation>
+    <size></size>
+</field>
