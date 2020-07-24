@@ -20,6 +20,9 @@
     <show_as_radio>True</show_as_radio>
         {% endif -%}
     {% endif -%}
+    {% if nombre_max -%}
+    <max_choices>{{ get_text(nombre_max) }}</max_choices>
+    {% endif -%}
     <anonymise>False</anonymise>
     <display_disabled_items>False</display_disabled_items>
 </field>
