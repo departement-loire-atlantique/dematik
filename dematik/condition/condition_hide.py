@@ -19,3 +19,6 @@ class ConditionHide(Condition):
         else:
             self.type = 'HIDE_FIELD'
             self.hidden_fieldname = sentence_tokens[2].value
+
+    def build(self):
+        return self.type
