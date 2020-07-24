@@ -1,0 +1,25 @@
+{%- from "macros-publik/prefill.j2" import prefill with context -%}
+{%- from "macros-publik/datasource.j2" import datasource with context -%}
+{% macro entete(field_data, type, extra_css_class='', prefill_text='', prefill_formula='', prefill_user='') -%}
+    <label>{{ get_text(field_data) }}</label>
+    <type>{{ type }}</type>
+    <required>{{ required }}</required>
+    {% if hint -%}
+    <hint>{{ get_text(hint) }}</hint>
+    {% endif -%}
+    <id remote="{{field_data}}">{{ get_id(field_data) }}</id>
+    <varname>{{ get_varname(field_data) }}</varname>
+    <in_listing>{{ is_in_listing(field_data) }}</in_listing>
+    <in_filters>{{ is_in_filters(field_data) }}</in_filters>
+    {% if extra_css_class -%}
+    <extra_css_class>{{ extra_css_class }}</extra_css_class>
+    {% endif -%}
+    {{ prefill(field_data, prefill_text, prefill_formula, prefill_user) }}
+    {{ datasource(field_data) }}
+    {% if condition -%}
+    <condition>
+        <type>django</type>
+        <value>{{ condition -}}</value>
+    </condition>
+    {% endif -%}
+{%- endmacro %}

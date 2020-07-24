@@ -1,0 +1,19 @@
+{% macro prefill(field_data, prefill_text='', prefill_formula='', prefill_user='') -%}
+<prefill>
+    {% if prefill_text -%}
+        <type>string</type>
+        <value>{{ prefill_text }}</value>
+    {% elif prefill_formula -%}
+        <type>formula</type>
+        <value>{{ prefill_formula }}</value>
+    {% elif prefill_user -%}
+        <type>user</type>
+        <value>{{ prefill_user }}</value>
+    {% elif get_varname(field_data) in prefill_formulas and prefill_formulas[get_varname(field_data)] -%}
+        <type>formula</type>
+        <value>{{ prefill_formulas[get_varname(field_data)] }}</value>
+    {% else -%}
+        <type>none</type>
+    {% endif -%}
+</prefill>
+{%- endmacro %}
